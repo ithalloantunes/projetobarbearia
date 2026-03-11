@@ -1,0 +1,156 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  CLIENT
+  BARBER
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum ServiceStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELED
+  NO_SHOW
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+model User {
+  id           Int        @id @default(autoincrement())
+  name         String
+  email        String?    @unique
+  phone        String?    @unique
+  passwordHash String
+  role         UserRole
+  status       UserStatus @default(ACTIVE)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  barber        Barber?
+  appointments  Appointment[] @relation("ClientAppointments")
+}
+
+model Barber {
+  id          Int        @id @default(autoincrement())
+  name        String
+  photoUrl    String?    @db.Text
+  specialty   String?
+  phone       String?
+  email       String?    @unique
+  status      UserStatus @default(ACTIVE)
+  userId      Int?       @unique
+  user        User?      @relation(fields: [userId], references: [id])
+
+  services     BarberService[]
+  appointments Appointment[]
+  availability Availability[]
+  blocks       Block[]
+}
+
+model Service {
+  id              Int           @id @default(autoincrement())
+  name            String        @unique
+  description     String?
+  imageUrl        String?       @db.Text
+  price           Decimal       @db.Decimal(10, 2)
+  durationMinutes Int
+  status          ServiceStatus @default(ACTIVE)
+
+  barbers      BarberService[]
+  appointments Appointment[]
+}
+
+model BarberService {
+  id        Int     @id @default(autoincrement())
+  barberId  Int
+  serviceId Int
+
+  barber  Barber  @relation(fields: [barberId], references: [id])
+  service Service @relation(fields: [serviceId], references: [id])
+
+  @@unique([barberId, serviceId])
+}
+
+model Appointment {
+  id        Int               @id @default(autoincrement())
+  clientId  Int
+  barberId  Int
+  serviceId Int
+  date      DateTime          @db.Date
+  startTime DateTime          @db.Time
+  endTime   DateTime          @db.Time
+  status    AppointmentStatus @default(PENDING)
+  notes     String?
+  price     Decimal           @db.Decimal(10, 2)
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  client  User    @relation("ClientAppointments", fields: [clientId], references: [id])
+  barber  Barber  @relation(fields: [barberId], references: [id])
+  service Service @relation(fields: [serviceId], references: [id])
+  payment Payment?
+
+  @@index([barberId, date])
+  @@index([clientId, date])
+  @@unique([barberId, date, startTime])
+}
+
+model Availability {
+  id        Int      @id @default(autoincrement())
+  barberId  Int
+  dayOfWeek Int
+  startTime DateTime @db.Time
+  endTime   DateTime @db.Time
+
+  barber Barber @relation(fields: [barberId], references: [id])
+
+  @@index([barberId, dayOfWeek])
+  @@unique([barberId, dayOfWeek, startTime, endTime])
+}
+
+model Block {
+  id        Int      @id @default(autoincrement())
+  barberId  Int
+  date      DateTime @db.Date
+  startTime DateTime @db.Time
+  endTime   DateTime @db.Time
+  reason    String?
+
+  barber Barber @relation(fields: [barberId], references: [id])
+
+  @@index([barberId, date])
+}
+
+model Payment {
+  id            Int           @id @default(autoincrement())
+  appointmentId Int           @unique
+  amount        Decimal       @db.Decimal(10, 2)
+  method        String
+  status        PaymentStatus @default(PENDING)
+  paidAt        DateTime?
+
+  appointment Appointment @relation(fields: [appointmentId], references: [id])
+}
