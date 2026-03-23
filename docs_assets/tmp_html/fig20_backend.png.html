@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang='pt-BR'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Back-end com Next.js API e Prisma</title><style>
+:root {
+  --primary: #c59f59;
+  --dark: #1a1814;
+  --light: #f7f4ef;
+  --card: #fffdfa;
+  --border: #ddd3c4;
+  --text: #201d18;
+  --muted: #6b655e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top left, #fffaf2, var(--light));
+  color: var(--text);
+}
+.page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 42px;
+}
+.shell {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.header {
+  display:flex; align-items:center; justify-content:space-between; margin-bottom:28px;
+}
+.brand {
+  display:flex; gap:14px; align-items:center;
+}
+.logo {
+  width:48px; height:48px; border-radius:14px; background:var(--primary); color:var(--dark); display:flex; align-items:center; justify-content:center; font-weight:700;
+}
+.title { font-size: 34px; font-weight: 700; margin: 0; }
+.subtitle { color: var(--muted); margin-top: 6px; font-size: 16px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 12px 36px rgba(32, 29, 24, 0.08);
+}
+.grid { display:grid; gap:20px; }
+.badge { display:inline-block; padding:8px 12px; border-radius:999px; background:rgba(197,159,89,0.15); color:#7c5b24; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+.kpi { padding:24px; }
+.kpi strong { display:block; font-size: 34px; margin-top: 8px; }
+.table { width:100%; border-collapse: collapse; }
+.table th, .table td { padding: 16px 18px; border-bottom:1px solid #ece2d3; text-align:left; font-size:14px; }
+.table th { color: var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:0.08em; }
+.tag { display:inline-block; padding:6px 10px; background:rgba(197,159,89,0.15); color:#7c5b24; border-radius:999px; font-size:12px; font-weight:700; }
+.muted { color: var(--muted); }
+.input {
+  width:100%; padding:14px 16px; border:1px solid var(--border); border-radius:14px; background:#fff; margin-top:8px;
+}
+.button {
+  display:inline-block; padding:14px 18px; border-radius:14px; background:var(--primary); color:var(--dark); font-weight:700; text-decoration:none;
+}
+.editor {
+  background:#141313; color:#f5eee4; border-radius:18px; overflow:hidden; border:1px solid #2d2925;
+}
+.editor-head {
+  padding:14px 18px; background:#201d1a; border-bottom:1px solid #312d28; color:#d2c7b7; font-size:13px;
+}
+.code {
+  margin:0; padding:24px; font: 16px/1.6 Consolas, monospace; white-space:pre-wrap;
+}
+.code .ln { color:#8e877f; display:inline-block; width:36px; user-select:none; }
+.hero {
+  display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 24px;
+}
+.panel { padding: 30px; }
+.list li { margin-bottom: 10px; }
+.chart { display:flex; align-items:flex-end; gap:18px; height:220px; padding: 10px 0; }
+.bar { flex:1; background:linear-gradient(180deg, #d8b679, #c59f59); border-radius:18px 18px 8px 8px; }
+.small { font-size: 13px; }
+.center { text-align:center; }
+</style></head><body><div class='page'><div class='shell'><div class='header'><div class='brand'><div class='logo'>BS</div><div><h1 class='title'>Back-end com Next.js API e Prisma</h1><div class='subtitle'>recorte de tela do código da API de agendamentos</div></div></div><span class='badge'>BarberSaaS</span></div>
+    <div class='editor'>
+      <div class='editor-head'>web\src\app\api\appointments\route.ts • recorte do código-fonte</div>
+      <pre class='code'><span class='ln'>  1</span>﻿import { NextResponse } from &quot;next/server&quot;;<br><span class='ln'>  2</span>import { z } from &quot;zod&quot;;<br><span class='ln'>  3</span>import { prisma } from &quot;@/lib/prisma&quot;;<br><span class='ln'>  4</span>import type { Prisma } from &quot;@prisma/client&quot;;<br><span class='ln'>  5</span>import { assertSlotAvailable } from &quot;@/lib/availability&quot;;<br><span class='ln'>  6</span>import { sendAppointmentNotifications } from &quot;@/lib/notifications&quot;;<br><span class='ln'>  7</span><br><span class='ln'>  8</span>const createSchema = z<br><span class='ln'>  9</span>  .object({<br><span class='ln'> 10</span>    clientId: z.number().int().positive().optional(),<br><span class='ln'> 11</span>    clientEmail: z.string().email().optional(),<br><span class='ln'> 12</span>    barberId: z.number().int().positive(),<br><span class='ln'> 13</span>    serviceId: z.number().int().positive(),<br><span class='ln'> 14</span>    date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),<br><span class='ln'> 15</span>    time: z.string().regex(/^\d{2}:\d{2}$/),<br><span class='ln'> 16</span>    notes: z.string().optional()<br><span class='ln'> 17</span>  })<br><span class='ln'> 18</span>  .refine((data) =&gt; Boolean(data.clientId || data.clientEmail), {<br><span class='ln'> 19</span>    message: &quot;Informe clientId ou clientEmail.&quot;,<br><span class='ln'> 20</span>    path: [&quot;clientId&quot;]<br><span class='ln'> 21</span>  });<br><span class='ln'> 22</span><br><span class='ln'> 23</span>const querySchema = z.object({<br><span class='ln'> 24</span>  barberId: z.coerce.number().int().positive().optional(),<br><span class='ln'> 25</span>  clientId: z.coerce.number().int().positive().optional(),<br><span class='ln'> 26</span>  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional()<br><span class='ln'> 27</span>});<br><span class='ln'> 28</span><br><span class='ln'> 29</span>export async function GET(request: Request) {<br><span class='ln'> 30</span>  const { searchParams } = new URL(request.url);<br><span class='ln'> 31</span>  const parsed = querySchema.safeParse({<br><span class='ln'> 32</span>    barberId: searchParams.get(&quot;barberId&quot;) ?? undefined,<br><span class='ln'> 33</span>    clientId: searchParams.get(&quot;clientId&quot;) ?? undefined,<br><span class='ln'> 34</span>    date: searchParams.get(&quot;date&quot;) ?? undefined<br><span class='ln'> 35</span>  });<br><span class='ln'> 36</span><br><span class='ln'> 37</span>  if (!parsed.success) {<br><span class='ln'> 38</span>    return NextResponse.json({ error: &quot;Parâmetros inválidos&quot; }, { status: 400 });<br><span class='ln'> 39</span>  }<br><span class='ln'> 40</span><br><span class='ln'> 41</span>  const where: Record&lt;string, unknown&gt; = {};<br><span class='ln'> 42</span>  if (parsed.data.barberId) where.barberId = parsed.data.barberId;</pre>
+    </div>
+    </div></div></body></html>

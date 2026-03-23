@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BarberSaaS - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c59f59",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#171612",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.75rem", "lg": "0.75rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex min-h-screen overflow-x-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-primary/20 bg-background-light dark:bg-background-dark flex flex-col hidden lg:flex">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary size-10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-background-dark font-bold">content_cut</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-lg font-bold leading-none">BarberSaaS</h1>
+<p class="text-primary text-xs font-medium tracking-wider">PREMIUM ADMIN</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Equipe</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">content_cut</span>
+<span class="text-sm font-medium">Serviços</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm font-medium">Relatórios</span>
+</a>
+<div class="pt-4 pb-2 px-3">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Configurações</p>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Ajustes</span>
+</a>
+</nav>
+<div class="p-4 border-t border-primary/10">
+<div class="flex items-center gap-3 p-2 rounded-xl bg-primary/5">
+<div class="size-10 rounded-full bg-cover bg-center border border-primary/20" data-alt="User profile avatar of the administrator" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvacpDiyTasbVF2ntxGL0YRPPdrZBURq4Hr57XjBzeEtCA-NFwqlDtLEJG1kJxmauRmsO2GatGQak_CzBaA0cNSD5ArihOSmlDsi0Q5MhwcJVMdIKA-YyueYRvY3o0FFf456vt0MzPo--OjsUCRajD5T2NeL117ktXnkPmxpUByJXDKbXO7LlOHf3qwli5bhMMuYnUlDX-TI73i6tq8uIK_4IctSxf2CPXkai0Fz6IWD_zJJAaAtcaNZVfCMse7rVtg9Gk3qxErO8Q')"></div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-sm font-semibold truncate">Ricardo Silva</p>
+<p class="text-xs text-slate-500 truncate">Proprietário</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+<!-- Header -->
+<header class="h-16 border-b border-primary/10 px-8 flex items-center justify-between sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-10">
+<h2 class="text-xl font-bold">Resumo Geral</h2>
+<div class="flex items-center gap-4">
+<div class="relative max-w-xs hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full bg-slate-100 dark:bg-primary/5 border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary" placeholder="Buscar cliente..." type="text"/>
+</div>
+<button class="relative p-2 rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="h-8 w-[1px] bg-primary/20 mx-2"></div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-background-dark font-bold text-sm rounded-xl hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Novo Agendamento
+                </button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 space-y-8">
+<!-- Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-primary/5 border border-primary/10 p-6 rounded-xl hover:shadow-lg transition-shadow group">
+<div class="flex items-center justify-between mb-4">
+<div class="p-3 bg-primary/10 rounded-xl group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-background-dark">payments</span>
+</div>
+<span class="text-emerald-500/80 text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12.5%
+                        </span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Faturamento Mensal</p>
+<h3 class="text-3xl font-bold mt-1">R$ 12.500,00</h3>
+</div>
+<div class="bg-white dark:bg-primary/5 border border-primary/10 p-6 rounded-xl hover:shadow-lg transition-shadow group">
+<div class="flex items-center justify-between mb-4">
+<div class="p-3 bg-primary/10 rounded-xl group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-background-dark">person_add</span>
+</div>
+<span class="text-emerald-500/80 text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +5.2%
+                        </span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Novos Clientes</p>
+<h3 class="text-3xl font-bold mt-1">48</h3>
+</div>
+<div class="bg-white dark:bg-primary/5 border border-primary/10 p-6 rounded-xl hover:shadow-lg transition-shadow group">
+<div class="flex items-center justify-between mb-4">
+<div class="p-3 bg-primary/10 rounded-xl group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-background-dark">calendar_today</span>
+</div>
+<span class="text-primary text-sm font-bold">Hoje</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Agendamentos Hoje</p>
+<h3 class="text-3xl font-bold mt-1">14</h3>
+</div>
+</div>
+<!-- Chart Section -->
+<div class="bg-white dark:bg-primary/5 border border-primary/10 rounded-xl p-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="text-lg font-bold">Desempenho de Receita</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Evolução do faturamento nos últimos 6 meses</p>
+</div>
+<select class="bg-slate-100 dark:bg-primary/10 border-none rounded-xl text-sm font-medium px-4 py-2 focus:ring-1 focus:ring-primary">
+<option>Últimos 6 meses</option>
+<option>Este ano</option>
+</select>
+</div>
+<div class="relative h-64 w-full flex flex-col justify-end gap-4 py-4">
+<svg class="h-48 w-full" fill="none" preserveaspectratio="none" viewbox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 130 Q 50 120, 100 110 T 200 80 T 300 100 T 400 40 T 500 20" fill="none" stroke="url(#lineGradient)" stroke-linecap="round" stroke-width="4"></path>
+<path d="M0 130 Q 50 120, 100 110 T 200 80 T 300 100 T 400 40 T 500 20 V 150 H 0 Z" fill="url(#areaGradient)" opacity="0.1"></path>
+<defs>
+<lineargradient id="lineGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#c59f59" stop-opacity="0.5"></stop>
+<stop offset="100%" stop-color="#c59f59"></stop>
+</lineargradient>
+<lineargradient id="areaGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#c59f59"></stop>
+<stop offset="100%" stop-color="#c59f59" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex justify-between px-2">
+<span class="text-[10px] font-bold text-slate-400">JAN</span>
+<span class="text-[10px] font-bold text-slate-400">FEV</span>
+<span class="text-[10px] font-bold text-slate-400">MAR</span>
+<span class="text-[10px] font-bold text-slate-400">ABR</span>
+<span class="text-[10px] font-bold text-slate-400">MAI</span>
+<span class="text-[10px] font-bold text-slate-400 text-primary">JUN</span>
+</div>
+</div>
+</div>
+<!-- Appointments Table -->
+<div class="bg-white dark:bg-primary/5 border border-primary/10 rounded-xl overflow-hidden">
+<div class="p-6 border-b border-primary/10 flex items-center justify-between">
+<h4 class="text-lg font-bold">Próximos Atendimentos</h4>
+<a class="text-sm font-bold text-primary hover:underline" href="#">Ver todos</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-primary/10">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Cliente</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Barbeiro</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Horário</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Ações</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">person</span>
+</div>
+<span class="text-sm font-medium">Gustavo Oliveira</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">Cadu "The Scissors"</td>
+<td class="px-6 py-4 text-sm font-semibold">14:30</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-600/80 border border-amber-600/20 uppercase tracking-wide">Pendente</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">person</span>
+</div>
+<span class="text-sm font-medium">Marcos Henrique</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">Junior Barber</td>
+<td class="px-6 py-4 text-sm font-semibold">15:15</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600/80 border border-emerald-600/20 uppercase tracking-wide">Confirmado</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">person</span>
+</div>
+<span class="text-sm font-medium">Thiago Santos</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">Cadu "The Scissors"</td>
+<td class="px-6 py-4 text-sm font-semibold">16:00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-500/10 text-blue-600/80 border border-blue-600/20 uppercase tracking-wide">Em espera</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">person</span>
+</div>
+<span class="text-sm font-medium">Rodrigo Faro</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">Matheus Sharp</td>
+<td class="px-6 py-4 text-sm font-semibold">16:45</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600/80 border border-emerald-600/20 uppercase tracking-wide">Confirmado</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
+
