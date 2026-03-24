@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: 247 244 238;
+  --color-bg-elevated: 255 252 246;
+  --color-bg-muted: 238 233 225;
+  --color-surface: 255 250 242;
+  --color-surface-soft: 245 238 227;
+  --color-surface-strong: 232 224 209;
+  --color-fg: 41 34 25;
+  --color-fg-muted: 111 99 83;
+  --color-primary: 190 154 88;
+  --color-primary-container: 243 230 200;
+  --color-outline: 190 173 146;
+  --color-outline-variant: 222 209 184;
+  --color-success: 73 142 89;
+  --color-warning: 184 125 56;
+  --color-error: 196 84 73;
+  --color-error-container: 248 220 215;
+}
+
+.dark {
+  --color-bg: 21 18 13;
+  --color-bg-elevated: 28 23 17;
+  --color-bg-muted: 34 29 23;
+  --color-surface: 32 27 21;
+  --color-surface-soft: 38 33 26;
+  --color-surface-strong: 46 40 31;
+  --color-fg: 237 228 213;
+  --color-fg-muted: 171 157 135;
+  --color-primary: 197 159 89;
+  --color-primary-container: 85 67 38;
+  --color-outline: 104 88 65;
+  --color-outline-variant: 78 67 49;
+  --color-success: 112 191 128;
+  --color-warning: 214 157 83;
+  --color-error: 218 116 102;
+  --color-error-container: 85 43 39;
+}
+
+@layer base {
+  * {
+    @apply border-outline-variant;
+  }
+
+  html,
+  body {
+    @apply min-h-full;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image:
+      radial-gradient(circle at 5% 8%, rgba(197, 159, 89, 0.16), transparent 34%),
+      radial-gradient(circle at 92% 0%, rgba(113, 88, 48, 0.22), transparent 29%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    background: rgba(197, 159, 89, 0.34);
+    color: rgb(var(--color-fg));
+  }
+}
+
+@layer components {
+  .atelier-panel {
+    @apply rounded-lg bg-surface/95 border border-outline-variant shadow-atelier;
+  }
+
+  .atelier-surface {
+    @apply rounded-md bg-surface-soft/90 border border-outline-variant;
+  }
+
+  .atelier-chip {
+    @apply inline-flex items-center rounded-full border border-outline px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider;
+  }
+
+  .atelier-label {
+    @apply text-[11px] uppercase tracking-editorial font-semibold text-foreground-muted;
+  }
+
+  .atelier-divider {
+    @apply h-px w-full bg-outline-variant/80;
+  }
+
+  .atelier-ghost-border {
+    box-shadow: inset 0 0 0 1px rgba(214, 195, 161, 0.2);
+  }
+
+  .atelier-glass {
+    background: linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.02)
+    );
+    backdrop-filter: blur(10px);
+  }
+
+  .atelier-gradient {
+    background-image: linear-gradient(
+      120deg,
+      rgba(185, 150, 84, 1) 0%,
+      rgba(229, 205, 149, 1) 45%,
+      rgba(167, 126, 66, 1) 100%
+    );
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}

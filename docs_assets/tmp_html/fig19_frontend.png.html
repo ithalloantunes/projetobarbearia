@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang='pt-BR'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Front-end com Next.js e React</title><style>
+:root {
+  --primary: #c59f59;
+  --dark: #1a1814;
+  --light: #f7f4ef;
+  --card: #fffdfa;
+  --border: #ddd3c4;
+  --text: #201d18;
+  --muted: #6b655e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top left, #fffaf2, var(--light));
+  color: var(--text);
+}
+.page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 42px;
+}
+.shell {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.header {
+  display:flex; align-items:center; justify-content:space-between; margin-bottom:28px;
+}
+.brand {
+  display:flex; gap:14px; align-items:center;
+}
+.logo {
+  width:48px; height:48px; border-radius:14px; background:var(--primary); color:var(--dark); display:flex; align-items:center; justify-content:center; font-weight:700;
+}
+.title { font-size: 34px; font-weight: 700; margin: 0; }
+.subtitle { color: var(--muted); margin-top: 6px; font-size: 16px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 12px 36px rgba(32, 29, 24, 0.08);
+}
+.grid { display:grid; gap:20px; }
+.badge { display:inline-block; padding:8px 12px; border-radius:999px; background:rgba(197,159,89,0.15); color:#7c5b24; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+.kpi { padding:24px; }
+.kpi strong { display:block; font-size: 34px; margin-top: 8px; }
+.table { width:100%; border-collapse: collapse; }
+.table th, .table td { padding: 16px 18px; border-bottom:1px solid #ece2d3; text-align:left; font-size:14px; }
+.table th { color: var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:0.08em; }
+.tag { display:inline-block; padding:6px 10px; background:rgba(197,159,89,0.15); color:#7c5b24; border-radius:999px; font-size:12px; font-weight:700; }
+.muted { color: var(--muted); }
+.input {
+  width:100%; padding:14px 16px; border:1px solid var(--border); border-radius:14px; background:#fff; margin-top:8px;
+}
+.button {
+  display:inline-block; padding:14px 18px; border-radius:14px; background:var(--primary); color:var(--dark); font-weight:700; text-decoration:none;
+}
+.editor {
+  background:#141313; color:#f5eee4; border-radius:18px; overflow:hidden; border:1px solid #2d2925;
+}
+.editor-head {
+  padding:14px 18px; background:#201d1a; border-bottom:1px solid #312d28; color:#d2c7b7; font-size:13px;
+}
+.code {
+  margin:0; padding:24px; font: 16px/1.6 Consolas, monospace; white-space:pre-wrap;
+}
+.code .ln { color:#8e877f; display:inline-block; width:36px; user-select:none; }
+.hero {
+  display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 24px;
+}
+.panel { padding: 30px; }
+.list li { margin-bottom: 10px; }
+.chart { display:flex; align-items:flex-end; gap:18px; height:220px; padding: 10px 0; }
+.bar { flex:1; background:linear-gradient(180deg, #d8b679, #c59f59); border-radius:18px 18px 8px 8px; }
+.small { font-size: 13px; }
+.center { text-align:center; }
+</style></head><body><div class='page'><div class='shell'><div class='header'><div class='brand'><div class='logo'>BS</div><div><h1 class='title'>Front-end com Next.js e React</h1><div class='subtitle'>recorte de tela do código da camada de interface</div></div></div><span class='badge'>BarberSaaS</span></div>
+    <div class='editor'>
+      <div class='editor-head'>web\src\app\agendar\page.tsx • recorte do código-fonte</div>
+      <pre class='code'><span class='ln'>  1</span>﻿&quot;use client&quot;;<br><span class='ln'>  2</span><br><span class='ln'>  3</span>import { useEffect, useMemo, useState } from &quot;react&quot;;<br><span class='ln'>  4</span>import { useRouter } from &quot;next/navigation&quot;;<br><span class='ln'>  5</span>import { toDateKey } from &quot;@/lib/time&quot;;<br><span class='ln'>  6</span><br><span class='ln'>  7</span>type Service = {<br><span class='ln'>  8</span>  id: number;<br><span class='ln'>  9</span>  name: string;<br><span class='ln'> 10</span>  description?: string | null;<br><span class='ln'> 11</span>  imageUrl?: string | null;<br><span class='ln'> 12</span>  price: number | string;<br><span class='ln'> 13</span>  durationMinutes: number;<br><span class='ln'> 14</span>};<br><span class='ln'> 15</span><br><span class='ln'> 16</span>type Barber = {<br><span class='ln'> 17</span>  id: number | &quot;any&quot;;<br><span class='ln'> 18</span>  name: string;<br><span class='ln'> 19</span>  level?: string;<br><span class='ln'> 20</span>  image?: string;<br><span class='ln'> 21</span>};<br><span class='ln'> 22</span><br><span class='ln'> 23</span>const fallbackServices: Service[] = [<br><span class='ln'> 24</span>  {<br><span class='ln'> 25</span>    id: 1,<br><span class='ln'> 26</span>    name: &quot;Corte de Cabelo&quot;,<br><span class='ln'> 27</span>    description: &quot;Corte degradê, tesoura ou máquina&quot;,<br><span class='ln'> 28</span>    price: 65,<br><span class='ln'> 29</span>    durationMinutes: 45<br><span class='ln'> 30</span>  },<br><span class='ln'> 31</span>  {<br><span class='ln'> 32</span>    id: 2,<br><span class='ln'> 33</span>    name: &quot;Barba Terapia&quot;,<br><span class='ln'> 34</span>    description: &quot;Toalha quente e massagem facial&quot;,</pre>
+    </div>
+    </div></div></body></html>
