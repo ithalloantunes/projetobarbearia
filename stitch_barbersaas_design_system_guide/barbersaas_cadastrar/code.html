@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-on-surface": "#33302c",
+              "error": "#ffb4ab",
+              "surface-tint": "#e9c177",
+              "secondary": "#ccc6bb",
+              "on-secondary": "#333029",
+              "secondary-container": "#4f4b43",
+              "on-surface": "#e8e1db",
+              "tertiary-container": "#8da5d5",
+              "surface-dim": "#15130f",
+              "on-secondary-fixed": "#1e1b15",
+              "on-background": "#e8e1db",
+              "surface-container-highest": "#373430",
+              "surface-bright": "#3c3934",
+              "primary-container": "#c59f59",
+              "on-primary-container": "#4e3600",
+              "background": "#15130f",
+              "surface-container-low": "#1d1b17",
+              "on-tertiary-fixed-variant": "#2e4771",
+              "surface": "#15130f",
+              "on-tertiary-fixed": "#001b3f",
+              "primary-fixed-dim": "#e9c177",
+              "inverse-primary": "#78591a",
+              "surface-container-lowest": "#100e0a",
+              "surface-container-high": "#2c2a25",
+              "outline-variant": "#4e4639",
+              "on-primary-fixed": "#271900",
+              "secondary-fixed-dim": "#ccc6bb",
+              "surface-variant": "#373430",
+              "primary-fixed": "#ffdea7",
+              "inverse-surface": "#e8e1db",
+              "on-error": "#690005",
+              "tertiary-fixed": "#d7e2ff",
+              "secondary-fixed": "#e9e2d6",
+              "on-primary-fixed-variant": "#5d4201",
+              "on-error-container": "#ffdad6",
+              "outline": "#9a8f80",
+              "on-tertiary": "#153059",
+              "on-secondary-container": "#c1bbb0",
+              "on-primary": "#412d00",
+              "tertiary-fixed-dim": "#afc7f9",
+              "surface-container": "#211f1b",
+              "error-container": "#93000a",
+              "tertiary": "#afc7f9",
+              "primary": "#e9c177",
+              "on-tertiary-container": "#213a64",
+              "on-surface-variant": "#d1c5b4",
+              "on-secondary-fixed-variant": "#4a463e"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-primary-gradient {
+        background: linear-gradient(135deg, #e9c177 0%, #c59f59 100%);
+      }
+      .glass-effect {
+        background: rgba(60, 57, 52, 0.6);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Suppression (Transactional Page Rule) -->
+<main class="min-h-screen flex flex-col md:flex-row">
+<!-- Left Visual Anchor: Brand Immersion -->
+<section class="hidden md:flex md:w-1/2 relative overflow-hidden bg-surface-container-lowest items-center justify-center">
+<div class="absolute inset-0 opacity-40">
+<img class="w-full h-full object-cover" data-alt="Close-up of a high-end vintage barber chair in a moody, wood-paneled atelier with warm directional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgqvF1nGC5vECJqwPxvXUE6pUEbmSQyR8AWJC0tQQgjC-RRzeb2KfA06ZIMcYPLmTSmIpY9-lmftKHneGGPg9o3wwiqfe2rFPV91peu5OQj4mJ3MbjW_UUizNYZ05CV5dciqLXgP904Dfw_l9CXr3U9not1ppvJSpAT9gIdmKTfz1g2eNHkOIQCLcYt-v-IM3p8IfdfdFb1eOv9FscdBIJe_zMZgx8X8ROQnCGJZgMW7L9gi6JhHEfi7vt5MqGjnkU8gk6ivyll5o"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50"></div>
+</div>
+<div class="relative z-10 px-12 text-left max-w-xl">
+<span class="label-sm text-primary tracking-[0.2em] uppercase mb-4 block">The Modern Grooming Atelier</span>
+<h1 class="text-[3.5rem] font-black leading-tight tracking-tighter text-on-surface mb-6 font-headline">
+                    ELEVATE THE <br/> <span class="text-primary italic">ART</span> OF BARBERING.
+                </h1>
+<p class="text-body-md text-on-surface-variant max-w-md leading-relaxed">
+                    Junte-se a uma comunidade exclusiva de profissionais que transformam o cuidado masculino em uma experiência de luxo.
+                </p>
+<div class="mt-12 flex items-center gap-4">
+<div class="w-12 h-[1px] bg-outline-variant"></div>
+<span class="label-sm text-outline tracking-widest uppercase">Est. 2024</span>
+</div>
+</div>
+</section>
+<!-- Right Content Area: Sign Up Form -->
+<section class="flex-1 flex items-center justify-center p-6 md:p-12 lg:p-24 bg-surface-dim">
+<div class="w-full max-w-md">
+<!-- Brand Header for Mobile -->
+<div class="md:hidden mb-12 flex flex-col items-center text-center">
+<h2 class="text-xl font-black tracking-tighter text-primary uppercase">The Modern Grooming Atelier</h2>
+</div>
+<div class="mb-10">
+<h2 class="headline-lg text-on-surface font-bold mb-2">Criar conta</h2>
+<p class="body-md text-on-surface-variant">Inicie sua jornada no atelier digital hoje mesmo.</p>
+</div>
+<form class="space-y-6">
+<!-- Name Field -->
+<div class="space-y-2">
+<label class="label-sm text-on-surface-variant uppercase tracking-wider">Nome Completo</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary/20 text-on-surface p-4 text-sm transition-all placeholder:text-outline/50" placeholder="Ex: Arthur Morgan" type="text"/>
+</div>
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="label-sm text-on-surface-variant uppercase tracking-wider">E-mail</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary/20 text-on-surface p-4 text-sm transition-all placeholder:text-outline/50" placeholder="seu@email.com" type="email"/>
+</div>
+<!-- Phone Field -->
+<div class="space-y-2">
+<label class="label-sm text-on-surface-variant uppercase tracking-wider">Telefone</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary/20 text-on-surface p-4 text-sm transition-all placeholder:text-outline/50" placeholder="(00) 00000-0000" type="tel"/>
+</div>
+<!-- Passwords Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="label-sm text-on-surface-variant uppercase tracking-wider">Senha</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary/20 text-on-surface p-4 text-sm transition-all placeholder:text-outline/50" placeholder="••••••••" type="password"/>
+</div>
+<div class="space-y-2">
+<label class="label-sm text-on-surface-variant uppercase tracking-wider">Confirmar</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary/20 text-on-surface p-4 text-sm transition-all placeholder:text-outline/50" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3 py-2">
+<div class="pt-1">
+<input class="w-4 h-4 rounded-none bg-surface-container-highest border-outline-variant text-primary focus:ring-offset-background focus:ring-primary" id="terms" type="checkbox"/>
+</div>
+<label class="text-[0.75rem] text-on-surface-variant leading-tight" for="terms">
+                            Eu aceito os <a class="text-primary hover:underline transition-all" href="#">Termos de Serviço</a> e a <a class="text-primary hover:underline transition-all" href="#">Política de Privacidade</a> do Atelier.
+                        </label>
+</div>
+<!-- CTA Buttons -->
+<div class="pt-4 space-y-4">
+<button class="w-full bg-primary-gradient text-on-primary font-bold py-4 rounded-sm uppercase tracking-widest text-[0.75rem] hover:scale-[1.02] transition-transform duration-200" type="submit">
+                            Criar conta
+                        </button>
+<button class="w-full text-on-surface font-semibold py-4 rounded-sm uppercase tracking-widest text-[0.6875rem] border border-outline-variant/20 hover:bg-surface-bright transition-colors duration-200" type="button">
+                            Já tenho conta
+                        </button>
+</div>
+</form>
+<!-- Editorial Footer -->
+<footer class="mt-16 pt-8 border-t border-outline-variant/10 text-center md:text-left">
+<p class="label-sm text-outline/40">© 2024 THE MODERN GROOMING ATELIER. ALL RIGHTS RESERVED.</p>
+</footer>
+</div>
+</section>
+</main>
+<!-- Success Modal State (Hidden by default, shown for demonstration logic) -->
+<!-- Add 'flex' to demonstrate, currently hidden -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-background/80 backdrop-blur-md p-6">
+<div class="bg-surface-container-high max-w-md w-full p-10 relative overflow-hidden">
+<!-- Decorative Accent -->
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="mb-8 flex justify-center">
+<div class="w-20 h-20 rounded-full border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+<div class="text-center">
+<h3 class="title-md text-on-surface font-bold mb-4 uppercase tracking-widest">Bem-vindo ao Atelier</h3>
+<p class="body-md text-on-surface-variant mb-8 leading-relaxed">
+                    Sua conta foi criada com sucesso. Preparamos um ambiente sob medida para sua gestão.
+                </p>
+<button class="w-full bg-primary-gradient text-on-primary font-bold py-4 rounded-sm uppercase tracking-widest text-[0.75rem] hover:scale-[1.02] transition-transform duration-200">
+                    Acessar Dashboard
+                </button>
+</div>
+</div>
+</div>
+</body></html>

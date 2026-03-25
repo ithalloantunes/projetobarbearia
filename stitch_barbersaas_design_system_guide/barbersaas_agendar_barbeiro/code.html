@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Select Barber - The Atelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#ccc6bb",
+                        "secondary-fixed": "#e9e2d6",
+                        "inverse-primary": "#78591a",
+                        "on-background": "#e8e1db",
+                        "inverse-surface": "#e8e1db",
+                        "tertiary": "#afc7f9",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#373430",
+                        "on-tertiary-container": "#213a64",
+                        "on-secondary-container": "#c1bbb0",
+                        "tertiary-container": "#8da5d5",
+                        "surface-dim": "#15130f",
+                        "primary-fixed": "#ffdea7",
+                        "surface-tint": "#e9c177",
+                        "surface-container-low": "#1d1b17",
+                        "on-tertiary": "#153059",
+                        "surface-bright": "#3c3934",
+                        "secondary": "#ccc6bb",
+                        "secondary-container": "#4f4b43",
+                        "on-primary-fixed-variant": "#5d4201",
+                        "outline": "#9a8f80",
+                        "on-secondary": "#333029",
+                        "on-secondary-fixed-variant": "#4a463e",
+                        "surface": "#15130f",
+                        "on-tertiary-fixed": "#001b3f",
+                        "inverse-on-surface": "#33302c",
+                        "tertiary-fixed": "#d7e2ff",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#4e4639",
+                        "surface-container-high": "#2c2a25",
+                        "surface-container": "#211f1b",
+                        "primary-container": "#c59f59",
+                        "tertiary-fixed-dim": "#afc7f9",
+                        "on-primary": "#412d00",
+                        "on-primary-container": "#4e3600",
+                        "surface-variant": "#373430",
+                        "surface-container-lowest": "#100e0a",
+                        "on-surface": "#e8e1db",
+                        "primary-fixed-dim": "#e9c177",
+                        "on-primary-fixed": "#271900",
+                        "on-secondary-fixed": "#1e1b15",
+                        "error-container": "#93000a",
+                        "background": "#15130f",
+                        "primary": "#e9c177",
+                        "on-surface-variant": "#d1c5b4",
+                        "on-tertiary-fixed-variant": "#2e4771"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4e4639;
+            border-radius: 10px;
+        }
+        .step-active {
+            width: 100%;
+            background: #e9c177;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="bg-[#15130f] fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 max-w-full">
+<div class="text-xl font-black text-[#e8e1db] tracking-tighter uppercase">The Atelier</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-['Inter'] font-bold uppercase tracking-widest text-[0.6875rem] text-[#e8e1db] opacity-60 hover:text-[#e9c177] transition-colors duration-200" href="#">Services</a>
+<a class="font-['Inter'] font-bold uppercase tracking-widest text-[0.6875rem] text-[#e9c177] border-b-2 border-[#e9c177] pb-1" href="#">Barbers</a>
+<a class="font-['Inter'] font-bold uppercase tracking-widest text-[0.6875rem] text-[#e8e1db] opacity-60 hover:text-[#e9c177] transition-colors duration-200" href="#">Schedule</a>
+</nav>
+<div class="flex items-center gap-4 text-[#e9c177]">
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<main class="pt-24 pb-40 min-h-screen px-6 max-w-7xl mx-auto">
+<!-- Booking Progress Header -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-4">
+<div>
+<span class="font-label text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-primary/80">Step 02 / 04</span>
+<h1 class="font-headline text-3xl md:text-5xl font-bold tracking-tighter text-on-surface mt-2">Select your master</h1>
+</div>
+<div class="hidden md:block text-right">
+<p class="text-on-surface-variant font-label uppercase tracking-widest text-[0.6875rem]">Service Selection</p>
+<p class="font-bold text-on-surface">Premium Haircut &amp; Beard Grooming</p>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="h-[2px] w-full bg-outline-variant/30 flex gap-2">
+<div class="h-full w-1/4 bg-primary"></div>
+<div class="h-full w-1/4 bg-primary relative overflow-hidden">
+<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+</div>
+<div class="h-full w-1/4 bg-outline-variant/30"></div>
+<div class="h-full w-1/4 bg-outline-variant/30"></div>
+</div>
+</section>
+<!-- Horizontal Scroll Section (The Stylist Blade) -->
+<section class="relative">
+<div class="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory no-scrollbar scroll-smooth">
+<!-- Barber Card 1: Julian Rossi -->
+<div class="min-w-[280px] md:min-w-[340px] snap-start group relative aspect-[3/4] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" data-alt="Close-up portrait of a sharp-featured male barber with groomed beard and tattoos, dramatic moody lighting in a vintage barbershop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEFXBfF3FFbbAjymGGIL0OYyPGpD5lfzdogGrEBOINW11eOe1iR-SHJqPmm7cdWq3YBKO653ipidJ9-W6HSYueHxySrzeBRVEFuXuLo05ffJWWgSg9f2u_e9C8j_V7mERykJ4sgt-o6jdPHgEWxsP0_PP34xHt3UUftFI6TNNLnch4o95rAbEiYNJiwtZbMBrVLH4pRF48ISLKZihG_a7uDTtV14XkPY6GTF7DnPfrxf2wfpe00YF5l-76x40oYYlSk3F3Co5H8q8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-90"></div>
+<div class="absolute bottom-0 left-0 w-full p-6 transition-transform duration-300 group-hover:-translate-y-2">
+<span class="font-label text-[0.625rem] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Master Barber</span>
+<h3 class="font-headline text-2xl font-bold tracking-tight text-on-surface mb-4">Julian Rossi</h3>
+<button class="w-full py-4 bg-primary hover:bg-primary-container text-on-primary font-bold uppercase tracking-widest text-[0.75rem] rounded-sm transition-all duration-300 active:scale-95 flex items-center justify-center gap-2">
+                            Select Artisan
+                            <span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Barber Card 2: Alessandro Vane -->
+<div class="min-w-[280px] md:min-w-[340px] snap-start group relative aspect-[3/4] overflow-hidden bg-surface-container-low border-2 border-primary/40">
+<img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" data-alt="Professional male hair stylist in black attire focusing intensely, blurred barbershop equipment in background with warm gold ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvoaQagaJd2RF82xxOkVa5PLdX0jXo2O9W8dTkHqXw1t_WMwyl9TlpUMvLoGFZIhlYYTLnn5O5ZRQfWNhlGHPdQPMyDizPwj-bS9QgRqF7zOKA0YD0DXV925SzaIId8wui5bGU37_3MbxdU_hcHMvx16dLiPKpqapVb505nWxfX_WPc0wa5kySvzyMw8i9AWFAEefAO2cKOAYYCc8B3VkBCpeeoxqd-Uv74IlnlnmQix1HiIxUp46vxuepu46g_0ih3PrBlwzlhiQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-4 right-4 bg-primary text-on-primary px-3 py-1 font-bold text-[10px] uppercase tracking-widest">Recommended</div>
+<div class="absolute bottom-0 left-0 w-full p-6">
+<span class="font-label text-[0.625rem] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Executive Stylist</span>
+<h3 class="font-headline text-2xl font-bold tracking-tight text-on-surface mb-4">Alessandro Vane</h3>
+<button class="w-full py-4 bg-primary-container text-on-primary-container font-bold uppercase tracking-widest text-[0.75rem] rounded-sm flex items-center justify-center gap-2 shadow-xl">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Artisan Selected
+                        </button>
+</div>
+</div>
+<!-- Barber Card 3: Marcus Sterling -->
+<div class="min-w-[280px] md:min-w-[340px] snap-start group relative aspect-[3/4] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" data-alt="Portrait of a sophisticated older barber with silver hair, wearing a leather apron in a high-end luxury atelier, soft side lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBxC5WExraIlQH00Or3gjL7ZmNphJWZmnEgkMUn-k6QuQklUuYrq4p_q1f_gj4uS6EEieZZPBUczGH9CoEhIWWTLWpHN4K9jr5h19B1VA_pEIfebpGtBZp3xzfUMJsKT9xlO0_XUgVQugcgov5S49OoMVW88Z7h28JHuzmyR5f6hrDcNxo93zkASqHf_4mdt2RzgVRc8hkMnFwuFQXQSJGWCLtqVcgNgqpZNZ4QSYYLcO8kSzyhssOOE5qfVtqcLD3FUAeT1nIlOY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-90"></div>
+<div class="absolute bottom-0 left-0 w-full p-6 transition-transform duration-300 group-hover:-translate-y-2">
+<span class="font-label text-[0.625rem] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Senior Artisan</span>
+<h3 class="font-headline text-2xl font-bold tracking-tight text-on-surface mb-4">Marcus Sterling</h3>
+<button class="w-full py-4 bg-primary hover:bg-primary-container text-on-primary font-bold uppercase tracking-widest text-[0.75rem] rounded-sm transition-all duration-300 active:scale-95 flex items-center justify-center gap-2">
+                            Select Artisan
+                            <span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Barber Card 4: Elias Thorne -->
+<div class="min-w-[280px] md:min-w-[340px] snap-start group relative aspect-[3/4] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" data-alt="Alternative barber with contemporary hairstyle and tattoos, urban modern aesthetic, moody indoor atmosphere with neon accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBBzYKZXXlnMCqs2Hwvbw-CEtBEKiqZ44jSplV9rB2Q9ky6GrRhCDMQeVotvrOpc-Nklq8SKX3RmY7gC38v7BCPwFZZNVnT1IplmvZNjD4PSCRxOKvn42FERiAVC8tl65fRlkycc-1kZoIrIUMomc_RM3dfnhbyN63J9ZNw_L2A6hvTRjVkLjF5FiJMshK7hsw_85I67u0Xa3uDgYO51hClKRsyes-eYF16Iz73Bz0gDfAiPLLvjdeIudd3BLaGzIPyE3igEiJZhQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-90"></div>
+<div class="absolute bottom-0 left-0 w-full p-6 transition-transform duration-300 group-hover:-translate-y-2">
+<span class="font-label text-[0.625rem] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Creative Director</span>
+<h3 class="font-headline text-2xl font-bold tracking-tight text-on-surface mb-4">Elias Thorne</h3>
+<button class="w-full py-4 bg-primary hover:bg-primary-container text-on-primary font-bold uppercase tracking-widest text-[0.75rem] rounded-sm transition-all duration-300 active:scale-95 flex items-center justify-center gap-2">
+                            Select Artisan
+                            <span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Scroll Indicator Overlay (Subtle Gradient) -->
+<div class="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-background to-transparent pointer-events-none hidden md:block"></div>
+</section>
+<!-- Informational Section -->
+<section class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-outline-variant/20 pt-12">
+<div>
+<h4 class="font-headline font-bold text-lg mb-4 text-on-surface">The Selection Process</h4>
+<p class="text-on-surface-variant leading-relaxed text-sm">Each artisan at The Atelier undergoes a rigorous selection process and continuous training. We pair you with the professional best suited to your style preferences and grooming needs.</p>
+</div>
+<div class="flex items-center gap-6 bg-surface-container-low p-6 rounded-sm border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="verified">verified</span>
+<div>
+<h5 class="font-bold text-on-surface text-sm uppercase tracking-widest">Atelier Guarantee</h5>
+<p class="text-xs text-on-surface-variant mt-1">Consistency, precision, and the ultimate grooming experience regardless of the barber selected.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Booking Footer -->
+<footer class="fixed bottom-0 left-0 w-full bg-[#15130f]/80 backdrop-blur-2xl border-t border-outline-variant/15 z-[60] py-6 px-6 md:px-12">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- Left: Selected Details -->
+<div class="flex items-center gap-6 w-full md:w-auto">
+<div class="hidden sm:flex h-12 w-12 bg-surface-container-highest items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-primary" data-icon="content_cut">content_cut</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<p class="font-label text-[0.625rem] font-bold uppercase tracking-widest text-primary">Selected Artisan</p>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<p class="font-label text-[0.625rem] font-bold uppercase tracking-widest text-on-surface-variant">45 MINS</p>
+</div>
+<p class="font-headline font-bold text-on-surface tracking-tight">Alessandro Vane <span class="text-primary-container ml-2">Total $85.00</span></p>
+</div>
+</div>
+<!-- Right: Navigation Actions -->
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-8 py-3 border border-outline-variant text-on-surface font-bold uppercase tracking-[0.15em] text-[0.6875rem] hover:bg-surface-bright transition-all active:scale-95">
+                    Back
+                </button>
+<button class="flex-[2] md:flex-none px-12 py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold uppercase tracking-[0.15em] text-[0.6875rem] shadow-lg shadow-primary/10 hover:scale-[1.02] active:scale-95 transition-all">
+                    Next: Select Time
+                </button>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Shell Only) -->
+<div class="md:hidden">
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#15130f]/60 backdrop-blur-xl border-t border-[#4e4639]/15 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+<div class="flex flex-col items-center justify-center text-[#e9c177] bg-[#373430] rounded-sm px-4 py-1">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Book</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e8e1db]/50">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Appointments</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e8e1db]/50">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Profile</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e8e1db]/50">
+<span class="material-symbols-outlined" data-icon="content_cut">content_cut</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Style Guide</span>
+</div>
+</nav>
+</div>
+</body></html>

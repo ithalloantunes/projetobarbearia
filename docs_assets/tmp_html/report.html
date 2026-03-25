@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang='pt-BR'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Relatórios Operacionais</title><style>
+:root {
+  --primary: #c59f59;
+  --dark: #1a1814;
+  --light: #f7f4ef;
+  --card: #fffdfa;
+  --border: #ddd3c4;
+  --text: #201d18;
+  --muted: #6b655e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top left, #fffaf2, var(--light));
+  color: var(--text);
+}
+.page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 42px;
+}
+.shell {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.header {
+  display:flex; align-items:center; justify-content:space-between; margin-bottom:28px;
+}
+.brand {
+  display:flex; gap:14px; align-items:center;
+}
+.logo {
+  width:48px; height:48px; border-radius:14px; background:var(--primary); color:var(--dark); display:flex; align-items:center; justify-content:center; font-weight:700;
+}
+.title { font-size: 34px; font-weight: 700; margin: 0; }
+.subtitle { color: var(--muted); margin-top: 6px; font-size: 16px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 12px 36px rgba(32, 29, 24, 0.08);
+}
+.grid { display:grid; gap:20px; }
+.badge { display:inline-block; padding:8px 12px; border-radius:999px; background:rgba(197,159,89,0.15); color:#7c5b24; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+.kpi { padding:24px; }
+.kpi strong { display:block; font-size: 34px; margin-top: 8px; }
+.table { width:100%; border-collapse: collapse; }
+.table th, .table td { padding: 16px 18px; border-bottom:1px solid #ece2d3; text-align:left; font-size:14px; }
+.table th { color: var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:0.08em; }
+.tag { display:inline-block; padding:6px 10px; background:rgba(197,159,89,0.15); color:#7c5b24; border-radius:999px; font-size:12px; font-weight:700; }
+.muted { color: var(--muted); }
+.input {
+  width:100%; padding:14px 16px; border:1px solid var(--border); border-radius:14px; background:#fff; margin-top:8px;
+}
+.button {
+  display:inline-block; padding:14px 18px; border-radius:14px; background:var(--primary); color:var(--dark); font-weight:700; text-decoration:none;
+}
+.editor {
+  background:#141313; color:#f5eee4; border-radius:18px; overflow:hidden; border:1px solid #2d2925;
+}
+.editor-head {
+  padding:14px 18px; background:#201d1a; border-bottom:1px solid #312d28; color:#d2c7b7; font-size:13px;
+}
+.code {
+  margin:0; padding:24px; font: 16px/1.6 Consolas, monospace; white-space:pre-wrap;
+}
+.code .ln { color:#8e877f; display:inline-block; width:36px; user-select:none; }
+.hero {
+  display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 24px;
+}
+.panel { padding: 30px; }
+.list li { margin-bottom: 10px; }
+.chart { display:flex; align-items:flex-end; gap:18px; height:220px; padding: 10px 0; }
+.bar { flex:1; background:linear-gradient(180deg, #d8b679, #c59f59); border-radius:18px 18px 8px 8px; }
+.small { font-size: 13px; }
+.center { text-align:center; }
+</style></head><body><div class='page'><div class='shell'><div class='header'><div class='brand'><div class='logo'>BS</div><div><h1 class='title'>Relatórios Operacionais</h1><div class='subtitle'>visualização gerencial por período e serviço</div></div></div><span class='badge'>BarberSaaS</span></div>
+    <div class='grid' style='grid-template-columns: repeat(3, 1fr);'>
+      <div class='card kpi'><span class='muted small'>Atendimentos no dia</span><strong>27</strong></div>
+      <div class='card kpi'><span class='muted small'>Receita estimada</span><strong>R$ 1.845</strong></div>
+      <div class='card kpi'><span class='muted small'>Ticket médio</span><strong>R$ 68</strong></div>
+    </div>
+    <div class='grid' style='grid-template-columns: 1.2fr 0.8fr; margin-top:24px;'>
+      <div class='card panel'>
+        <div class='badge'>Relatório Diário</div>
+        <h3 style='font-size:30px; margin:16px 0;'>Distribuição de atendimentos</h3>
+        <div class='chart'>
+          <div class='bar' style='height:42%;'></div>
+          <div class='bar' style='height:72%;'></div>
+          <div class='bar' style='height:88%;'></div>
+          <div class='bar' style='height:64%;'></div>
+          <div class='bar' style='height:54%;'></div>
+          <div class='bar' style='height:28%;'></div>
+        </div>
+        <div style='display:flex; justify-content:space-between; color:var(--muted); font-size:12px; font-weight:700; letter-spacing:0.06em;'>
+          <span>09H</span><span>11H</span><span>13H</span><span>15H</span><span>17H</span><span>19H</span>
+        </div>
+      </div>
+      <div class='card panel'>
+        <div class='badge'>Resumo</div>
+        <table class='table' style='margin-top:16px;'>
+          <tbody>
+            <tr><td><strong>Corte de cabelo</strong></td><td>11</td></tr>
+            <tr><td><strong>Barba</strong></td><td>7</td></tr>
+            <tr><td><strong>Combo premium</strong></td><td>5</td></tr>
+            <tr><td><strong>Sobrancelha</strong></td><td>4</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div></div></body></html>

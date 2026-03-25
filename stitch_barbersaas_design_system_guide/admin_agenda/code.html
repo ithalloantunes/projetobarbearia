@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agenda | The Atelier Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#c1bbb0",
+              "on-error-container": "#ffdad6",
+              "tertiary-container": "#8da5d5",
+              "outline-variant": "#4e4639",
+              "secondary-container": "#4f4b43",
+              "on-tertiary-container": "#213a64",
+              "background": "#15130f",
+              "on-tertiary-fixed-variant": "#2e4771",
+              "inverse-primary": "#78591a",
+              "surface": "#15130f",
+              "on-surface-variant": "#d1c5b4",
+              "on-secondary-fixed": "#1e1b15",
+              "on-primary-fixed": "#271900",
+              "on-primary-container": "#4e3600",
+              "on-surface": "#e8e1db",
+              "on-primary": "#412d00",
+              "on-tertiary-fixed": "#001b3f",
+              "surface-container-highest": "#373430",
+              "tertiary": "#afc7f9",
+              "secondary-fixed": "#e9e2d6",
+              "on-primary-fixed-variant": "#5d4201",
+              "surface-container-lowest": "#100e0a",
+              "error-container": "#93000a",
+              "primary-fixed-dim": "#e9c177",
+              "tertiary-fixed": "#d7e2ff",
+              "error": "#ffb4ab",
+              "surface-dim": "#15130f",
+              "on-background": "#e8e1db",
+              "inverse-on-surface": "#33302c",
+              "surface-variant": "#373430",
+              "surface-container-low": "#1d1b17",
+              "primary-container": "#c59f59",
+              "surface-container": "#211f1b",
+              "primary-fixed": "#ffdea7",
+              "surface-container-high": "#2c2a25",
+              "on-secondary": "#333029",
+              "surface-tint": "#e9c177",
+              "inverse-surface": "#e8e1db",
+              "outline": "#9a8f80",
+              "on-tertiary": "#153059",
+              "surface-bright": "#3c3934",
+              "primary": "#e9c177",
+              "on-secondary-fixed-variant": "#4a463e",
+              "on-error": "#690005",
+              "tertiary-fixed-dim": "#afc7f9",
+              "secondary": "#ccc6bb",
+              "secondary-fixed-dim": "#ccc6bb"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #15130f;
+        color: #e8e1db;
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Anchor -->
+<aside class="bg-[#1d1b17] h-full w-64 fixed left-0 top-0 flex flex-col py-6 z-50">
+<div class="px-6 mb-10">
+<h1 class="text-xl font-black text-[#e8e1db] tracking-tighter">The Atelier</h1>
+<p class="text-[10px] font-semibold uppercase tracking-widest text-[#e9c177]/80">London Soho</p>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center px-3 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#15130f] transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="dashboard">dashboard</span>
+<span class="font-medium tracking-tight text-sm">Dashboard</span>
+</a>
+<!-- Active State: Agenda -->
+<a class="flex items-center px-3 py-3 text-[#e9c177] font-bold border-l-4 border-[#e9c177] bg-[#15130f] transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="calendar_today">calendar_today</span>
+<span class="font-medium tracking-tight text-sm">Agenda</span>
+</a>
+<a class="flex items-center px-3 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#15130f] transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="content_cut">content_cut</span>
+<span class="font-medium tracking-tight text-sm">Barbers</span>
+</a>
+<a class="flex items-center px-3 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#15130f] transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="group">group</span>
+<span class="font-medium tracking-tight text-sm">Clients</span>
+</a>
+<a class="flex items-center px-3 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#15130f] transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="dry_cleaning">dry_cleaning</span>
+<span class="font-medium tracking-tight text-sm">Services</span>
+</a>
+<a class="flex items-center px-3 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#15130f] transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="bar_chart">bar_chart</span>
+<span class="font-medium tracking-tight text-sm">Analytics</span>
+</a>
+</nav>
+<div class="px-3 mt-auto space-y-1">
+<button class="w-full mb-6 bg-gradient-to-br from-primary to-primary-container text-on-primary py-3 font-bold text-xs uppercase tracking-widest hover:scale-102 transition-transform">
+                New Appointment
+            </button>
+<a class="flex items-center px-3 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#15130f] transition-all" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="settings">settings</span>
+<span class="font-medium tracking-tight text-sm">Settings</span>
+</a>
+<a class="flex items-center px-3 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#15130f] transition-all" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="help_outline">help_outline</span>
+<span class="font-medium tracking-tight text-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar Anchor -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-50 bg-[#15130f]/60 backdrop-blur-md flex justify-between items-center px-8 h-20 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="flex items-center bg-surface-container-high px-4 py-2 w-96">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-on-surface placeholder:text-on-surface-variant/50" placeholder="Search appointments..." type="text"/>
+</div>
+<div class="flex items-center space-x-6">
+<div class="hidden md:flex space-x-8 mr-8">
+<a class="text-[#e9c177] border-b-2 border-[#e9c177] pb-1 text-[11px] font-semibold uppercase tracking-wider" href="#">Today</a>
+<a class="text-[#e8e1db]/70 hover:text-[#e8e1db] transition-colors text-[11px] font-semibold uppercase tracking-wider" href="#">Weekly</a>
+<a class="text-[#e8e1db]/70 hover:text-[#e8e1db] transition-colors text-[11px] font-semibold uppercase tracking-wider" href="#">Monthly</a>
+</div>
+<div class="flex items-center space-x-4 border-l border-outline-variant/30 pl-6">
+<button class="relative text-[#e8e1db]/70 hover:text-[#e9c177] transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full border-2 border-background"></span>
+</button>
+<div class="flex items-center space-x-3 cursor-pointer group">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface group-hover:text-primary transition-colors">Julian Vane</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Master Barber</p>
+</div>
+<img alt="Admin profile photo" class="w-10 h-10 rounded-full border border-outline-variant/50" data-alt="Close-up portrait of a sophisticated man with a well-groomed beard in a professional studio setting with dark moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqO-ICcXzSqREQCkE_ShNBqAG6ZW8s6ddjTN9-ePJd8Z0oAlRwdxdkqqNeb9EQ9NRpSomqpYxa3bvY9NLINekhbOBicdlbQnleNbiQOQBBuDP8Xu7779pbyJTfb6ZDZrV4PfyIlJ4ZWU9igRG_M7fR_YTsAASv_DSzrgY8Qd3dprpF-7aCBkF4PRFIuVltS9_VYPE56nd99vPSqXmxJanT7w73lnt6Rx-FD-aTMXhns4xpFRj7sByc6vDUkArWCGPuEmNdgL09GmI"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Header & Controls -->
+<div class="pt-28 px-8 pb-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface font-headline">Agenda</h2>
+<p class="text-on-surface-variant text-sm mt-1">Thursday, October 24th, 2024</p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<div class="flex bg-surface-container-low p-1 rounded-sm">
+<button class="px-4 py-1.5 text-xs font-bold uppercase tracking-wider bg-surface-container-highest text-primary">Day</button>
+<button class="px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors">Week</button>
+</div>
+<div class="relative group">
+<select class="appearance-none bg-surface-container-low border-none text-xs font-semibold uppercase tracking-wider px-4 py-2.5 pr-10 focus:ring-1 focus:ring-primary/30">
+<option>All Barbers</option>
+<option>Julian Vane</option>
+<option>Marcus Aurelius</option>
+<option>Silas Thorne</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-xs pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+<div class="relative group">
+<select class="appearance-none bg-surface-container-low border-none text-xs font-semibold uppercase tracking-wider px-4 py-2.5 pr-10 focus:ring-1 focus:ring-primary/30">
+<option>All Status</option>
+<option>Confirmed</option>
+<option>Pending</option>
+<option>Canceled</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-xs pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+<div class="flex gap-2 ml-4">
+<button class="flex items-center gap-2 bg-surface-container-high hover:bg-surface-bright transition-colors px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span> CSV
+                        </button>
+<button class="flex items-center gap-2 bg-surface-container-high hover:bg-surface-bright transition-colors px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="picture_as_pdf">picture_as_pdf</span> PDF
+                        </button>
+</div>
+</div>
+</div>
+<!-- Content Grid: Table of Appointments -->
+<div class="mt-8 overflow-hidden rounded-sm bg-surface-container-low">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-on-surface-variant">
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest">Time</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest">Client Name</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest">Service</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest">Barber</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1: Confirmed -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-6 py-5">
+<span class="text-sm font-bold text-on-surface">09:00 AM</span>
+<p class="text-[10px] text-on-surface-variant">45 mins</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">AL</div>
+<span class="text-sm font-medium text-on-surface">Alexander Lee</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">Royal Signature Cut</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">Julian Vane</td>
+<td class="px-6 py-5">
+<span class="bg-surface-container-highest text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter">Confirmed</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary transition-colors" title="Edit Status"><span class="material-symbols-outlined text-lg" data-icon="edit_calendar">edit_calendar</span></button>
+<button class="text-on-surface-variant hover:text-primary transition-colors" title="Payment"><span class="material-symbols-outlined text-lg" data-icon="payments">payments</span></button>
+<button class="text-on-surface-variant hover:text-error transition-colors" title="Cancel"><span class="material-symbols-outlined text-lg" data-icon="event_busy">event_busy</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Conflict Example -->
+<tr class="bg-error-container/5 hover:bg-error-container/10 transition-colors group">
+<td class="px-6 py-5 relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<span class="text-sm font-bold text-on-surface flex items-center gap-2">
+                                    10:00 AM 
+                                    <span class="material-symbols-outlined text-error text-base" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+</span>
+<p class="text-[10px] text-error font-semibold">OVERLAP DETECTED</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-on-surface">DM</div>
+<span class="text-sm font-medium text-on-surface">David Miller</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">Beard Sculpt &amp; Steam</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">Julian Vane</td>
+<td class="px-6 py-5">
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter">Pending</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="edit_calendar">edit_calendar</span></button>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="payments">payments</span></button>
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-lg" data-icon="event_busy">event_busy</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Completed -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-6 py-5">
+<span class="text-sm font-bold text-on-surface">11:30 AM</span>
+<p class="text-[10px] text-on-surface-variant">60 mins</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">SC</div>
+<span class="text-sm font-medium text-on-surface">Sebastian Cross</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">Full Service Grooming</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">Marcus Aurelius</td>
+<td class="px-6 py-5">
+<span class="bg-surface-container-highest text-tertiary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter">Completed</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="receipt_long">receipt_long</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Canceled -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group opacity-60">
+<td class="px-6 py-5">
+<span class="text-sm font-bold text-on-surface line-through">01:00 PM</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">JW</div>
+<span class="text-sm font-medium text-on-surface">James Wright</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">Buzz Cut</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">Silas Thorne</td>
+<td class="px-6 py-5">
+<span class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter">Canceled</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-3">
+<button class="text-on-surface-variant hover:text-primary transition-colors" title="View Reason"><span class="material-symbols-outlined text-lg" data-icon="info">info</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Stats Overlay (Bento Style) -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-low p-6">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Today's Revenue</p>
+<p class="text-4xl font-black text-primary font-headline tracking-tighter">£1,240</p>
+<div class="mt-4 flex items-center text-[10px] text-primary/80 font-bold">
+<span class="material-symbols-outlined text-xs mr-1" data-icon="trending_up">trending_up</span> +12% vs last Thu
+                    </div>
+</div>
+<div class="bg-surface-container-low p-6">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Total Slots</p>
+<p class="text-4xl font-black text-on-surface font-headline tracking-tighter">24</p>
+<p class="text-[10px] text-on-surface-variant mt-4 font-semibold">18 BOOKED • 6 VACANT</p>
+</div>
+<div class="bg-surface-container-low p-6 col-span-1 md:col-span-2 flex items-center justify-between">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Top Performance</p>
+<p class="text-xl font-bold text-on-surface font-headline italic">"The Golden Scissors"</p>
+<p class="text-sm text-on-surface-variant mt-1">Marcus Aurelius is 100% booked today.</p>
+</div>
+<div class="w-20 h-20 bg-primary-container/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Cancellation Modal (Hidden state via opacity-0 for showcase) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+<div class="bg-surface-container-low w-full max-w-md p-8 border border-outline-variant/20 shadow-[0_40px_80px_rgba(0,0,0,0.6)]">
+<div class="flex justify-between items-start mb-6">
+<h3 class="text-xl font-bold tracking-tight text-on-surface font-headline">Cancel Appointment</h3>
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined" data-icon="close">close</span></button>
+</div>
+<p class="text-sm text-on-surface-variant mb-6">Please provide a reason for canceling the appointment for <span class="text-on-surface font-bold">Alexander Lee</span> at 09:00 AM.</p>
+<div class="space-y-4">
+<div>
+<label class="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Reason for Cancellation</label>
+<select class="w-full bg-surface-container-high border-none text-sm px-4 py-3 focus:ring-1 focus:ring-primary/40">
+<option>Client No-Show</option>
+<option>Staff Emergency</option>
+<option>Client Rescheduled</option>
+<option>Double Booking</option>
+<option>Other</option>
+</select>
+</div>
+<div>
+<label class="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Additional Notes</label>
+<textarea class="w-full bg-surface-container-high border-none text-sm px-4 py-3 h-24 focus:ring-1 focus:ring-primary/40 resize-none" placeholder="Enter details..."></textarea>
+</div>
+</div>
+<div class="mt-8 flex gap-3">
+<button class="flex-1 py-3 text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors">Go Back</button>
+<button class="flex-1 bg-error-container text-on-error-container py-3 text-xs font-bold uppercase tracking-widest hover:scale-102 transition-transform">Confirm Cancellation</button>
+</div>
+</div>
+</div>
+</body></html>

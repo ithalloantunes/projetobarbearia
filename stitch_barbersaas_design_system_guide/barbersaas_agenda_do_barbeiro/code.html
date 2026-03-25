@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Atelier Operations | Barber Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#e8e1db",
+              "on-primary-container": "#4e3600",
+              "secondary-container": "#4f4b43",
+              "surface-variant": "#373430",
+              "on-surface-variant": "#d1c5b4",
+              "on-secondary-fixed": "#1e1b15",
+              "on-tertiary-fixed-variant": "#2e4771",
+              "on-primary-fixed": "#271900",
+              "surface-container-low": "#1d1b17",
+              "on-error-container": "#ffdad6",
+              "surface-container": "#211f1b",
+              "surface-container-lowest": "#100e0a",
+              "on-primary-fixed-variant": "#5d4201",
+              "on-error": "#690005",
+              "tertiary-fixed-dim": "#afc7f9",
+              "surface-bright": "#3c3934",
+              "surface-container-high": "#2c2a25",
+              "surface-dim": "#15130f",
+              "surface": "#15130f",
+              "outline-variant": "#4e4639",
+              "on-tertiary": "#153059",
+              "secondary-fixed-dim": "#ccc6bb",
+              "inverse-surface": "#e8e1db",
+              "inverse-primary": "#78591a",
+              "inverse-on-surface": "#33302c",
+              "secondary": "#ccc6bb",
+              "on-background": "#e8e1db",
+              "on-tertiary-fixed": "#001b3f",
+              "error-container": "#93000a",
+              "error": "#ffb4ab",
+              "outline": "#9a8f80",
+              "tertiary": "#afc7f9",
+              "secondary-fixed": "#e9e2d6",
+              "primary-fixed": "#ffdea7",
+              "surface-tint": "#e9c177",
+              "on-tertiary-container": "#213a64",
+              "tertiary-container": "#8da5d5",
+              "primary-fixed-dim": "#e9c177",
+              "on-secondary": "#333029",
+              "primary": "#e9c177",
+              "surface-container-highest": "#373430",
+              "background": "#15130f",
+              "tertiary-fixed": "#d7e2ff",
+              "on-secondary-fixed-variant": "#4a463e",
+              "on-primary": "#412d00",
+              "primary-container": "#c59f59",
+              "on-secondary-container": "#c1bbb0"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .timeline-dot::before {
+        content: '';
+        position: absolute;
+        left: -25px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background-color: #e9c177;
+        border-radius: 50%;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Authority: JSON) -->
+<nav class="fixed left-0 top-0 h-full z-40 flex flex-col h-screen w-64 bg-[#1d1b17] font-['Inter'] antialiased tracking-tight">
+<div class="p-8">
+<h1 class="text-xl font-bold text-[#e8e1db] tracking-tighter">The Atelier</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-[#e9c177] mt-1">Premium Grooming</p>
+</div>
+<div class="flex-1 px-4 space-y-2">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center gap-4 px-4 py-3 text-[#e9c177] border-l-4 border-[#e9c177] bg-[#373430] transition-all duration-200 scale-102" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-semibold text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] transition-all duration-200 hover:bg-[#373430]" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-semibold text-sm">Schedule</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] transition-all duration-200 hover:bg-[#373430]" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-semibold text-sm">Clients</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] transition-all duration-200 hover:bg-[#373430]" href="#">
+<span class="material-symbols-outlined" data-icon="content_cut">content_cut</span>
+<span class="font-semibold text-sm">Inventory</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] transition-all duration-200 hover:bg-[#373430]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-semibold text-sm">Settings</span>
+</a>
+</div>
+<div class="p-6 border-t border-outline-variant/10">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold py-3 rounded-sm transition-transform hover:scale-[1.02] active:scale-95 text-sm">
+                Book Now
+            </button>
+<div class="mt-6">
+<a class="flex items-center gap-4 px-4 py-2 text-[#e8e1db]/60 hover:text-[#e8e1db] text-xs" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help_outline">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- TopAppBar (Authority: JSON) -->
+<header class="fixed top-0 right-0 left-64 h-20 px-8 flex items-center justify-between z-30 bg-[#15130f]/60 backdrop-blur-xl border-b border-[#4e4639]/15 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-6">
+<a class="text-[#e9c177] border-b-2 border-[#e9c177] pb-2 font-['Inter'] text-sm font-semibold uppercase tracking-[0.05em]" href="#">Today</a>
+<a class="text-[#e8e1db]/80 hover:text-[#e9c177] transition-colors font-['Inter'] text-sm font-semibold uppercase tracking-[0.05em]" href="#">Tomorrow</a>
+<a class="text-[#e8e1db]/80 hover:text-[#e9c177] transition-colors font-['Inter'] text-sm font-semibold uppercase tracking-[0.05em]" href="#">Week View</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 bg-surface-container-highest text-primary border border-outline-variant/20 font-bold text-xs uppercase tracking-widest hover:scale-102 transition-transform">
+                Block Time
+            </button>
+<button class="px-4 py-2 text-on-surface font-bold text-xs uppercase tracking-widest hover:scale-102 transition-transform">
+                Quick Metrics
+            </button>
+<div class="flex items-center gap-3 ml-4 pl-4 border-l border-outline-variant/30">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-bright border border-primary/20">
+<img alt="Master Barber Profile" class="w-full h-full object-cover" data-alt="portrait of a professional barber with a well-groomed beard in a dimly lit studio with vintage aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqp-Il6CpTnPCmZlTNR4JNURxfMCaGvPCO0MW3cjz3dHIz-hJt0nHLwVRDNo0UqgLfM0Kmo4W7R6sihSg6bYNaRff-VbR_XfD7cvglKvh4EsoawVLGGe7Z8RMF1S_6bXuszcMgW-aFFQOHhIHigx87FasGvXaBU7bL99oiu6kP_4JeOoaoo4LF2K50fG87uP8rePH5X9OB6V4JLJe-l3DFHl7RhrqjjDNh_K0ReCeTcSKXWyHPPdhekTOPKPa3x9Heq3gKPqWnjCU"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 min-h-screen bg-surface-dim p-8">
+<!-- Metrics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Metric 1 -->
+<div class="bg-surface-container-high p-8 flex flex-col justify-between group hover:bg-surface-container-highest transition-colors cursor-default">
+<div class="flex justify-between items-start">
+<span class="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-on-surface-variant">Total Appointments</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="event_note">event_note</span>
+</div>
+<div class="mt-6 flex items-baseline gap-2">
+<span class="text-5xl font-black text-on-surface leading-none tracking-tighter">14</span>
+<span class="text-primary text-sm font-bold">+2 vs Yesterday</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-container-high p-8 flex flex-col justify-between group hover:bg-surface-container-highest transition-colors cursor-default">
+<div class="flex justify-between items-start">
+<span class="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-on-surface-variant">Completed</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+</div>
+<div class="mt-6 flex items-baseline gap-2">
+<span class="text-5xl font-black text-on-surface leading-none tracking-tighter">08</span>
+<span class="text-on-surface-variant text-sm font-medium">57% Efficiency</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-high p-8 flex flex-col justify-between group hover:bg-surface-container-highest transition-colors cursor-default border-l-4 border-primary">
+<div class="flex justify-between items-start">
+<span class="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-primary">Remaining Today</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="schedule">schedule</span>
+</div>
+<div class="mt-6 flex items-baseline gap-2">
+<span class="text-5xl font-black text-on-surface leading-none tracking-tighter">06</span>
+<span class="text-on-surface-variant text-sm font-medium">Until 8:00 PM</span>
+</div>
+</div>
+</div>
+<!-- Schedule Section Header -->
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">Daily Timeline <span class="text-on-surface-variant font-light">— Monday, Oct 24</span></h2>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+<button class="p-2 bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+</div>
+<!-- Vertical Timeline List -->
+<div class="relative ml-8 border-l border-outline-variant/30 pl-12 space-y-4 pb-20">
+<!-- Timeline Item 1: Completed -->
+<div class="relative bg-surface-container-low p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 timeline-dot">
+<div class="flex items-center gap-6 flex-1">
+<div class="w-16">
+<span class="text-sm font-black text-primary tracking-tighter uppercase">09:00</span>
+<span class="block text-[10px] text-on-surface-variant font-medium">AM</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-surface-container-highest overflow-hidden">
+<img alt="Client" class="w-full h-full object-cover grayscale opacity-80" data-alt="close-up of a stylish man's face with focused expression in a luxury setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsv199GkXDi6kNNYOEqRVeprIPCyL1b1UAabtAhsxSBeZ1DHbGKmornMh8DgWfVM4cqvpaqSVYnAY2BYJ1i-VhCR2lPBl3jo3ZrX1RwGdlal9ll5Risj2UtfOj93tMqjJN5IKzmhGc8i8NC0IkNqvOJdz4nG3wvcHJ1TWX06CYsSM95uWd1F-GNM5_pEYuATv-Ijga3fAXOugHPA7b3j1RGFhDV3Jv6G0krPAq3109dT4l2KbwnDqQFmjlacOy6f-4L0T2jY-ZRdk"/>
+</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface uppercase tracking-wide">Julian Rossi</h4>
+<p class="text-xs text-on-surface-variant">Signature Fade &amp; Line-up</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-8 w-full md:w-auto">
+<div class="hidden lg:block text-right">
+<span class="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Duration</span>
+<span class="text-xs font-bold text-on-surface">45 MIN</span>
+</div>
+<div class="px-3 py-1 bg-surface-container-highest rounded-full flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Completed</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2: In Service -->
+<div class="relative bg-surface-container-highest p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 timeline-dot border-l-4 border-primary">
+<div class="flex items-center gap-6 flex-1">
+<div class="w-16">
+<span class="text-sm font-black text-primary tracking-tighter uppercase">10:00</span>
+<span class="block text-[10px] text-on-surface-variant font-medium">AM</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-surface-container-low overflow-hidden">
+<img alt="Client" class="w-full h-full object-cover" data-alt="portrait of a man with neat hairstyle and glasses in a dark atmospheric room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVr8QYYhBkImcNkpfcPzgTgh9mhMcYCiSS6q3ZVpgsAGZ4R1EydZ2JvkMZBggaF19lJtWdjQgrFg76iH-FG_JaYenGaXnVIDnFmlNqAZ8Xz5LmnlvM9djM3vV4eIQkCxTRCe001x7YOXU7y2o26nm3HZ0YuBBqFRxbLpvMvOuywcubMEBYRL4LCwi1PYmR7fUUZdfW2YnHttH0hyDcMobbT6Epi-7XrL0H535CZSQ3LmtYRBBw2zFbW6aKupplKC9fpvPSU2G6zBU"/>
+</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface uppercase tracking-wide">Marcus Thorne</h4>
+<p class="text-xs text-on-surface-variant">Hot Towel Shave + Scissor Cut</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-8 w-full md:w-auto">
+<div class="hidden lg:block text-right">
+<span class="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Duration</span>
+<span class="text-xs font-bold text-on-surface">60 MIN</span>
+</div>
+<!-- Status Toggle Mockup -->
+<div class="flex bg-surface-container-low p-1 rounded-sm gap-1">
+<button class="px-3 py-1 text-[9px] font-bold uppercase tracking-tighter text-on-surface-variant">Pending</button>
+<button class="px-3 py-1 text-[9px] font-bold uppercase tracking-tighter bg-primary text-on-primary">In Service</button>
+<button class="px-3 py-1 text-[9px] font-bold uppercase tracking-tighter text-on-surface-variant">Done</button>
+</div>
+</div>
+</div>
+<!-- Block Time Section -->
+<div class="relative bg-surface-container-low border border-dashed border-outline-variant/40 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 opacity-60">
+<div class="flex items-center gap-6 flex-1">
+<div class="w-16">
+<span class="text-sm font-black text-on-surface-variant tracking-tighter uppercase">11:15</span>
+<span class="block text-[10px] text-on-surface-variant font-medium">AM</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="lock">lock</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface uppercase tracking-wide">Shop Maintenance</h4>
+<p class="text-xs text-on-surface-variant italic">Equipment Sterilization</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[10px] font-bold uppercase tracking-widest text-error hover:underline transition-all">Unlock Slot</button>
+</div>
+</div>
+<!-- Timeline Item 3: Pending -->
+<div class="relative bg-surface-container-low p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 timeline-dot">
+<div class="flex items-center gap-6 flex-1">
+<div class="w-16">
+<span class="text-sm font-black text-primary tracking-tighter uppercase">12:00</span>
+<span class="block text-[10px] text-on-surface-variant font-medium">PM</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-surface-container-highest overflow-hidden">
+<img alt="Client" class="w-full h-full object-cover grayscale opacity-80" data-alt="close-up of a person with expressive features and dark hair against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL0uRu-_9tvkUXu_uYqOVqdGXfy78wG3cIxuAjJBejii81UVnRWnLH21qw1F66p_lZlHaLt8ror5uN48fE8H3jv9tOTIj6rszLmi11w5nDHAX3FSzUXp-GOt-gD-O7DD7g3WbQUuH3g17WIImcckRnhMxtWxV3mP1LbQWWMUwUWtD3MF5mwYTvIb6yGYMKoqboDD4q-ZaCSxQTHdLM5Gbv2Oq9R5VHc974nVzmzpBcN8ZRDp6ElrwowASzwK7iNaKdkgNIxxmV77Q"/>
+</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface uppercase tracking-wide">Elias Vance</h4>
+<p class="text-xs text-on-surface-variant">Beard Sculpting</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-8 w-full md:w-auto">
+<div class="hidden lg:block text-right">
+<span class="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Duration</span>
+<span class="text-xs font-bold text-on-surface">30 MIN</span>
+</div>
+<div class="px-3 py-1 bg-surface-container-highest rounded-full flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-outline"></div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Pending</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Only Home/Dashboard) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined" data-icon="add" style="font-variation-settings: 'FILL' 0, 'wght' 700;">add</span>
+</button>
+</body></html>

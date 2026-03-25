@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catálogo de Serviços - The Atelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#e9e2d6",
+              "error": "#ffb4ab",
+              "surface-container-low": "#1d1b17",
+              "on-error": "#690005",
+              "on-secondary-container": "#c1bbb0",
+              "error-container": "#93000a",
+              "surface-container-highest": "#373430",
+              "outline-variant": "#4e4639",
+              "on-surface-variant": "#d1c5b4",
+              "on-primary": "#412d00",
+              "surface-container-lowest": "#100e0a",
+              "on-primary-fixed": "#271900",
+              "inverse-on-surface": "#33302c",
+              "secondary-fixed-dim": "#ccc6bb",
+              "surface": "#15130f",
+              "secondary-container": "#4f4b43",
+              "on-secondary": "#333029",
+              "tertiary": "#afc7f9",
+              "secondary": "#ccc6bb",
+              "outline": "#9a8f80",
+              "primary-fixed-dim": "#e9c177",
+              "on-primary-container": "#4e3600",
+              "inverse-primary": "#78591a",
+              "surface-container-high": "#2c2a25",
+              "inverse-surface": "#e8e1db",
+              "primary-container": "#c59f59",
+              "on-surface": "#e8e1db",
+              "on-primary-fixed-variant": "#5d4201",
+              "tertiary-fixed": "#d7e2ff",
+              "surface-container": "#211f1b",
+              "on-secondary-fixed": "#1e1b15",
+              "surface-tint": "#e9c177",
+              "tertiary-container": "#8da5d5",
+              "on-tertiary": "#153059",
+              "surface-bright": "#3c3934",
+              "on-tertiary-container": "#213a64",
+              "primary": "#e9c177",
+              "background": "#15130f",
+              "on-tertiary-fixed-variant": "#2e4771",
+              "on-tertiary-fixed": "#001b3f",
+              "surface-dim": "#15130f",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed-variant": "#4a463e",
+              "tertiary-fixed-dim": "#afc7f9",
+              "surface-variant": "#373430",
+              "primary-fixed": "#ffdea7",
+              "on-background": "#e8e1db"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        background-color: rgba(21, 19, 15, 0.6);
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #15130f;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #373430;
+        border-radius: 10px;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased">
+<!-- SIDE NAV BAR (Rail) -->
+<aside class="fixed inset-y-0 left-0 z-50 flex flex-col h-full py-8 bg-[#1d1b17] dark:bg-[#1d1b17] h-screen w-64 border-r-0 font-['Inter'] antialiased tracking-tight">
+<div class="px-6 mb-12">
+<h1 class="text-xl font-bold tracking-tighter text-[#e8e1db] uppercase">The Atelier</h1>
+<p class="text-[10px] text-[#e9c177] tracking-[0.2em] font-semibold uppercase mt-1">Premium Grooming</p>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#373430] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#373430] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-medium">Appointments</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#373430] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="text-sm font-medium">Clients</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#373430] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="content_cut">content_cut</span>
+<span class="text-sm font-medium">Team</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e9c177] font-semibold border-l-4 border-[#e9c177] bg-[#373430]" href="#">
+<span class="material-symbols-outlined" data-icon="dry_cleaning">dry_cleaning</span>
+<span class="text-sm font-medium">Services</span>
+</a>
+</nav>
+<div class="mt-auto px-3 space-y-1">
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#373430] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/60 hover:text-[#e8e1db] hover:bg-[#373430] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+</div>
+</aside>
+<!-- MAIN CONTENT WRAPPER -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TOP APP BAR -->
+<header class="fixed top-0 right-0 left-64 h-20 bg-[#15130f]/60 backdrop-blur-xl dark:bg-[#15130f]/60 shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex justify-between items-center px-8 w-full border-b border-[#4e4639]/15 z-40">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute inset-y-0 left-3 flex items-center text-outline">
+<span class="material-symbols-outlined text-lg" data-icon="search">search</span>
+</span>
+<input class="bg-surface-container-highest border-none rounded-sm pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary w-64 text-on-surface placeholder-outline-variant" placeholder="Pesquisar catálogo..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-2 px-6 py-2 bg-gradient-to-br from-primary to-primary-container text-on-primary text-sm font-bold rounded-sm uppercase tracking-wider active:scale-[0.98] transition-transform">
+<span>New Appointment</span>
+</button>
+<div class="flex items-center gap-4 text-on-surface">
+<button class="material-symbols-outlined hover:text-primary transition-all" data-icon="notifications">notifications</button>
+<div class="w-10 h-10 rounded-sm overflow-hidden bg-surface-container-high flex items-center justify-center border border-outline-variant/15">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="Close up portrait of a stylish male barber with a groomed beard wearing a leather apron in a vintage workshop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbGOoQJDh_8POZD0AbKgIDA9uNJHM3BHzSvWFpcMqkD3r6nLk_nwinrKNR7gq_RZYWbaN_LrfUZ_AKZznDFSlEp_-vd_5Omz6yadFprueIgMuA6ebmcuDTvixqCKPoCjvJ3tZvX_b9UDeIrtjhIzUXDoAB5HKBUtWE0kQFdF3uKHHYUh9urr4ifM0SXINrBJtnpqhYlB11uRT0yA45J9pitdq_gU1ZDbn3rHg7TcT4DaRlHbmzg2nBUwq5LN2HZ9q5fz4TCcGaq6I"/>
+</div>
+</div>
+</div>
+</header>
+<!-- PAGE CONTENT -->
+<div class="mt-20 p-10 flex-1 overflow-y-auto">
+<!-- HEADER SECTION -->
+<div class="flex justify-between items-end mb-10">
+<div>
+<h2 class="text-4xl font-black text-on-surface uppercase tracking-tight leading-none">Catálogo de Serviços</h2>
+<p class="mt-3 text-outline text-sm uppercase tracking-widest font-semibold flex items-center gap-2">
+<span class="w-8 h-[1px] bg-primary"></span>
+                        Gestão de Experiências Atelier
+                    </p>
+</div>
+<button class="group flex items-center gap-3 px-8 py-4 bg-surface-container-highest hover:bg-surface-bright transition-all duration-300 border-l-4 border-primary">
+<span class="text-on-surface font-bold text-sm tracking-widest uppercase">Novo Serviço</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="add_circle">add_circle</span>
+</button>
+</div>
+<!-- BENTO GRID LAYOUT -->
+<div class="grid grid-cols-12 gap-6">
+<!-- SERVICES TABLE (Large Column) -->
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<div class="bg-surface-container-low rounded-none overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50 text-outline text-[10px] uppercase tracking-[0.2em] font-bold">
+<th class="px-6 py-5">Serviço</th>
+<th class="px-6 py-5">
+<div class="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+                                                Preço <span class="material-symbols-outlined text-xs" data-icon="unfold_more">unfold_more</span>
+</div>
+</th>
+<th class="px-6 py-5">
+<div class="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+                                                Duração <span class="material-symbols-outlined text-xs" data-icon="unfold_more">unfold_more</span>
+</div>
+</th>
+<th class="px-6 py-5">Status</th>
+<th class="px-6 py-5 text-right">Ações</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center text-primary border border-outline-variant/10">
+<span class="material-symbols-outlined" data-icon="content_cut">content_cut</span>
+</div>
+<div>
+<p class="text-on-surface font-bold text-sm">Corte de Cabelo Executive</p>
+<p class="text-xs text-outline leading-tight">Corte clássico com acabamento em navalha</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-on-surface font-mono font-medium">R$ 85,00</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span class="text-sm">45 min</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-surface-container-highest text-primary">
+                                                Ativo
+                                            </span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-3 text-outline opacity-40 group-hover:opacity-100 transition-opacity">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="edit">edit</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span></button>
+<button class="hover:text-error transition-colors"><span class="material-symbols-outlined text-lg" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-lowest/20 hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center text-primary border border-outline-variant/10">
+<span class="material-symbols-outlined" data-icon="face">face</span>
+</div>
+<div>
+<p class="text-on-surface font-bold text-sm">Barba &amp; Toalha Quente</p>
+<p class="text-xs text-outline leading-tight">Barbear tradicional com hidratação</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-on-surface font-mono font-medium">R$ 60,00</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span class="text-sm">30 min</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-surface-container-highest text-primary">
+                                                Ativo
+                                            </span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-3 text-outline opacity-40 group-hover:opacity-100 transition-opacity">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="edit">edit</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span></button>
+<button class="hover:text-error transition-colors"><span class="material-symbols-outlined text-lg" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center text-outline border border-outline-variant/10">
+<span class="material-symbols-outlined" data-icon="brush">brush</span>
+</div>
+<div>
+<p class="text-on-surface/50 font-bold text-sm">Coloração de Barba</p>
+<p class="text-xs text-outline/50 leading-tight">Cobertura natural de fios brancos</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-on-surface/50 font-mono font-medium">R$ 45,00</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-outline/50">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span class="text-sm">20 min</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-error-container/20 text-error">
+                                                Inativo
+                                            </span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-3 text-outline opacity-40 group-hover:opacity-100 transition-opacity">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="edit">edit</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="visibility_off">visibility_off</span></button>
+<button class="hover:text-error transition-colors"><span class="material-symbols-outlined text-lg" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- SIDE DRAWER / FORM SECTION (Right Column) -->
+<div class="col-span-12 lg:col-span-4">
+<div class="bg-surface-container-high p-8 border-l-0 relative overflow-hidden">
+<!-- Decorative Background Gradient -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<h3 class="text-xl font-black text-on-surface uppercase tracking-tight mb-6">Configurar Serviço</h3>
+<form class="space-y-6">
+<div>
+<label class="block text-[10px] font-bold text-outline uppercase tracking-widest mb-2">Nome do Serviço</label>
+<input class="w-full bg-surface-container-highest border-none text-on-surface text-sm focus:ring-1 focus:ring-primary py-3" type="text" value="Corte de Cabelo Executive"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-[10px] font-bold text-outline uppercase tracking-widest mb-2">Preço (BRL)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-primary font-bold">R$</span>
+<input class="w-full bg-surface-container-highest border-none text-on-surface text-sm focus:ring-1 focus:ring-primary py-3 pl-10" type="text" value="85,00"/>
+</div>
+</div>
+<div>
+<label class="block text-[10px] font-bold text-outline uppercase tracking-widest mb-2">Duração</label>
+<div class="relative">
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-outline uppercase">Min</span>
+<input class="w-full bg-surface-container-highest border-none text-on-surface text-sm focus:ring-1 focus:ring-primary py-3" type="number" value="45"/>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-[10px] font-bold text-outline uppercase tracking-widest mb-2">Descrição</label>
+<textarea class="w-full bg-surface-container-highest border-none text-on-surface text-sm focus:ring-1 focus:ring-primary py-3 resize-none" rows="4">Corte realizado por profissionais sêniores, incluindo lavagem premium, massagem capilar e finalização com pomadas importadas.</textarea>
+</div>
+<div class="flex items-center justify-between py-4 border-y border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface uppercase tracking-wider">Status do Serviço</span>
+<span class="text-[10px] text-outline uppercase">Visível para agendamento online</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-lowest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-outline after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary/40 peer-checked:after:bg-primary"></div>
+</label>
+</div>
+<div class="pt-4 flex flex-col gap-3">
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-black text-xs uppercase tracking-[0.2em] shadow-lg active:scale-[0.98] transition-all" type="submit">
+                                        Salvar Alterações
+                                    </button>
+<button class="w-full py-4 text-outline hover:text-on-surface text-xs font-bold uppercase tracking-widest transition-colors" type="button">
+                                        Descartar
+                                    </button>
+</div>
+</form>
+</div>
+</div>
+<!-- RECENT ACTIVITY / STATS -->
+<div class="mt-6 bg-surface-container-low p-8">
+<h4 class="text-[10px] font-bold text-outline uppercase tracking-widest mb-6">Resumo de Performance</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-xs text-outline">Agendamentos (Mês)</span>
+<span class="text-sm font-bold text-on-surface">142</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1">
+<div class="bg-primary h-full w-[75%]"></div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-xs text-outline">Receita Estimada</span>
+<span class="text-sm font-bold text-primary">R$ 12.070,00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- CONFIRMATION MODAL (HIDDEN BY DEFAULT, BUT REPRESENTED IN DOM) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center pointer-events-none opacity-0 transition-opacity">
+<div class="absolute inset-0 bg-background/80 backdrop-blur-md"></div>
+<div class="relative bg-surface-container-highest max-w-md w-full p-10 border border-outline-variant/20 shadow-2xl">
+<div class="flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-5xl text-error mb-6" data-icon="warning">warning</span>
+<h3 class="text-2xl font-black text-on-surface uppercase tracking-tight mb-4">Excluir Serviço?</h3>
+<p class="text-outline text-sm mb-8 leading-relaxed">Você está prestes a remover permanentemente o serviço <span class="text-on-surface font-bold">"Coloração de Barba"</span>. Esta ação não poderá ser desfeita.</p>
+<div class="flex flex-col w-full gap-3">
+<button class="w-full py-4 bg-error text-on-error font-black text-xs uppercase tracking-widest">Confirmar Exclusão</button>
+<button class="w-full py-4 text-outline hover:text-on-surface text-xs font-bold uppercase tracking-widest">Manter Serviço</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>
