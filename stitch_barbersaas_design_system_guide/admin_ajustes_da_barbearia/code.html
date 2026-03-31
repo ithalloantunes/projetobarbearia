@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings | The Atelier Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#211f1b",
+              "primary": "#e9c177",
+              "on-tertiary": "#153059",
+              "tertiary-container": "#8da5d5",
+              "on-background": "#e8e1db",
+              "primary-fixed-dim": "#e9c177",
+              "on-tertiary-fixed-variant": "#2e4771",
+              "on-tertiary-fixed": "#001b3f",
+              "on-secondary-container": "#c1bbb0",
+              "secondary-container": "#4f4b43",
+              "inverse-surface": "#e8e1db",
+              "tertiary-fixed-dim": "#afc7f9",
+              "surface-bright": "#3c3934",
+              "outline-variant": "#4e4639",
+              "inverse-on-surface": "#33302c",
+              "on-primary-container": "#4e3600",
+              "surface-container-low": "#1d1b17",
+              "on-secondary-fixed-variant": "#4a463e",
+              "surface-tint": "#e9c177",
+              "secondary-fixed": "#e9e2d6",
+              "on-surface-variant": "#d1c5b4",
+              "error-container": "#93000a",
+              "error": "#ffb4ab",
+              "on-surface": "#e8e1db",
+              "secondary-fixed-dim": "#ccc6bb",
+              "tertiary": "#afc7f9",
+              "surface-container-highest": "#373430",
+              "surface": "#15130f",
+              "primary-fixed": "#ffdea7",
+              "inverse-primary": "#78591a",
+              "on-error": "#690005",
+              "primary-container": "#c59f59",
+              "on-primary-fixed": "#271900",
+              "surface-container-high": "#2c2a25",
+              "surface-variant": "#373430",
+              "surface-container-lowest": "#100e0a",
+              "on-tertiary-container": "#213a64",
+              "secondary": "#ccc6bb",
+              "on-secondary-fixed": "#1e1b15",
+              "outline": "#9a8f80",
+              "on-primary": "#412d00",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#5d4201",
+              "background": "#15130f",
+              "on-secondary": "#333029",
+              "tertiary-fixed": "#d7e2ff",
+              "surface-dim": "#15130f"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #15130f; }
+      ::-webkit-scrollbar-thumb { background: #373430; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #e9c177; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 z-50 bg-[#1d1b17] border-none shadow-none flex flex-col py-8 gap-y-4">
+<div class="px-8 mb-8">
+<h1 class="text-lg font-bold text-[#e8e1db] uppercase tracking-tighter">The Atelier</h1>
+<p class="text-[10px] text-[#e9c177] font-bold tracking-[0.2em] uppercase">Premium Grooming</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-8 py-3 text-[#e8e1db]/50 pl-5 font-inter text-sm uppercase tracking-tighter hover:text-[#e8e1db] hover:bg-[#373430] transition-all" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center px-8 py-3 text-[#e8e1db]/50 pl-5 font-inter text-sm uppercase tracking-tighter hover:text-[#e8e1db] hover:bg-[#373430] transition-all" href="#">
+<span class="material-symbols-outlined mr-3">event_note</span>
+                Appointments
+            </a>
+<a class="flex items-center px-8 py-3 text-[#e8e1db]/50 pl-5 font-inter text-sm uppercase tracking-tighter hover:text-[#e8e1db] hover:bg-[#373430] transition-all" href="#">
+<span class="material-symbols-outlined mr-3">content_cut</span>
+                Barbers
+            </a>
+<!-- Active Tab: Settings -->
+<a class="flex items-center px-8 py-3 text-[#e9c177] border-l-4 border-[#e9c177] bg-[#373430]/30 pl-4 font-inter text-sm uppercase tracking-tighter transition-all" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+                Settings
+            </a>
+<a class="flex items-center px-8 py-3 text-[#e8e1db]/50 pl-5 font-inter text-sm uppercase tracking-tighter hover:text-[#e8e1db] hover:bg-[#373430] transition-all" href="#">
+<span class="material-symbols-outlined mr-3">campaign</span>
+                Marketing
+            </a>
+<a class="flex items-center px-8 py-3 text-[#e8e1db]/50 pl-5 font-inter text-sm uppercase tracking-tighter hover:text-[#e8e1db] hover:bg-[#373430] transition-all" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+                Inventory
+            </a>
+</nav>
+<div class="mt-auto space-y-1">
+<a class="flex items-center px-8 py-3 text-[#e8e1db]/50 pl-5 font-inter text-sm uppercase tracking-tighter hover:text-[#e8e1db] hover:bg-[#373430] transition-all" href="#">
+<span class="material-symbols-outlined mr-3">help</span>
+                Help
+            </a>
+<a class="flex items-center px-8 py-3 text-[#e8e1db]/50 pl-5 font-inter text-sm uppercase tracking-tighter hover:text-[#e8e1db] hover:bg-[#373430] transition-all" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-full z-40 bg-[#1d1b17] border-none shadow-none flex justify-between items-center h-16 px-8 ml-64">
+<div class="flex items-center ml-64">
+<span class="text-xl font-black uppercase tracking-widest text-[#e9c177]">The Atelier Admin</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-[#e8e1db]/60 hover:text-[#e9c177] transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3">
+<span class="text-sm font-medium text-[#e8e1db]">Master Barber</span>
+<span class="material-symbols-outlined text-[#e9c177]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-16 min-h-screen bg-surface">
+<!-- Unsaved Warning Banner -->
+<div class="bg-primary-container/10 border-b border-primary/20 px-8 py-3 flex items-center justify-between">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm">info</span>
+<span class="text-xs font-bold uppercase tracking-widest">Unsaved Changes Detected</span>
+</div>
+<p class="text-xs text-on-surface-variant">Your recent modifications haven't been synchronized yet.</p>
+</div>
+<div class="p-12 max-w-6xl mx-auto">
+<!-- Page Header -->
+<div class="mb-12">
+<h2 class="text-4xl font-black tracking-tighter text-on-surface uppercase mb-2">Shop Configuration</h2>
+<div class="h-1 w-20 bg-primary"></div>
+</div>
+<!-- Settings Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Business Details & Notifications -->
+<div class="lg:col-span-7 space-y-12">
+<!-- Business Details Section -->
+<section class="bg-surface-container-low p-8 rounded-sm">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary">storefront</span>
+<h3 class="text-lg font-bold uppercase tracking-tight text-on-surface">Business Details</h3>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="col-span-2">
+<label class="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Shop Name <span class="text-primary">*</span></label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary/30 text-on-surface px-4 py-3 rounded-sm transition-all" type="text" value="The Atelier Premium Grooming"/>
+</div>
+<div>
+<label class="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Phone (BR Format)</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary/30 text-on-surface px-4 py-3 rounded-sm transition-all" type="text" value="+55 (11) 98765-4321"/>
+</div>
+<div>
+<label class="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Email Address <span class="text-primary">*</span></label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary/30 text-on-surface px-4 py-3 rounded-sm transition-all" type="email" value="contact@theatelier.com"/>
+</div>
+<div class="col-span-2">
+<label class="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">Physical Address</label>
+<textarea class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary/30 text-on-surface px-4 py-3 rounded-sm transition-all" rows="2">Rua Oscar Freire, 1234, Jardins, São Paulo - SP</textarea>
+</div>
+</div>
+</section>
+<!-- Notification Settings Section -->
+<section class="bg-surface-container-low p-8 rounded-sm">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+<h3 class="text-lg font-bold uppercase tracking-tight text-on-surface">Notification Channels</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-highest/50 rounded-sm">
+<div>
+<p class="text-sm font-bold text-on-surface">Email Notifications</p>
+<p class="text-xs text-on-surface-variant">Send booking confirmations and receipts via email</p>
+</div>
+<button class="w-12 h-6 bg-primary rounded-full relative flex items-center px-1 transition-colors">
+<div class="w-4 h-4 bg-on-primary rounded-full translate-x-6"></div>
+</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-highest/50 rounded-sm">
+<div>
+<p class="text-sm font-bold text-on-surface">WhatsApp Integration</p>
+<p class="text-xs text-on-surface-variant">Automated appointment reminders via WhatsApp</p>
+</div>
+<button class="w-12 h-6 bg-surface-container-highest rounded-full relative flex items-center px-1 border border-outline-variant/30 transition-colors">
+<div class="w-4 h-4 bg-on-surface-variant rounded-full translate-x-0"></div>
+</button>
+</div>
+</div>
+</section>
+<!-- Cancellation Policy Section -->
+<section class="bg-surface-container-low p-8 rounded-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">policy</span>
+<h3 class="text-lg font-bold uppercase tracking-tight text-on-surface">Cancellation Policy</h3>
+</div>
+<p class="text-xs text-on-surface-variant mb-4 italic">Visible to clients during the checkout process.</p>
+<textarea class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary/30 text-on-surface px-4 py-3 rounded-sm transition-all leading-relaxed text-sm" rows="4">Cancellations must be made at least 24 hours prior to the scheduled appointment time. Late cancellations or no-shows will be subject to a fee equal to 50% of the service cost. We value your time and our barbers' schedules.</textarea>
+</section>
+</div>
+<!-- Right Column: Business Hours -->
+<div class="lg:col-span-5 space-y-12">
+<section class="bg-surface-container-low p-8 rounded-sm border-l-4 border-primary">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<h3 class="text-lg font-bold uppercase tracking-tight text-on-surface">Business Hours</h3>
+</div>
+<div class="space-y-4">
+<!-- Mon-Fri Loop -->
+<div class="flex items-center gap-4">
+<div class="w-24 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Monday</div>
+<div class="flex-1 flex items-center gap-2">
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="09:00"/>
+<span class="text-outline">to</span>
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="20:00"/>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-weight="fill" style="font-variation-settings: 'FILL' 1;">toggle_on</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-24 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Tuesday</div>
+<div class="flex-1 flex items-center gap-2">
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="09:00"/>
+<span class="text-outline">to</span>
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="20:00"/>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-weight="fill" style="font-variation-settings: 'FILL' 1;">toggle_on</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-24 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Wednesday</div>
+<div class="flex-1 flex items-center gap-2">
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="09:00"/>
+<span class="text-outline">to</span>
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="20:00"/>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-weight="fill" style="font-variation-settings: 'FILL' 1;">toggle_on</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-24 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Thursday</div>
+<div class="flex-1 flex items-center gap-2">
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="09:00"/>
+<span class="text-outline">to</span>
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="20:00"/>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-weight="fill" style="font-variation-settings: 'FILL' 1;">toggle_on</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-24 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Friday</div>
+<div class="flex-1 flex items-center gap-2">
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="09:00"/>
+<span class="text-outline">to</span>
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="21:00"/>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-weight="fill" style="font-variation-settings: 'FILL' 1;">toggle_on</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-24 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Saturday</div>
+<div class="flex-1 flex items-center gap-2">
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="08:00"/>
+<span class="text-outline">to</span>
+<input class="flex-1 bg-surface-container-highest border-none text-xs text-on-surface p-2 rounded-sm" type="time" value="18:00"/>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-weight="fill" style="font-variation-settings: 'FILL' 1;">toggle_on</span>
+</div>
+<!-- Closed Day -->
+<div class="flex items-center gap-4 opacity-50">
+<div class="w-24 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Sunday</div>
+<div class="flex-1 flex items-center gap-2">
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant/20 text-center py-2 text-[10px] font-bold uppercase tracking-widest">Closed</div>
+</div>
+<span class="material-symbols-outlined text-outline cursor-pointer">toggle_off</span>
+</div>
+</div>
+</section>
+<!-- Profile Preview Card (Design Accent) -->
+<div class="relative group overflow-hidden rounded-sm h-64">
+<img alt="Interior of a luxury barbershop" class="w-full h-full object-cover filter grayscale brightness-50 group-hover:scale-105 transition-transform duration-700" data-alt="Interior of a luxury barbershop with leather chairs, dark wood panels, and warm vintage lighting in a cinematic style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYAL0Trzk1KSBrdhHvKuTzXHxsmWefUIkhYq44Dpv7hGrz5jnr1INA6OF8YaRfT0TY6PvHWJZS1YJMeYbUnD9Z4xpNXai81jelxlnZbvUMcIoX2p3iwp1zL-N_8pe9qf9sznwgVeVL7DEXVULNxuSkT1qu-IRhUZRf9b7Zhu3xIE2lOAJYA72mrJxWrkurpa3C_4OZ7gfobkzdM_G8pV6iiUtagHNjSWUFe6SMHqE_crTLUtVYNleiL5ssRo85HqCe7urk9DVW0mk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<h4 class="text-xl font-bold text-on-surface uppercase tracking-tighter">Your Storefront</h4>
+<p class="text-xs text-primary font-bold uppercase tracking-widest">Live Preview</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Action Bar -->
+<div class="mt-12 pt-12 border-t border-outline-variant/10 flex justify-end items-center gap-6">
+<button class="text-on-surface-variant font-bold text-xs uppercase tracking-widest hover:text-on-surface transition-colors">Discard Changes</button>
+<button class="px-10 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-black text-sm uppercase tracking-[0.2em] rounded-sm shadow-xl hover:scale-102 transition-transform active:scale-95">
+                    Save Modifications
+                </button>
+</div>
+</div>
+</main>
+<!-- Success Feedback Toast (Bottom Right) -->
+<div class="fixed bottom-8 right-8 z-50 animate-bounce">
+<div class="bg-surface-container-highest border-l-4 border-primary p-4 shadow-2xl flex items-center gap-4 min-w-[320px]">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+<div>
+<p class="text-xs font-black uppercase tracking-widest text-on-surface">System Synchronized</p>
+<p class="text-[10px] text-on-surface-variant">Changes saved successfully</p>
+</div>
+<button class="ml-auto text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-xs">close</span>
+</button>
+</div>
+</div>
+</body></html>

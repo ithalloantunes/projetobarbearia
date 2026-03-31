@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Appointment Details | The Atelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#373430",
+                        "tertiary-fixed": "#d7e2ff",
+                        "surface-bright": "#3c3934",
+                        "error": "#ffb4ab",
+                        "primary": "#e9c177",
+                        "on-primary-fixed": "#271900",
+                        "on-tertiary-container": "#213a64",
+                        "on-primary": "#412d00",
+                        "surface-container-highest": "#373430",
+                        "on-primary-fixed-variant": "#5d4201",
+                        "surface-tint": "#e9c177",
+                        "surface-dim": "#15130f",
+                        "tertiary": "#afc7f9",
+                        "inverse-primary": "#78591a",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#4e3600",
+                        "surface-container-low": "#1d1b17",
+                        "outline-variant": "#4e4639",
+                        "secondary-container": "#4f4b43",
+                        "secondary-fixed-dim": "#ccc6bb",
+                        "on-error": "#690005",
+                        "surface-container": "#211f1b",
+                        "primary-fixed-dim": "#e9c177",
+                        "on-secondary-fixed-variant": "#4a463e",
+                        "primary-fixed": "#ffdea7",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#c1bbb0",
+                        "on-surface-variant": "#d1c5b4",
+                        "on-secondary": "#333029",
+                        "secondary-fixed": "#e9e2d6",
+                        "on-secondary-fixed": "#1e1b15",
+                        "inverse-on-surface": "#33302c",
+                        "tertiary-fixed-dim": "#afc7f9",
+                        "background": "#15130f",
+                        "surface-container-high": "#2c2a25",
+                        "on-background": "#e8e1db",
+                        "on-tertiary": "#153059",
+                        "outline": "#9a8f80",
+                        "on-surface": "#e8e1db",
+                        "secondary": "#ccc6bb",
+                        "inverse-surface": "#e8e1db",
+                        "tertiary-container": "#8da5d5",
+                        "surface-container-lowest": "#100e0a",
+                        "on-tertiary-fixed-variant": "#2e4771",
+                        "surface": "#15130f",
+                        "primary-container": "#c59f59",
+                        "on-tertiary-fixed": "#001b3f"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #15130f;
+            color: #e8e1db;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-header {
+            background: rgba(21, 19, 15, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-surface-dim text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#15130f]/60 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-full">
+<div class="text-xl font-black uppercase tracking-tighter text-[#e9c177]">The Atelier</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-['Inter'] font-bold tracking-tight text-[#e9c177] border-b-2 border-[#e9c177] pb-1" href="#">Appointments</a>
+<a class="font-['Inter'] font-bold tracking-tight text-[#e8e1db]/70 hover:text-[#e8e1db] transition-colors" href="#">Barbers</a>
+<a class="font-['Inter'] font-bold tracking-tight text-[#e8e1db]/70 hover:text-[#e8e1db] transition-colors" href="#">Services</a>
+<a class="font-['Inter'] font-bold tracking-tight text-[#e8e1db]/70 hover:text-[#e8e1db] transition-colors" href="#">Gallery</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-[#e9c177] text-[#412d00] px-6 py-2 font-bold hover:scale-105 transition-transform duration-200 active:scale-95">Book Now</button>
+<div class="text-[#e8e1db] font-bold cursor-pointer">Profile</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Navigation & Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div class="space-y-4">
+<button class="flex items-center gap-2 text-primary group transition-all">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span class="text-[0.6875rem] uppercase tracking-[0.1em] font-semibold">Back to Schedule</span>
+</button>
+<div class="flex items-center gap-4">
+<h1 class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic">Booking #AT-8821</h1>
+<div class="bg-surface-container-highest text-primary px-3 py-1 rounded-full text-[0.6875rem] font-bold tracking-wider uppercase">
+                        Confirmed
+                    </div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 bg-surface-container-high border-l-4 border-primary text-on-surface text-[0.6875rem] uppercase font-bold tracking-widest hover:bg-surface-bright transition-colors">
+                    Add to Calendar
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Details & Timeline -->
+<div class="lg:col-span-7 space-y-8">
+<!-- Main Details Card -->
+<section class="bg-surface-container-low p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[8rem]">content_cut</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10">
+<div class="space-y-6">
+<div>
+<label class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-semibold block mb-2">Service</label>
+<p class="text-xl font-bold text-on-surface">Royal Shave &amp; Sculpt</p>
+<p class="text-sm text-on-surface-variant mt-1">60 Minutes • Premium Package</p>
+</div>
+<div class="flex items-center gap-4">
+<img alt="Barber" class="w-14 h-14 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500 border border-outline-variant/30" data-alt="portrait of a professional male barber with a well-groomed beard and stylish hair in a vintage barbershop setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDZTX8NXTJ548-ePq_Bz5TjzLBKAGFDsyjLoLdvF_Y8HZ97ZflomAdwYwE_XPi41C9kIA97dNyNw0EvD5W8s2ssD_JBx_BWr-9hnZKIKMPvHmeo-I1B46iPcQRa64bUxNixOkMhlJn2B5FA1quH7kdLm037O4yESPjFPAaW-y2ATq1KD1EnUGwQ_KcW-rR7CBPOeWKhGlXJ6P75tns4sNB8rvXalOpzrMWQaKeXVR8pfVb5_I5ajMwyZNy7bfgSmxCBpowgkK1rxk"/>
+<div>
+<label class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-semibold block">Master Barber</label>
+<p class="font-bold text-on-surface">Julian Thorne</p>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<label class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-semibold block mb-2">Date &amp; Time</label>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<p class="font-bold text-on-surface">Friday, Nov 15, 2024</p>
+</div>
+<div class="flex items-center gap-3 mt-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<p class="font-bold text-on-surface">14:30 - 15:30</p>
+</div>
+</div>
+<div>
+<label class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-semibold block mb-2">Location</label>
+<p class="text-sm font-medium">Mayfair Atelier, 42 Savile Row, London</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Appointment Timeline -->
+<section class="bg-surface-container-low p-8">
+<h3 class="text-[0.6875rem] uppercase tracking-[0.2em] font-black text-on-surface-variant mb-8">Audit Trail</h3>
+<div class="relative space-y-8 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant/30">
+<!-- Step 1 -->
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-sm" data-weight="fill">check</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Appointment Created</p>
+<p class="text-[0.6875rem] text-on-surface-variant uppercase mt-1">Oct 28, 2024 • 10:15 AM</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-sm" data-weight="fill">check</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Confirmed by Atelier</p>
+<p class="text-[0.6875rem] text-on-surface-variant uppercase mt-1">Oct 28, 2024 • 11:45 AM</p>
+</div>
+</div>
+<!-- Step 3 (Upcoming/Active) -->
+<div class="relative pl-10 opacity-50">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full border-2 border-outline-variant bg-surface-container-low flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<div>
+<p class="font-bold text-on-surface">Service Completion</p>
+<p class="text-[0.6875rem] text-on-surface-variant uppercase mt-1">Pending Arrival</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Actions & Reschedule -->
+<div class="lg:col-span-5 space-y-8">
+<!-- Reschedule Section -->
+<section class="bg-surface-container-high p-8">
+<h3 class="text-xl font-bold mb-2">Modify Appointment</h3>
+<p class="text-sm text-on-surface-variant mb-8 leading-relaxed">Need to adjust? Select a new time slot below. Rescheduling is available until 24 hours prior.</p>
+<div class="mb-6">
+<label class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-semibold block mb-4">Available for Nov 16</label>
+<div class="grid grid-cols-3 gap-3">
+<button class="p-3 text-xs font-bold border border-outline-variant/30 hover:border-primary transition-colors text-center">09:00</button>
+<button class="p-3 text-xs font-bold border border-outline-variant/30 hover:border-primary transition-colors text-center">10:30</button>
+<button class="p-3 text-xs font-bold bg-primary text-on-primary text-center">11:00</button>
+<button class="p-3 text-xs font-bold border border-outline-variant/30 hover:border-primary transition-colors text-center">13:30</button>
+<button class="p-3 text-xs font-bold border border-outline-variant/30 hover:border-primary transition-colors text-center">15:00</button>
+<button class="p-3 text-xs font-bold border border-outline-variant/30 hover:border-primary transition-colors text-center">16:30</button>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold py-4 rounded-sm hover:scale-[1.02] transition-transform active:scale-95 uppercase tracking-widest text-[0.6875rem]">
+                        Confirm Reschedule
+                    </button>
+</section>
+<!-- Danger Zone -->
+<section class="border border-error-container/20 p-8">
+<h3 class="text-xs uppercase tracking-[0.2em] font-black text-error mb-4">Danger Zone</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Cancellations within 24 hours may incur a fee of 50% of the service value.</p>
+<button class="w-full border-2 border-error-container text-error font-bold py-4 rounded-sm hover:bg-error-container/10 transition-colors uppercase tracking-widest text-[0.6875rem]">
+                        Cancel Appointment
+                    </button>
+</section>
+</div>
+</div>
+</main>
+<!-- Cancellation Confirmation Modal (Overlayed for demo) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md px-4 hidden">
+<div class="bg-surface-container-lowest max-w-md w-full p-8 shadow-[0_20px_40px_rgba(0,0,0,0.4)] border border-outline-variant/20">
+<div class="text-center space-y-4">
+<div class="w-16 h-16 bg-error-container/20 rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-error text-3xl">warning</span>
+</div>
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">Confirm Cancellation</h2>
+<p class="text-on-surface-variant leading-relaxed">Are you sure you want to cancel your <span class="text-on-surface font-bold">Royal Shave &amp; Sculpt</span> with Julian Thorne? This action cannot be undone.</p>
+<div class="pt-8 flex flex-col gap-3">
+<button class="w-full bg-error-container text-on-error-container font-black py-4 rounded-sm uppercase tracking-widest text-[0.6875rem]">
+                        Yes, Cancel Appointment
+                    </button>
+<button class="w-full text-on-surface font-bold py-4 uppercase tracking-widest text-[0.6875rem] hover:bg-surface-bright transition-colors">
+                        Keep My Booking
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-[#15130f] w-full border-t border-[#4e4639]/15">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full">
+<div class="text-[#e9c177] font-bold mb-4 md:mb-0">THE ATELIER</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-['Inter'] text-[0.6875rem] uppercase tracking-[0.05em] font-semibold text-[#e8e1db]/50 hover:text-[#e9c177] transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-[0.6875rem] uppercase tracking-[0.05em] font-semibold text-[#e8e1db]/50 hover:text-[#e9c177] transition-colors duration-200" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-[0.6875rem] uppercase tracking-[0.05em] font-semibold text-[#e8e1db]/50 hover:text-[#e9c177] transition-colors duration-200" href="#">Contact</a>
+<a class="font-['Inter'] text-[0.6875rem] uppercase tracking-[0.05em] font-semibold text-[#e8e1db]/50 hover:text-[#e9c177] transition-colors duration-200" href="#">Careers</a>
+</div>
+<div class="mt-4 md:mt-0 font-['Inter'] text-[0.6875rem] uppercase tracking-[0.05em] font-semibold text-[#e8e1db]/50">
+                © 2024 The Modern Grooming Atelier. All Rights Reserved.
+            </div>
+</div>
+</footer>
+</body></html>

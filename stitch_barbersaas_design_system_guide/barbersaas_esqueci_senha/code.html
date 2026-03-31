@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recuperar Senha | The Atelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#1e1b15",
+              "on-surface-variant": "#d1c5b4",
+              "surface-variant": "#373430",
+              "secondary-container": "#4f4b43",
+              "on-primary-container": "#4e3600",
+              "on-surface": "#e8e1db",
+              "surface-dim": "#15130f",
+              "surface": "#15130f",
+              "outline-variant": "#4e4639",
+              "on-tertiary": "#153059",
+              "surface-container-high": "#2c2a25",
+              "surface-bright": "#3c3934",
+              "tertiary-fixed-dim": "#afc7f9",
+              "on-error": "#690005",
+              "surface-container-lowest": "#100e0a",
+              "on-primary-fixed-variant": "#5d4201",
+              "surface-container": "#211f1b",
+              "surface-container-low": "#1d1b17",
+              "on-error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#2e4771",
+              "on-primary-fixed": "#271900",
+              "surface-tint": "#e9c177",
+              "on-tertiary-container": "#213a64",
+              "primary-fixed": "#ffdea7",
+              "tertiary": "#afc7f9",
+              "secondary-fixed": "#e9e2d6",
+              "outline": "#9a8f80",
+              "error-container": "#93000a",
+              "error": "#ffb4ab",
+              "on-tertiary-fixed": "#001b3f",
+              "on-background": "#e8e1db",
+              "secondary": "#ccc6bb",
+              "inverse-surface": "#e8e1db",
+              "inverse-primary": "#78591a",
+              "inverse-on-surface": "#33302c",
+              "secondary-fixed-dim": "#ccc6bb",
+              "primary-container": "#c59f59",
+              "on-secondary-container": "#c1bbb0",
+              "on-primary": "#412d00",
+              "on-secondary-fixed-variant": "#4a463e",
+              "tertiary-fixed": "#d7e2ff",
+              "surface-container-highest": "#373430",
+              "background": "#15130f",
+              "primary": "#e9c177",
+              "on-secondary": "#333029",
+              "tertiary-container": "#8da5d5",
+              "primary-fixed-dim": "#e9c177"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.bg-texture {
+    background-image: linear-gradient(rgba(21, 19, 15, 0.95), rgba(21, 19, 15, 0.95)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuDRTynXl4ZjtAZbl-DvnsXCqzU4RN42Xa968kINJFQ0CUXUQuchjKkiS_XbZhs7aUzVRDQsJmZvkXSAMtXGd_glGPYgPgWhjOWa6xe9lldfDqJdSRVgPNX47ef1L2vJVE6AFAotN4rU3ghHwfgQF7SSbD_9wqU4wVlBjR5aDxhS9kp5hKEMlOjdR4F7P9ZIrAtxFgY3zVQelOOwAjr9ormlnz6TJ7Zp4GxlfvNeY-0RlyMxA7txbwvSqpZ7OFbl2UGvGhm7kTpqxcw);
+    background-size: cover;
+    background-position: center
+    }</style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#15130f] flex justify-between items-center px-6 h-16 w-full font-inter antialiased shadow-none">
+<div class="text-xl font-black uppercase tracking-widest text-[#e8e1db]">The Atelier</div>
+<div class="flex items-center gap-4">
+<button class="text-[#e8e1db]/60 hover:text-[#e9c177] transition-colors duration-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center pt-24 pb-12 px-4 bg-texture" data-alt="Dark sophisticated interior of a luxury London barber shop with vintage leather chairs and wood paneling in soft dim lighting.">
+<div class="w-full max-w-md">
+<!-- Recover Card -->
+<div class="bg-surface-container-low p-8 shadow-2xl relative overflow-hidden">
+<!-- Branding Accent -->
+<div class="absolute top-0 left-0 w-full h-1 bg-primary-container"></div>
+<div class="space-y-6">
+<div class="space-y-2">
+<h1 class="text-3xl font-bold tracking-tight text-on-surface leading-tight">Esqueceu sua senha?</h1>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                            Enter your email address and we will send you a link to reset your password.
+                        </p>
+</div>
+<!-- Status Messages (Hidden by default, shown for UI demonstration) -->
+<!-- Success Message -->
+<div class="hidden flex items-start gap-3 p-4 bg-surface-container-highest border-l-4 border-[#16a34a]">
+<span class="material-symbols-outlined text-[#16a34a] text-xl">check_circle</span>
+<p class="text-sm font-medium text-on-surface">Check your inbox! We have sent a link to recover your account.</p>
+</div>
+<!-- Error Message -->
+<div class="hidden flex items-start gap-3 p-4 bg-surface-container-highest border-l-4 border-[#dc2626]">
+<span class="material-symbols-outlined text-[#dc2626] text-xl">error</span>
+<p class="text-sm font-medium text-on-surface">Email not found. Please try again.</p>
+</div>
+<!-- Form -->
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<div class="space-y-1.5">
+<label class="block text-[0.6875rem] font-semibold uppercase tracking-wider text-outline" for="email">E-mail</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary/20 focus:bg-surface-bright text-on-surface placeholder:text-outline/50 transition-all duration-200 h-12 px-4 outline-none" id="email" name="email" placeholder="nome@exemplo.com" type="email"/>
+</div>
+</div>
+<button class="w-full h-12 bg-gradient-to-tr from-primary to-primary-container text-on-primary font-bold uppercase tracking-widest text-[0.6875rem] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2" type="submit">
+                            Enviar link
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+<div class="pt-4 text-center">
+<a class="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] text-[#e8e1db]/40 hover:text-[#e9c177] transition-colors inline-flex items-center gap-2 group" href="/entrar">
+<span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                            Retornar para o login
+                        </a>
+</div>
+</div>
+</div>
+<!-- Contextual Helper -->
+<div class="mt-8 grid grid-cols-1 gap-4">
+<div class="bg-surface-container-highest/40 backdrop-blur-sm p-4 flex gap-4 items-center">
+<div class="h-10 w-10 shrink-0 bg-surface-bright flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">shield</span>
+</div>
+<div>
+<p class="text-[0.6875rem] font-bold uppercase tracking-wider text-primary">Segurança Garantida</p>
+<p class="text-xs text-on-surface-variant">Seus dados são protegidos por criptografia de ponta a ponta.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 mt-auto flex flex-col items-center gap-4 w-full px-8 bg-transparent">
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] font-inter text-[#e8e1db]/40 hover:text-[#e8e1db] transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] font-inter text-[#e8e1db]/40 hover:text-[#e8e1db] transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] font-inter text-[#e8e1db]/40 hover:text-[#e8e1db] transition-colors opacity-80 hover:opacity-100" href="#">Support</a>
+</div>
+<p class="text-[0.6875rem] font-semibold uppercase tracking-[0.05em] font-inter text-[#c59f59] opacity-80">© 2024 THE DIGITAL ATELIER. ALL RIGHTS RESERVED.</p>
+</footer>
+</body></html>
