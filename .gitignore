@@ -4,6 +4,12 @@
 **/out/
 **/dist/
 
+# Generated reports/artifacts
+**/coverage/
+**/test-results/
+**/perf-reports/
+**/backups/
+
 # Env files (keep .env.example)
 **/.env
 **/.env.local
