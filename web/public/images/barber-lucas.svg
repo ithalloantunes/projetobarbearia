@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="lucasBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2e7d5" />
+      <stop offset="100%" stop-color="#d0b186" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#lucasBg)" />
+  <circle cx="200" cy="155" r="70" fill="#936b38" />
+  <rect x="130" y="230" width="140" height="20" rx="10" fill="#6d4c25" />
+  <text x="200" y="330" font-family="Arial, sans-serif" font-size="18" fill="#5a3f1f" text-anchor="middle">
+    Lucas
+  </text>
+</svg>

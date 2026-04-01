@@ -178,3 +178,19 @@ Riscos ainda abertos para prontidao publica:
    - `smoke:http`, `smoke:e2e`, `smoke:a11y` e `smoke:e2e:auth` em verde.
 4. dependencias apos upgrade permaneceram sem vulnerabilidades abertas de `npm audit` no lock atual.
 5. SDK Sentry integrado com configuracao inicial (client/server/edge) e `.env.example` preparado para DSN.
+
+## Adendo de progresso (2026-04-01)
+
+1. observabilidade externa avancou para prontidao tecnica:
+   - healthcheck com status de prontidao Sentry (`required`, `ready`, `missing`);
+   - monitor de health preparado para falhar/alertar quando Sentry obrigatorio nao estiver pronto.
+2. revisao de performance em paginas chave ja concluida:
+   - home 96, entrar 99, cadastrar 99, termos 99, privacidade 99.
+3. planejamento final das pendencias consolidado:
+   - plano tatico em `contexto_ia/06_plano_fechamento_go_live_2026_04.md`.
+
+Riscos residuais atuais para prontidao publica:
+
+1. ativacao real de DSN e alertas on-call no projeto Sentry ainda nao evidenciada.
+2. LGPD operacional preenchida e simulada, pendente validacao juridica final.
+3. governanca de release preenchida e aprovada, pendente execucao da janela definida.

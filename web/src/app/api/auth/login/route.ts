@@ -49,7 +49,12 @@ export async function POST(request: Request) {
     return rateLimitedResponse(ipLimit.retryAfterSeconds);
   }
 
-  const payload = await request.json();
+  let payload: unknown;
+  try {
+    payload = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Requisicao invalida." }, { status: 400 });
+  }
   const parsed = loginSchema.safeParse(payload);
 
   if (!parsed.success) {

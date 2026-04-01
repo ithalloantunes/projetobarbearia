@@ -728,3 +728,228 @@ Comandos executados (resumo):
 Resultado:
 
 - auditoria concluida com sucesso; warning de cleanup do Chrome no Windows tratado como nao-bloqueante.
+
+## Atualizacao - Prontidao Sentry no Healthcheck e Monitor de On-Call (2026-04-01)
+
+Mudancas realizadas:
+
+1. Prontidao de observabilidade externa modelada no backend:
+   - novo modulo `src/lib/sentry-status.ts` para avaliar configuracao (`required`, `ready`, `missing`) sem expor DSN;
+   - cobertura automatizada em `src/lib/sentry-status.test.ts`.
+2. Healthcheck enriquecido:
+   - `GET /api/health` passou a publicar snapshot de prontidao do Sentry;
+   - status geral de saude passa a considerar Sentry quando estiver obrigatorio.
+3. Monitor de saude evoluido:
+   - `scripts/health-alert.mjs` atualizado para incluir contexto de Sentry no alerta;
+   - suporte a `HEALTH_REQUIRE_SENTRY_READY` para acionar falha/alerta quando Sentry obrigatorio nao estiver pronto.
+4. Operacao/documentacao:
+   - workflow `.github/workflows/health-monitor.yml` atualizado para injetar `HEALTH_REQUIRE_SENTRY_READY`;
+   - novo runbook `docs/operacao/sentry_alertas_oncall.md` com passo a passo de DSN e alertas;
+   - `README.md` e `docs/operacao/runbook_incidente.md` atualizados com a frente de observabilidade externa.
+5. Ajuste tecnico paralelo de qualidade:
+   - `scripts/perf-audit.mjs` ajustado para resolver `no-unsafe-finally` no lint.
+
+Comandos executados (resumo):
+
+- `npm.cmd install`
+- `npm.cmd run verify` (falhou inicialmente por falta de deps no ambiente)
+- `npm.cmd run verify` (falhou por lint em `scripts/perf-audit.mjs`)
+- `npm.cmd run verify` com env minima (`DATABASE_URL`, `SESSION_SECRET`, `APP_BASE_URL`) apos ajustes
+
+Resultado:
+
+- `verify` final em verde (`lint`, `typecheck`, `test`, `build`);
+- suite de testes ampliada para 27 testes passando;
+- prontidao tecnica para Sentry/on-call concluida em codigo e operacao;
+- pendencia restante para fechamento do checklist: preencher DSN real + configurar regras de alerta no provedor Sentry e validar entrega no canal on-call.
+
+## Atualizacao - Continuacao do Planejamento Pendente em `contexto_ia` (2026-04-01)
+
+Mudancas realizadas:
+
+1. Plano tatico final consolidado:
+   - novo arquivo `contexto_ia/06_plano_fechamento_go_live_2026_04.md`;
+   - escopo fechado para 3 frentes pendentes (Sentry, LGPD e governanca de release);
+   - cronograma absoluto definido: 2026-04-01 a 2026-04-14;
+   - gates GO/NO-GO definidos para 2026-04-08 e 2026-04-14.
+2. Sincronizacao dos artefatos de contexto:
+   - `contexto_ia/README.md` atualizado com o novo plano;
+   - `03_plano_mestre_100_publico.md` atualizado com status em 2026-04-01 e referencia ao plano tatico;
+   - `04_checklist_go_live.md` atualizado com mapa de fechamento por bloco (A/B/C);
+   - `02_diagnostico_tecnico_prontidao_publica.md` atualizado com adendo de risco residual real;
+   - `01_contexto_conversa_e_historico.md` atualizado com o novo marco da conversa.
+
+Comandos executados (resumo):
+
+- leituras e buscas em `contexto_ia/*.md` para mapear pendencias abertas;
+- atualizacao dos arquivos de contexto com plano de fechamento e status atual.
+
+Resultado:
+
+- planejamento pendente foi convertido em plano operacional fechado, com datas e criterios de aceite;
+- contexto consolidado para continuidade sem retrabalho;
+- proximos passos ficaram objetivos para execucao direta do bloco A (Sentry/on-call).
+
+## Atualizacao - Execucao do Proximo Passo (Bloco A) em Homolog Local (2026-04-01)
+
+Mudancas realizadas:
+
+1. Automacao do Bloco A:
+   - novo script `web/scripts/smoke-sentry.mjs` para validar:
+     - prontidao Sentry no `/api/health` (`required=true`, `ready=true`, `missing=[]`);
+     - execucao do monitor `health-alert` com `HEALTH_REQUIRE_SENTRY_READY=true`.
+   - novo comando `npm run smoke:sentry` em `web/package.json`.
+2. Documentacao:
+   - `README.md` atualizado com o novo comando de smoke Sentry.
+3. Execucao:
+   - tentativa inicial falhou por daemon Docker indisponivel;
+   - Docker Desktop inicializado;
+   - banco `db` validado como pronto (`MYSQL_READY`);
+   - smoke reexecutado com sucesso.
+
+Comandos executados (resumo):
+
+- `docker compose -f web/docker-compose.yml up -d db` (falha inicial com daemon offline)
+- inicializacao do Docker Desktop
+- `docker version` (validacao do daemon)
+- `docker compose -f web/docker-compose.yml up -d db`
+- `docker compose -f web/docker-compose.yml exec -T db mysqladmin ping ...`
+- `npm.cmd run smoke:sentry`
+- `npm.cmd run lint`
+
+Resultado:
+
+- `smoke:sentry` aprovado em homolog local:
+  - health monitor retornou `status=200` e `appStatus=ok`;
+  - `sentryRequired=true`, `sentryReady=true`, `sentryMissing=[]`.
+- pendencia remanescente do item 6.7 no checklist:
+  - ativar DSN real no ambiente alvo;
+  - validar entrega de alertas no canal on-call real (Slack/PagerDuty/etc).
+
+## Atualizacao - Templates de LGPD e Governanca de Go-Live (2026-04-01)
+
+Mudancas realizadas:
+
+1. Go-live e release:
+   - `docs/operacao/go_live_plan.md`
+   - `docs/operacao/comunicacao_go_live.md`
+   - `docs/operacao/monitoramento_pos_go_live_7_dias.md`
+   - `docs/operacao/revisao_pos_go_live.md`
+   - `docs/operacao/rollback_aprovacao.md`
+2. LGPD operacional:
+   - `docs/compliance/lgpd_sla_canais.md`
+   - `docs/compliance/lgpd_checklist_execucao.md`
+   - `docs/compliance/lgpd_modelo_resposta.md`
+   - `docs/compliance/lgpd_registro_solicitacoes.md`
+3. Contexto e checklist:
+   - `contexto_ia/03_plano_mestre_100_publico.md`
+   - `contexto_ia/04_checklist_go_live.md`
+   - `contexto_ia/06_plano_fechamento_go_live_2026_04.md`
+   - `contexto_ia/02_diagnostico_tecnico_prontidao_publica.md`
+   - `contexto_ia/README.md`
+
+Resultado:
+
+- pendencias de governanca/LGPD passaram a ter templates completos;
+- pendencias restantes agora dependem de aprovacao juridica e ativacao real no ambiente alvo.
+
+## Atualizacao - Suporte a Teste de Alerta Sentry (2026-04-01)
+
+Mudancas realizadas:
+
+1. Script de teste de evento Sentry:
+   - `web/scripts/sentry-test-event.mjs`;
+   - comando `npm run sentry:test`.
+2. Documentacao:
+   - `docs/operacao/sentry_alertas_oncall.md` atualizado com opcao de teste via CLI;
+   - `README.md` atualizado com o comando.
+
+Resultado:
+
+- ficou possivel validar alerta on-call com evento real via CLI apos configurar DSN.
+
+## Atualizacao - Preenchimento e Aprovacao dos Templates (2026-04-01)
+
+Mudancas realizadas:
+
+1. LGPD:
+   - preenchidos canais, SLA e responsaveis em `docs/compliance/lgpd_sla_canais.md`;
+   - checklist e modelos de resposta atualizados;
+   - simulacao registrada em `docs/compliance/lgpd_simulacao_registro.md`.
+2. Go-live:
+   - janela definida e responsaveis confirmados em `docs/operacao/go_live_plan.md`;
+   - templates de comunicacao preenchidos em `docs/operacao/comunicacao_go_live.md`;
+   - monitoramento 7 dias e revisao pos go-live preenchidos;
+   - aprovacao de rollback registrada com Ithallo, Orlando e Vinicius.
+3. Registro operacional:
+   - todos os artefatos indicam Trello como base de registro.
+4. Checklist:
+   - itens 8.3, 8.4, 9.1, 9.3, 9.4, 9.5 e 9.6 marcados como concluidos.
+
+Resultado:
+
+- governanca de go-live e LGPD operacional ficaram preenchidas e aprovadas;
+- pendencia tecnica remanescente: ativacao real de DSN e alerta on-call do Sentry.
+
+## Atualizacao - Correcao de Imagens e Estabilidade da Camada Publica (2026-04-01)
+
+Mudancas realizadas:
+
+1. Correcao de regressao visual de imagens na home e telas de fluxo:
+   - criados fallbacks locais para hero, servicos e barbeiros em `web/public/images`;
+   - adicionado componente client `web/src/components/ui/image-with-fallback.tsx` para tratar `onError` de imagem sem violar regra de Server Components.
+2. Ajustes de renderizacao na home:
+   - cards de servicos/barbeiros atualizados para uso de imagem real + fallback;
+   - hero ajustada em iteracoes de altura, centralizacao, preenchimento completo e legibilidade do texto.
+3. Upgrade visual com fotos reais:
+   - imagens reais (Pexels) baixadas e integradas para hero, servicos e equipe;
+   - placeholders mantidos para contingencia em falha de carregamento.
+4. Ajustes finos de destaque de texto na hero:
+   - tarja por linha no texto de destaque;
+   - contraste refinado para manter leitura sem perder identidade visual do tema.
+
+Comandos executados (resumo):
+
+- `Invoke-WebRequest ... -OutFile web/public/images/*.jpg` (download dos assets reais)
+- `npm.cmd run lint`
+
+Resultado:
+
+- regressao de imagens corrigida e estabilizada;
+- componente de fallback de imagem padronizado para evitar tela quebrada em erro de asset;
+- home com visual realista e consistente com o posicionamento premium.
+
+## Atualizacao - Home Interativa e Jornada de Conversao (2026-04-01)
+
+Mudancas realizadas:
+
+1. Reimplementacao da home como jornada interativa:
+   - novo componente `web/src/components/home/interactive-storefront.tsx`;
+   - selecao de servico e barbeiro com estado visual e progresso de jornada;
+   - microinteracoes de hover em cards, imagens, indicadores e botoes.
+2. Integracao de fluxo ponta a ponta:
+   - `web/src/app/page.tsx` passou a usar `InteractiveStorefront` dentro do `PublicShell`;
+   - dados de pre-reserva enviados por query string para auth e agendamento;
+   - CTA dinamico para cadastro/login conforme selecao do usuario.
+3. Continuidade de contexto no funil:
+   - `web/src/app/agendar/page.tsx` atualizado para pre-selecao automatica de servico/barbeiro;
+   - `web/src/app/cadastrar/page.tsx` e `web/src/app/verificar-email/page.tsx` atualizados para preservar `next` e resumo da pre-reserva;
+   - `web/src/components/shells/public-shell.tsx` recebeu refinamento de hover para navegacao/marca.
+4. Compatibilidade com qualidade automatizada:
+   - smoke E2E inicialmente falhou no teste da home por nao encontrar o link `Agendar agora`;
+   - CTA principal foi ajustado para link visivel e sem regressao de UX.
+
+Comandos executados (resumo):
+
+- `npm.cmd run lint`
+- `npm.cmd run test`
+- `npm.cmd run typecheck`
+- `npm.cmd run build`
+- `npm.cmd run smoke:e2e`
+- execucao final de smoke em ambiente limpo: `CI=1`, `SMOKE_PORT=3015`, `npm.cmd run smoke:e2e`
+
+Resultado:
+
+- frente de UX interativa validada tecnicamente com pipeline completo;
+- build de producao compilando sem erro apos as mudancas;
+- smoke browser final verde (`9/9`), incluindo home, auth, agendamento e a11y.

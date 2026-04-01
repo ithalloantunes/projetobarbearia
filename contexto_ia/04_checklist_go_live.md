@@ -2,7 +2,7 @@
 
 Status: execucao em andamento com itens P0 e P1 ja iniciados.
 Data de criacao: 2026-03-25
-Ultima atualizacao: 2026-03-31
+Ultima atualizacao: 2026-04-01
 
 ## 1. Gate tecnico obrigatorio
 
@@ -54,7 +54,7 @@ Ultima atualizacao: 2026-03-31
 - [x] endpoint de healthcheck
 - [x] alertas configurados (erro, indisponibilidade, fila)
 - [x] runbook de incidente publicado
-- [ ] Sentry/APM externo configurado com DSN e alertas on-call
+- [ ] Sentry/APM externo configurado com DSN e alertas on-call (smoke local concluido em 2026-04-01 com `smoke:sentry`; pendente ativacao real no projeto Sentry e validacao no canal on-call)
 
 ## 7. Publico, SEO e UX
 
@@ -68,14 +68,30 @@ Ultima atualizacao: 2026-03-31
 
 - [x] politica de privacidade publicada (versao inicial, pendente validacao juridica)
 - [x] termos de uso publicados (versao inicial, pendente validacao juridica)
-- [ ] tratamento de dados pessoais mapeado (LGPD) - doc inicial criado, pendente validacao juridica
-- [ ] processo de solicitacao/exclusao de dados definido (draft em docs/compliance)
+- [x] tratamento de dados pessoais mapeado (LGPD) - docs preenchidos, responsaveis definidos e simulacao registrada no Trello
+- [x] processo de solicitacao/exclusao de dados definido (templates preenchidos + simulacao registrada)
 
 ## 9. Release e acompanhamento
 
-- [ ] plano de rollback aprovado (estrategia draft documentada em `docs/operacao/prisma7_upgrade_rollback.md`)
+- [x] plano de rollback aprovado (aprovacao registrada em `docs/operacao/rollback_aprovacao.md`)
 - [x] piloto tecnico Prisma 7 executado em homologacao local (upgrade + migrate + seed + smoke validados em 2026-03-31)
-- [ ] janela de go-live definida
-- [ ] plano de comunicacao com usuarios
-- [ ] monitoramento intensivo por 7 dias apos lancamento
-- [ ] reuniao de revisao pos go-live agendada
+- [x] janela de go-live definida (registrada em `docs/operacao/go_live_plan.md`)
+- [x] plano de comunicacao com usuarios (registrado em `docs/operacao/comunicacao_go_live.md`)
+- [x] monitoramento intensivo por 7 dias apos lancamento (registrado em `docs/operacao/monitoramento_pos_go_live_7_dias.md`)
+- [x] reuniao de revisao pos go-live agendada (registrada em `docs/operacao/revisao_pos_go_live.md`)
+
+## Plano de fechamento dos itens abertos (referencia de execucao)
+
+Base: `contexto_ia/06_plano_fechamento_go_live_2026_04.md`
+
+1. Bloco A (2026-04-01 a 2026-04-03):
+   - 6.7 Sentry/APM externo configurado com DSN e alertas on-call.
+2. Bloco B (2026-04-04 a 2026-04-08):
+   - 8.3 tratamento de dados pessoais mapeado (LGPD).
+   - 8.4 processo de solicitacao/exclusao de dados definido.
+3. Bloco C (2026-04-09 a 2026-04-14):
+   - 9.1 plano de rollback aprovado.
+   - 9.3 janela de go-live definida.
+   - 9.4 plano de comunicacao com usuarios.
+   - 9.5 monitoramento intensivo por 7 dias apos lancamento.
+   - 9.6 reuniao de revisao pos go-live agendada.

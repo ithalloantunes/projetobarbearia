@@ -9,11 +9,14 @@ import {
 import { getEnvStatus } from "@/lib/env";
 import { getTelemetrySnapshot } from "@/lib/telemetry";
 import { getNotificationTelemetrySnapshot } from "@/lib/notification-telemetry";
+import { getSentryStatus } from "@/lib/sentry-status";
 
 export async function GET(request: Request) {
   const startedAt = Date.now();
   const context = getRequestLogContext(request);
   logRequestStart(context, { route: "api.health" });
+  const envStatus = getEnvStatus();
+  const sentryStatus = getSentryStatus();
 
   let databaseStatus: "up" | "down" = "up";
   let databaseLatencyMs = 0;
@@ -30,10 +33,12 @@ export async function GET(request: Request) {
   }
 
   const payload = {
-    status: databaseStatus === "up" && getEnvStatus().ok ? "ok" : "degraded",
+    status:
+      databaseStatus === "up" && envStatus.ok && sentryStatus.ready ? "ok" : "degraded",
     timestamp: new Date().toISOString(),
     uptimeSeconds: Math.floor(process.uptime()),
-    env: getEnvStatus(),
+    env: envStatus,
+    sentry: sentryStatus,
     checks: {
       database: {
         status: databaseStatus,

@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import AuthShell from "@/components/shells/auth-shell";
-import { Button, Input } from "@/components/ui";
+import { Badge, Button, Input, Panel } from "@/components/ui";
 
 export default function VerificarEmailPage() {
   const hasTriggeredVerification = useRef(false);
@@ -15,6 +15,15 @@ export default function VerificarEmailPage() {
   const [resending, setResending] = useState(false);
   const [resendMessage, setResendMessage] = useState<string | null>(null);
   const [resendError, setResendError] = useState<string | null>(null);
+  const [nextPath, setNextPath] = useState("/agendar");
+  const [serviceName, setServiceName] = useState("");
+  const [barberName, setBarberName] = useState("");
+
+  const loginPath = useMemo(() => {
+    const params = new URLSearchParams();
+    params.set("next", nextPath);
+    return `/entrar?${params.toString()}`;
+  }, [nextPath]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -24,6 +33,10 @@ export default function VerificarEmailPage() {
     if (emailFromQuery) {
       setEmail(emailFromQuery);
     }
+
+    setNextPath(params.get("next") || "/agendar");
+    setServiceName(params.get("serviceName") || "");
+    setBarberName(params.get("barberName") || "");
 
     if (tokenFromQuery) {
       setToken(tokenFromQuery);
@@ -94,12 +107,22 @@ export default function VerificarEmailPage() {
       title="Verificar e-mail"
       description="Ative sua conta para liberar o login e agendamentos."
       footer={
-        <Link href="/entrar" className="font-semibold text-primary hover:underline">
+        <Link href={loginPath} className="font-semibold text-primary hover:underline">
           Ir para login
         </Link>
       }
     >
       <div className="space-y-5">
+        {serviceName || barberName ? (
+          <Panel className="bg-primary/10 p-3">
+            <p className="atelier-label">Selecao pronta para agendamento</p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {serviceName ? <Badge tone="primary">Servico: {serviceName}</Badge> : null}
+              {barberName ? <Badge tone="primary">Barbeiro: {barberName}</Badge> : null}
+            </div>
+          </Panel>
+        ) : null}
+
         {verifying ? <p className="text-sm text-foreground-muted">Validando link de ativacao...</p> : null}
         {verificationMessage ? <p className="text-sm text-success">{verificationMessage}</p> : null}
         {verificationError ? <p className="text-sm text-error">{verificationError}</p> : null}

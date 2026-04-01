@@ -212,7 +212,7 @@ Criterio de aceite:
 3. Gate de release quinzenal com checklist de go-live.
 4. Post-mortem obrigatorio para incidente critico.
 
-## Status de execucao atualizado (2026-03-31)
+## Status de execucao atualizado (2026-04-01)
 
 ## Concluido ate o momento
 
@@ -308,18 +308,57 @@ Criterio de aceite:
    - relatorios JSON em `web/perf-reports`.
 27. Legal/compliance iniciado:
    - documento de processo LGPD criado em `docs/compliance/lgpd_solicitacoes_titular.md` (pendente validacao juridica).
+28. Observabilidade externa evoluida para prontidao operacional:
+   - `GET /api/health` agora inclui status de prontidao Sentry (`required`, `ready`, `missing`);
+   - monitor agendado (`health-monitor`) atualizado para avaliar prontidao Sentry via `HEALTH_REQUIRE_SENTRY_READY`;
+   - runbook de configuracao on-call publicado em `docs/operacao/sentry_alertas_oncall.md`.
+29. Planejamento final das pendencias consolidado:
+   - plano tatico com datas, evidencias e gate GO/NO-GO publicado em `contexto_ia/06_plano_fechamento_go_live_2026_04.md`.
+30. Execucao inicial do Bloco A concluida em homolog local:
+   - smoke dedicado `npm run smoke:sentry` implementado e validado;
+   - healthcheck retornando `sentry.required=true` e `sentry.ready=true` em ambiente local com DSN de teste;
+   - monitor `health-alert` validado com `HEALTH_REQUIRE_SENTRY_READY=true`.
+31. Artefatos de governanca e LGPD publicados para fechamento final:
+   - go-live plan e comunicacao: `docs/operacao/go_live_plan.md`, `docs/operacao/comunicacao_go_live.md`;
+   - monitoramento e revisao pos go-live: `docs/operacao/monitoramento_pos_go_live_7_dias.md`, `docs/operacao/revisao_pos_go_live.md`;
+   - aprovacao de rollback: `docs/operacao/rollback_aprovacao.md`;
+   - LGPD operacional: `docs/compliance/lgpd_sla_canais.md`, `docs/compliance/lgpd_checklist_execucao.md`,
+     `docs/compliance/lgpd_modelo_resposta.md`, `docs/compliance/lgpd_registro_solicitacoes.md`.
+32. Templates preenchidos e aprovados com responsaveis:
+   - LGPD com simulacao registrada em `docs/compliance/lgpd_simulacao_registro.md`;
+   - go-live com janela definida e comunicacao pronta;
+   - monitoramento 7 dias e revisao pos go-live agendados;
+   - rollback aprovado por Ithallo, Orlando e Vinicius.
+33. Camada publica de UX evoluida para jornada interativa:
+   - home refeita com selecao de servico/barbeiro, etapas visuais e resumo dinamico;
+   - microinteracoes de hover aplicadas em cards, imagens, indicadores e navegacao.
+34. Continuidade de funil implementada entre paginas:
+   - pre-reserva da home conectada com `cadastrar`/`entrar` e pre-selecao automatica em `agendar`.
+35. Validacao completa da frente UX executada em ambiente local:
+   - `lint`, `test`, `typecheck`, `build` e `smoke:e2e` em verde (9/9 no ciclo final).
 
 ## Em andamento
 
-1. P2 - observabilidade avancada externa (Sentry/APM + alertas com on-call) pendente de DSN/alertas.
-2. Legal/compliance - formalizar processo de solicitacao/exclusao de dados LGPD (doc inicial criado, pendente validacao juridica).
-3. Release/governanca - aprovar rollback final de release e definir janela de go-live.
+1. P2 - observabilidade avancada externa (Sentry/APM + alertas com on-call) em fase final:
+   - prontidao tecnica concluida em codigo e monitor;
+   - validacao local do Bloco A concluida com smoke dedicado;
+   - pendente ativacao de DSN real e validacao de alertas no canal on-call de producao.
+2. Legal/compliance - processo LGPD formalizado e simulado; pendente validacao juridica final.
+3. Release/governanca - plano preenchido e aprovado; pendente somente confirmacao de execucao da janela definida.
+4. UX/camada publica - refinamento final de hierarquia de CTA para reduzir redundancia na primeira dobra, mantendo fluxo guiado simples e intuitivo.
+
+## Plano tatico de fechamento (2026-04-01 a 2026-04-14)
+
+1. Bloco A (2026-04-01 a 2026-04-03): ativacao real de Sentry/APM e validacao de alerta on-call.
+2. Bloco B (2026-04-04 a 2026-04-08): formalizacao LGPD operacional com aprovacao juridica e simulacao.
+3. Bloco C (2026-04-09 a 2026-04-14): aprovacao de rollback, definicao de janela, plano de comunicacao e monitoramento 7 dias.
+4. Referencia completa: `contexto_ia/06_plano_fechamento_go_live_2026_04.md`.
 
 ## Proxima frente sugerida (ordem)
 
-1. Configurar DSN/alertas da observabilidade externa (Sentry/APM) e validar em producao.
-2. Validar e formalizar processo LGPD (juridico + SLA + canais).
-3. Fechar governanca de release (rollback aprovado, janela e plano de comunicacao).
+1. Executar Bloco A do plano tatico e coletar evidencias de alerta on-call.
+2. Executar Bloco B com validacao juridica LGPD e simulacao de atendimento.
+3. Executar Bloco C para fechamento de governanca final de release/go-live.
 
 ## Nota tecnica sobre dependencias (2026-03-31)
 

@@ -59,10 +59,8 @@ export const defaultShopSettings: ShopSettings = {
     facebook: "fb.com/barbersaas",
     tiktok: "@barbersaas"
   },
-  storefrontHeroImage:
-    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1200&auto=format&fit=crop",
-  brandPreviewImage:
-    "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=1200&auto=format&fit=crop"
+  storefrontHeroImage: "/images/hero.jpg",
+  brandPreviewImage: "/images/brand-preview.svg"
 };
 
 function parseBusinessHours(input: unknown): Record<string, DayHour> {

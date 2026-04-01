@@ -17,6 +17,7 @@ Objetivo: orientar resposta rapida a incidentes em producao/homologacao.
 4. Coletar evidencias iniciais:
    - `GET /api/health`
    - logs com `x-request-id`
+   - painel Sentry (issues novas/regressoes)
    - erro principal e impacto percebido
 5. Aplicar mitigacao imediata (rollback, feature flag, bloqueio parcial, reinicio controlado).
 6. Confirmar estabilizacao.
@@ -29,6 +30,7 @@ Objetivo: orientar resposta rapida a incidentes em producao/homologacao.
    - status `ok` ou `degraded`
    - latencia e erro do banco
    - telemetria por rota
+   - prontidao de observabilidade externa em `sentry.ready` e `sentry.missing`
 2. Rotas de auth:
    - `/api/auth/login`
    - `/api/auth/session`

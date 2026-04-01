@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300">
+  <defs>
+    <linearGradient id="comboBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#efe5d2" />
+      <stop offset="100%" stop-color="#cda977" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="300" fill="url(#comboBg)" />
+  <rect x="60" y="60" width="360" height="180" rx="22" fill="#ffffff" opacity="0.5" />
+  <circle cx="170" cy="140" r="36" fill="#a47a44" />
+  <circle cx="260" cy="140" r="36" fill="#8a6231" />
+  <circle cx="350" cy="140" r="36" fill="#b48a50" />
+  <text x="240" y="250" font-family="Arial, sans-serif" font-size="20" fill="#5f4522" text-anchor="middle">
+    Combo Executive
+  </text>
+</svg>

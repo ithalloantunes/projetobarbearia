@@ -1,6 +1,6 @@
 # Contexto da Conversa e Historico
 
-Data base: 2026-03-31
+Data base: 2026-04-01
 Repositorio: `c:\Users\0220482422005\Desktop\projetobarbearia-main`
 
 ## Objetivo geral pedido pelo usuario
@@ -49,6 +49,20 @@ Depois, consolidar e salvar todo esse planejamento + contexto da conversa + regi
 32. Observabilidade externa foi iniciada com integracao do SDK Sentry (config, env example e ajustes de CI/smoke).
 33. Usuario pediu para continuar as proximas partes; revisao de performance foi executada com Lighthouse e o script foi ajustado para tratar erro EPERM no Windows.
 34. Processo LGPD inicial foi documentado em `docs/compliance/lgpd_solicitacoes_titular.md` para validacao juridica.
+35. Usuario pediu para retomar de onde paramos via `contexto_ia`; observabilidade externa evoluiu com prontidao de Sentry integrada ao healthcheck, monitor de health atualizado e runbook dedicado de alertas on-call.
+36. Usuario pediu para continuar o planejamento pendente em `contexto_ia`; plano tatico final de fechamento foi consolidado com janela de execucao entre 2026-04-01 e 2026-04-14.
+37. Usuario pediu para executar o proximo passo; Bloco A foi iniciado e validado em homolog local com smoke dedicado de prontidao Sentry + health monitor (`smoke:sentry`).
+38. Usuario pediu para executar tudo que restava; templates de go-live, comunicacao, monitoramento 7 dias, revisao pos go-live e LGPD operacional foram publicados.
+39. Usuario aprovou preenchimento livre com responsaveis definidos; documentos foram preenchidos com Ithallo, Orlando e Vinicius e registro no Trello.
+40. Usuario pediu para rodar localmente e iniciou validacao visual; surgiram erros de UX/login e problemas de imagem na camada publica.
+41. Camada publica recebeu correcoes de imagem com fallbacks locais para evitar blocos vazios quando URL externa falhar.
+42. Usuario pediu substituicao por fotos reais; imagens reais de barbearia (Pexels) foram integradas na home para hero, servicos e barbeiros.
+43. Layout da hero foi refinado em iteracoes rapidas (altura, centralizacao, ocupacao total da imagem e legibilidade do texto com tarja por linha).
+44. Usuario pediu planejamento profissional para tornar a home mais interativa e intuitiva, com jornada de selecao ate cadastro.
+45. A home foi reimplementada como fluxo interativo com selecao de servico/barbeiro, hover states e CTA dinamico ate cadastro/login.
+46. O fluxo foi conectado ponta a ponta (`/` -> `/cadastrar` ou `/entrar` -> `/agendar`) com pre-selecao por query string e continuidade de contexto.
+47. Validacao tecnica completa foi executada para a frente de UX (lint, test, typecheck, build e smoke E2E), incluindo correcao de compatibilidade do CTA principal com suite de smoke.
+48. Usuario sinalizou redundancia de CTAs; foi aberto plano de simplificacao para reduzir complexidade e reforcar um unico caminho principal na primeira dobra.
 
 ## Decisoes tomadas nesta sessao
 
@@ -59,6 +73,9 @@ Depois, consolidar e salvar todo esse planejamento + contexto da conversa + regi
    - corrigir baseline de seguranca
    - fechar esteira minima de qualidade e operacao
 4. Estruturar plano em fases, com backlog priorizado e checklist de go-live.
+5. Priorizar a experiencia da home com jornada guiada e interativa, reduzindo friccao ate cadastro/agendamento.
+6. Manter compatibilidade de navegacao e testes automatizados com CTA principal visivel e sem regressao de acessibilidade.
+7. Preservar continuidade de escolha do usuario por query string entre home, auth e agendamento.
 
 ## Escopo coberto ate agora
 
@@ -97,6 +114,23 @@ Depois, consolidar e salvar todo esse planejamento + contexto da conversa + regi
 - Execucao de observabilidade externa inicial com SDK Sentry integrado (config e variaveis prontas para DSN).
 - Execucao de revisao de performance com Lighthouse e geracao de relatorios locais.
 - Execucao de mapeamento inicial LGPD com documento de processo para solicitacoes de titulares.
+- Execucao de governanca tecnica de observabilidade externa:
+  - `GET /api/health` passou a expor prontidao do Sentry (`required`, `ready`, `missing`);
+  - monitor agendado de health passou a interpretar e alertar sobre prontidao de Sentry;
+  - runbook operacional de configuracao de DSN/alertas on-call documentado.
+- Execucao de hardening visual na camada publica:
+  - fallbacks locais para imagens da home e fluxo de agendamento;
+  - correcao de handlers de erro de imagem em contexto de Server/Client Components.
+- Execucao de atualizacao visual com imagens reais de barbearia na home (hero, servicos e barbeiros).
+- Execucao de redesign interativo da home:
+  - selecao de servico e barbeiro com estado visual;
+  - passos de jornada e resumo dinamico;
+  - hover interactions em cards, imagens, indicadores e botoes.
+- Execucao de continuidade de funil:
+  - pre-reserva da home repassada para cadastro/login;
+  - pre-selecao aplicada automaticamente em `/agendar`.
+- Execucao de validacao tecnica completa da frente UX:
+  - `lint`, `test`, `typecheck`, `build` e `smoke:e2e` validados no ciclo final.
 
 ## Fora de escopo ate este momento
 

@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import AuthShell from "@/components/shells/auth-shell";
-import { Button, Checkbox, Input } from "@/components/ui";
+import { Badge, Button, Checkbox, Input, Panel } from "@/components/ui";
 import {
   PASSWORD_MIN_LENGTH,
   PASSWORD_POLICY_TEXT,
@@ -22,6 +22,22 @@ export default function CadastrarPage() {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [nextPath, setNextPath] = useState("/agendar");
+  const [serviceName, setServiceName] = useState("");
+  const [barberName, setBarberName] = useState("");
+
+  const loginPath = useMemo(() => {
+    const params = new URLSearchParams();
+    params.set("next", nextPath);
+    return `/entrar?${params.toString()}`;
+  }, [nextPath]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setNextPath(params.get("next") || "/agendar");
+    setServiceName(params.get("serviceName") || "");
+    setBarberName(params.get("barberName") || "");
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -63,7 +79,16 @@ export default function CadastrarPage() {
 
       setMessage(data.message || "Conta criada. Verifique seu email para ativar o acesso.");
       setTimeout(() => {
-        router.push(`/verificar-email?email=${encodeURIComponent(email)}`);
+        const params = new URLSearchParams();
+        params.set("email", email);
+        params.set("next", nextPath);
+        if (serviceName) {
+          params.set("serviceName", serviceName);
+        }
+        if (barberName) {
+          params.set("barberName", barberName);
+        }
+        router.push(`/verificar-email?${params.toString()}`);
       }, 800);
     } catch (submitError) {
       const messageText = submitError instanceof Error ? submitError.message : "Falha ao cadastrar.";
@@ -80,13 +105,23 @@ export default function CadastrarPage() {
       footer={
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span>Ja possui conta?</span>
-          <Link href="/entrar" className="font-semibold text-primary hover:underline">
+          <Link href={loginPath} className="font-semibold text-primary hover:underline">
             Entrar
           </Link>
         </div>
       }
     >
       <form className="space-y-4" onSubmit={handleSubmit}>
+        {serviceName || barberName ? (
+          <Panel className="bg-primary/10 p-3">
+            <p className="atelier-label">Pre-reserva selecionada</p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {serviceName ? <Badge tone="primary">Servico: {serviceName}</Badge> : null}
+              {barberName ? <Badge tone="primary">Barbeiro: {barberName}</Badge> : null}
+            </div>
+          </Panel>
+        ) : null}
+
         <label className="block space-y-1 text-sm">
           <span className="atelier-label">Nome completo</span>
           <Input

@@ -138,6 +138,7 @@ async function run() {
       chromePath,
       chromeFlags: ["--headless", "--no-sandbox"]
     });
+    let chromeCleanupError = null;
 
     try {
       for (const target of targets) {
@@ -153,9 +154,13 @@ async function run() {
             `WARN: chrome cleanup failed on Windows, continuing. Details: ${message}`
           );
         } else {
-          throw error;
+          chromeCleanupError = error;
         }
       }
+    }
+
+    if (chromeCleanupError) {
+      throw chromeCleanupError;
     }
   } finally {
     if (server?.pid) {

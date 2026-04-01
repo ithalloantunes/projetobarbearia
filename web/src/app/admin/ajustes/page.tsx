@@ -206,7 +206,14 @@ export default function AdminAjustesPage() {
               <div className="space-y-3">
                 <div className="overflow-hidden rounded-md border border-outline-variant">
                   {settings.brandPreviewImage ? (
-                    <img src={settings.brandPreviewImage} alt="Preview" className="h-36 w-full object-cover" />
+                    <img
+                      src={settings.brandPreviewImage}
+                      alt="Preview"
+                      className="h-36 w-full object-cover"
+                      onError={(event) => {
+                        event.currentTarget.src = "/images/brand-preview.svg";
+                      }}
+                    />
                   ) : (
                     <div className="flex h-36 items-center justify-center bg-surface-soft text-sm text-foreground-muted">
                       Sem preview

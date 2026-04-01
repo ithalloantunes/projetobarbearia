@@ -50,6 +50,7 @@ async function main() {
     update: {
       name: "Administrador",
       phone: "11999990000",
+      passwordHash: defaultPasswordHash,
       status: "ACTIVE"
     },
     create: {
@@ -67,6 +68,7 @@ async function main() {
     update: {
       name: "Cliente Demo",
       phone: "11999991111",
+      passwordHash: defaultPasswordHash,
       status: "ACTIVE"
     },
     create: {
@@ -149,6 +151,7 @@ async function main() {
         name: profile.name,
         phone: profile.phone,
         role: "BARBER",
+        passwordHash: defaultPasswordHash,
         status: "ACTIVE"
       },
       create: {

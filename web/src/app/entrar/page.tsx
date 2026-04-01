@@ -35,13 +35,18 @@ export default function EntrarPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
       });
-      const data = await response.json();
+      const contentType = response.headers.get("content-type") || "";
+      const data = contentType.includes("application/json")
+        ? await response.json().catch(() => null)
+        : null;
       if (!response.ok) {
-        throw new Error(data.error || "Falha ao entrar.");
+        const apiMessage =
+          data && typeof data === "object" && "error" in data ? String(data.error) : null;
+        throw new Error(apiMessage || "Falha ao entrar. Tente novamente.");
       }
 
       try {
-        localStorage.setItem("barbersaas_user", JSON.stringify(data.user));
+        localStorage.setItem("barbersaas_user", JSON.stringify(data?.user ?? null));
         localStorage.setItem("barbersaas_remember", rememberMe ? "1" : "0");
       } catch {
         // Ignora erro de armazenamento local para nao bloquear login.
@@ -51,7 +56,7 @@ export default function EntrarPage() {
       if (nextPath && nextPath.startsWith("/")) {
         router.push(nextPath);
       } else {
-        router.push(data.redirectTo || "/agendar");
+        router.push((data && data.redirectTo) || "/agendar");
       }
     } catch (submitError) {
       const messageText = submitError instanceof Error ? submitError.message : "Falha ao entrar.";

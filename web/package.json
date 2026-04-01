@@ -12,6 +12,8 @@
         "test:watch": "vitest",
         "test:coverage": "vitest run --coverage",
         "smoke:http": "node scripts/smoke-http.mjs",
+        "smoke:sentry": "node scripts/smoke-sentry.mjs",
+        "sentry:test": "node scripts/sentry-test-event.mjs",
         "smoke:e2e": "playwright test -c playwright.smoke.config.ts",
         "smoke:e2e:auth": "playwright test -c playwright.homolog.config.ts",
         "smoke:a11y": "playwright test -c playwright.smoke.config.ts e2e/smoke/accessibility-smoke.spec.ts",

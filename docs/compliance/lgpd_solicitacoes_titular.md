@@ -15,9 +15,9 @@ Objetivo: padronizar atendimento a solicitacoes de dados pessoais (acesso, corre
 
 ## Canais de solicitacao
 
-- Email de suporte: [definir]
-- Formulario no site: [definir]
-- Registro interno: abrir ticket com ID unico
+- Email de suporte: ithallo423@gmail.com
+- Formulario no site: https://barbersaas.com.br/lgpd
+- Registro interno: Trello (quadro "LGPD BarberSaaS")
 
 ## Verificacao de identidade
 
@@ -62,4 +62,5 @@ Objetivo: padronizar atendimento a solicitacoes de dados pessoais (acesso, corre
 ## Observacoes
 
 - Revisar este documento com juridico antes do go-live.
+- Processo elaborado no Trello por Ithallo, Orlando e Vinicius.
 - Se houver integracoes externas (email, WhatsApp, pagamentos), revisar processos de exclusao nesses provedores.

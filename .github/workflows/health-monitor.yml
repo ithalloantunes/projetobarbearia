@@ -7,6 +7,7 @@ on:
 
 jobs:
   monitor:
+    if: ${{ secrets.HEALTHCHECK_URL != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,3 +24,12 @@ jobs:
           HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
           ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
           HEALTH_ERROR_RATE_THRESHOLD: ${{ vars.HEALTH_ERROR_RATE_THRESHOLD }}
+          HEALTH_REQUIRE_SENTRY_READY: ${{ vars.HEALTH_REQUIRE_SENTRY_READY }}
+
+  monitor-disabled:
+    if: ${{ secrets.HEALTHCHECK_URL == '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Health monitor skipped (missing configuration)
+        run: |
+          echo "::notice title=health-monitor::Secret HEALTHCHECK_URL nao configurado. Workflow executado sem falha para evitar alertas indevidos por email."

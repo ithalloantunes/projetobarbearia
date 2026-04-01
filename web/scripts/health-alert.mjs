@@ -1,6 +1,9 @@
 const healthUrl = process.env.HEALTHCHECK_URL?.trim();
 const webhookUrl = process.env.ALERT_WEBHOOK_URL?.trim();
 const errorRateThreshold = Number(process.env.HEALTH_ERROR_RATE_THRESHOLD || 0.2);
+const requireSentryReady = String(process.env.HEALTH_REQUIRE_SENTRY_READY || "")
+  .trim()
+  .toLowerCase() === "true";
 
 if (!healthUrl) {
   console.error("HEALTHCHECK_URL nao definido.");
@@ -48,6 +51,9 @@ async function main() {
   const status = response.status;
   const appStatus = payload?.status;
   const telemetryErrorRate = Number(payload?.telemetry?.totals?.errorRate ?? 0);
+  const sentryReady = Boolean(payload?.sentry?.ready ?? true);
+  const sentryRequired = Boolean(payload?.sentry?.required ?? false);
+  const sentryMissing = Array.isArray(payload?.sentry?.missing) ? payload.sentry.missing : [];
 
   console.log(
     JSON.stringify({
@@ -56,6 +62,9 @@ async function main() {
       status,
       appStatus,
       telemetryErrorRate,
+      sentryRequired,
+      sentryReady,
+      sentryMissing,
       responseTimeMs,
       timestamp: new Date().toISOString()
     })
@@ -63,14 +72,19 @@ async function main() {
 
   const degraded = status >= 500 || appStatus === "degraded";
   const highErrorRate = telemetryErrorRate > errorRateThreshold;
+  const sentryNotReady = requireSentryReady && sentryRequired && !sentryReady;
 
-  if (degraded || highErrorRate) {
+  if (degraded || highErrorRate || sentryNotReady) {
     await sendWebhookAlert("Alerta de saude da aplicacao", {
       healthUrl,
       status,
       appStatus,
       telemetryErrorRate,
       errorRateThreshold,
+      sentryRequired,
+      sentryReady,
+      sentryMissing,
+      requireSentryReady,
       responseTimeMs,
       timestamp: new Date().toISOString()
     });
@@ -81,6 +95,11 @@ async function main() {
     if (highErrorRate) {
       throw new Error(
         `Taxa de erro acima do limite: ${telemetryErrorRate} > ${errorRateThreshold}.`
+      );
+    }
+    if (sentryNotReady) {
+      throw new Error(
+        `Sentry obrigatorio nao pronto. Variaveis ausentes: ${sentryMissing.join(", ")}.`
       );
     }
   }

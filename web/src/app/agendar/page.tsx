@@ -46,6 +46,14 @@ const steps = [
   { id: 4, title: "Confirmacao" }
 ];
 
+function normalizeLookup(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 function formatPrice(value: number | string) {
   const numeric = typeof value === "string" ? Number(value) : value;
   if (Number.isNaN(numeric)) {
@@ -78,6 +86,7 @@ export default function AgendarPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [prefillNotice, setPrefillNotice] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -158,10 +167,48 @@ export default function AgendarPage() {
           return;
         }
 
+        const query = new URLSearchParams(window.location.search);
+        const serviceFromQuery = query.get("service") || query.get("serviceName") || "";
+        const barberFromQuery = query.get("barber") || query.get("barberName") || "";
+        const normalizedServiceQuery = normalizeLookup(serviceFromQuery);
+        const normalizedBarberQuery = normalizeLookup(barberFromQuery);
+
+        const matchedService =
+          nextServices.find((service) => {
+            const slug = normalizeLookup(service.name);
+            return (
+              slug === normalizedServiceQuery || String(service.id) === serviceFromQuery.trim()
+            );
+          }) || null;
+
+        const matchedBarber =
+          nextBarbers.find((barber) => {
+            const slug = normalizeLookup(barber.name);
+            return (
+              slug === normalizedBarberQuery || String(barber.id) === barberFromQuery.trim()
+            );
+          }) || null;
+
+        const nextSelectedServiceId = matchedService?.id ?? nextServices[0]?.id ?? null;
+        const nextSelectedBarberId = matchedBarber?.id ?? nextBarbers[0]?.id ?? null;
+
         setServices(nextServices);
         setBarbers(nextBarbers);
-        setSelectedServiceId(nextServices[0]?.id ?? null);
-        setSelectedBarberId(nextBarbers[0]?.id ?? null);
+        setSelectedServiceId(nextSelectedServiceId);
+        setSelectedBarberId(nextSelectedBarberId);
+
+        if (matchedService && matchedBarber) {
+          setCurrentStep(3);
+          setPrefillNotice("Selecao inicial aplicada com base na sua escolha da pagina inicial.");
+        } else if (matchedService) {
+          setCurrentStep(2);
+          setPrefillNotice("Servico pre-selecionado. Escolha o barbeiro para continuar.");
+        } else if (matchedBarber) {
+          setCurrentStep(2);
+          setPrefillNotice("Barbeiro pre-selecionado. Revise o servico para continuar.");
+        } else {
+          setPrefillNotice(null);
+        }
 
         if (nextServices.length === 0) {
           setError("Nenhum servico ativo disponivel para agendamento.");
@@ -281,6 +328,7 @@ export default function AgendarPage() {
     setIsSubmitted(false);
     setMessage(null);
     setError(null);
+    setPrefillNotice(null);
     setAdminClientEmail("");
   }
 
@@ -384,6 +432,7 @@ export default function AgendarPage() {
                     <div className="grid gap-3 md:grid-cols-2">
                       {services.map((service) => {
                         const selected = selectedService?.id === service.id;
+                        const serviceImage = service.imageUrl || "/images/placeholder-service.svg";
                         return (
                           <button
                             key={service.id}
@@ -396,6 +445,17 @@ export default function AgendarPage() {
                                 : "border-outline-variant bg-surface-soft/60 hover:border-primary/35"
                             )}
                           >
+                            <div className="mb-3 overflow-hidden rounded-md border border-outline-variant bg-surface-soft">
+                              <img
+                                src={serviceImage}
+                                alt={`Servico ${service.name}`}
+                                className="h-28 w-full object-cover"
+                                loading="lazy"
+                                onError={(event) => {
+                                  event.currentTarget.src = "/images/placeholder-service.svg";
+                                }}
+                              />
+                            </div>
                             <div className="flex items-start justify-between gap-3">
                               <div>
                                 <p className="font-semibold text-foreground">{service.name}</p>
@@ -435,6 +495,10 @@ export default function AgendarPage() {
                     <div className="grid gap-3 sm:grid-cols-2">
                       {barbersWithAny.map((barber) => {
                         const selected = selectedBarber?.id === barber.id;
+                        const barberImage =
+                          "image" in barber && barber.image
+                            ? barber.image
+                            : "/images/placeholder-barber.svg";
                         return (
                           <button
                             key={String(barber.id)}
@@ -447,6 +511,17 @@ export default function AgendarPage() {
                                 : "border-outline-variant bg-surface-soft/60 hover:border-primary/35"
                             )}
                           >
+                            <div className="mb-3 overflow-hidden rounded-md border border-outline-variant bg-surface-soft">
+                              <img
+                                src={barberImage}
+                                alt={`Barbeiro ${barber.name}`}
+                                className="h-28 w-full object-cover"
+                                loading="lazy"
+                                onError={(event) => {
+                                  event.currentTarget.src = "/images/placeholder-barber.svg";
+                                }}
+                              />
+                            </div>
                             <p className="font-semibold text-foreground">{barber.name}</p>
                             <p className="text-sm text-foreground-muted">{barber.level}</p>
                           </button>
@@ -567,6 +642,7 @@ export default function AgendarPage() {
               ) : null}
 
               {error ? <p className="text-sm text-error">{error}</p> : null}
+              {prefillNotice ? <p className="text-sm text-primary">{prefillNotice}</p> : null}
               {message ? <p className="text-sm text-success">{message}</p> : null}
 
               <div className="flex flex-wrap justify-between gap-2">

@@ -18,21 +18,25 @@ export default function PublicShell({ children, compact }: PublicShellProps) {
         )}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary">content_cut</span>
-            <span className="font-display text-xl font-semibold">BarberSaaS</span>
+          <Link href="/" className="group flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary transition-transform duration-300 group-hover:rotate-12">
+              content_cut
+            </span>
+            <span className="font-display text-xl font-semibold transition-colors duration-300 group-hover:text-primary">
+              BarberSaaS
+            </span>
           </Link>
           <nav className="hidden items-center gap-6 text-sm text-foreground-muted md:flex">
-            <a href="#servicos" className="hover:text-primary">
+            <a href="#servicos" className="transition-colors duration-300 hover:text-primary">
               Servicos
             </a>
-            <a href="#barbeiros" className="hover:text-primary">
+            <a href="#barbeiros" className="transition-colors duration-300 hover:text-primary">
               Barbeiros
             </a>
-            <a href="#clientes" className="hover:text-primary">
+            <a href="#clientes" className="transition-colors duration-300 hover:text-primary">
               Clientes
             </a>
-            <a href="#contato" className="hover:text-primary">
+            <a href="#contato" className="transition-colors duration-300 hover:text-primary">
               Contato
             </a>
           </nav>
