@@ -4,7 +4,7 @@ const authenticateRequestMock = vi.fn();
 const resolveBarberIdForUserMock = vi.fn();
 const findManyMock = vi.fn();
 const transactionMock = vi.fn();
-const assertSlotAvailableMock = vi.fn();
+const assertSlotAvailableForServicesMock = vi.fn();
 const sendAppointmentNotificationsMock = vi.fn();
 
 vi.mock("@/lib/auth-server", () => ({
@@ -22,7 +22,7 @@ vi.mock("@/lib/prisma", () => ({
 }));
 
 vi.mock("@/lib/availability", () => ({
-  assertSlotAvailable: assertSlotAvailableMock
+  assertSlotAvailableForServices: assertSlotAvailableForServicesMock
 }));
 
 vi.mock("@/lib/notifications", () => ({
@@ -87,11 +87,13 @@ describe("/api/appointments", () => {
         })
       },
       service: {
-        findUnique: vi.fn().mockResolvedValue({
-          id: 3,
-          name: "Corte",
-          price: "45.00"
-        })
+        findMany: vi.fn().mockResolvedValue([
+          {
+            id: 3,
+            name: "Corte",
+            price: "45.00"
+          }
+        ])
       },
       appointment: {
         create: vi.fn().mockResolvedValue({
@@ -104,7 +106,7 @@ describe("/api/appointments", () => {
     };
 
     transactionMock.mockImplementation(async (callback: (tx: unknown) => unknown) => callback(txMock));
-    assertSlotAvailableMock.mockResolvedValue({
+    assertSlotAvailableForServicesMock.mockResolvedValue({
       startTime: new Date("1970-01-01T10:00:00"),
       endTime: new Date("1970-01-01T10:45:00")
     });

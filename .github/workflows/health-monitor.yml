@@ -5,31 +5,33 @@ on:
   schedule:
     - cron: "*/30 * * * *"
 
+env:
+  HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
+
 jobs:
   monitor:
-    if: ${{ secrets.HEALTHCHECK_URL != '' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Health monitor skipped (missing configuration)
+        if: ${{ env.HEALTHCHECK_URL == '' }}
+        run: |
+          echo "::notice title=health-monitor::Secret HEALTHCHECK_URL nao configurado. Workflow executado sem falha para evitar alertas indevidos por email."
+
       - name: Checkout
+        if: ${{ env.HEALTHCHECK_URL != '' }}
         uses: actions/checkout@v4
 
       - name: Setup Node
+        if: ${{ env.HEALTHCHECK_URL != '' }}
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
       - name: Run health monitor script
+        if: ${{ env.HEALTHCHECK_URL != '' }}
         run: node web/scripts/health-alert.mjs
         env:
-          HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
+          HEALTHCHECK_URL: ${{ env.HEALTHCHECK_URL }}
           ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
           HEALTH_ERROR_RATE_THRESHOLD: ${{ vars.HEALTH_ERROR_RATE_THRESHOLD }}
           HEALTH_REQUIRE_SENTRY_READY: ${{ vars.HEALTH_REQUIRE_SENTRY_READY }}
-
-  monitor-disabled:
-    if: ${{ secrets.HEALTHCHECK_URL == '' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Health monitor skipped (missing configuration)
-        run: |
-          echo "::notice title=health-monitor::Secret HEALTHCHECK_URL nao configurado. Workflow executado sem falha para evitar alertas indevidos por email."

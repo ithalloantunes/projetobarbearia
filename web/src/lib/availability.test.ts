@@ -9,7 +9,7 @@ describe("availability", () => {
   it("returns slots excluding overlaps from blocks and appointments", async () => {
     const prismaMock = {
       service: {
-        findUnique: vi.fn().mockResolvedValue({ id: 1, durationMinutes: 30 })
+        findMany: vi.fn().mockResolvedValue([{ id: 1, durationMinutes: 30 }])
       },
       availability: {
         findMany: vi.fn().mockResolvedValue([
@@ -53,7 +53,7 @@ describe("availability", () => {
   it("asserts a slot as available and returns start/end dates", async () => {
     const prismaMock = {
       service: {
-        findUnique: vi.fn().mockResolvedValue({ id: 1, durationMinutes: 45 })
+        findMany: vi.fn().mockResolvedValue([{ id: 1, durationMinutes: 45 }])
       },
       availability: {
         findMany: vi.fn().mockResolvedValue([
