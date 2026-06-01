@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BarberSaaS - Gerenciamento de Clientes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#373430",
+                        "on-secondary": "#333029",
+                        "surface": "#15130f",
+                        "primary-fixed-dim": "#e9c177",
+                        "on-tertiary": "#153059",
+                        "on-secondary-fixed-variant": "#4a463e",
+                        "surface-container-low": "#1d1b17",
+                        "outline-variant": "#4e4639",
+                        "outline": "#9a8f80",
+                        "inverse-primary": "#78591a",
+                        "on-secondary-fixed": "#1e1b15",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#afc7f9",
+                        "on-tertiary-fixed-variant": "#2e4771",
+                        "primary": "#e9c177",
+                        "on-background": "#e8e1db",
+                        "surface-variant": "#373430",
+                        "on-surface": "#e8e1db",
+                        "tertiary-container": "#8da5d5",
+                        "primary-fixed": "#ffdea7",
+                        "secondary-container": "#4f4b43",
+                        "on-primary-container": "#4e3600",
+                        "on-tertiary-fixed": "#001b3f",
+                        "on-error": "#690005",
+                        "surface-container-high": "#2c2a25",
+                        "surface-tint": "#e9c177",
+                        "tertiary": "#afc7f9",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#d7e2ff",
+                        "on-secondary-container": "#c1bbb0",
+                        "surface-container-lowest": "#100e0a",
+                        "inverse-on-surface": "#33302c",
+                        "background": "#15130f",
+                        "surface-bright": "#3c3934",
+                        "on-primary": "#412d00",
+                        "inverse-surface": "#e8e1db",
+                        "surface-container": "#211f1b",
+                        "secondary": "#ccc6bb",
+                        "primary-container": "#c59f59",
+                        "on-tertiary-container": "#213a64",
+                        "on-surface-variant": "#d1c5b4",
+                        "secondary-fixed": "#e9e2d6",
+                        "on-primary-fixed-variant": "#5d4201",
+                        "on-primary-fixed": "#271900",
+                        "secondary-fixed-dim": "#ccc6bb",
+                        "surface-dim": "#15130f"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #15130f; }
+        ::-webkit-scrollbar-thumb { background: #373430; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e9c177; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-hidden">
+<!-- SIDE NAV BAR (JSON: SideNavBar) -->
+<aside class="fixed left-0 top-0 h-full w-[280px] z-50 bg-[#1d1b17] flex flex-col py-8 px-4 font-['Inter'] text-sm font-medium uppercase tracking-wider">
+<div class="mb-12 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-on-primary" data-icon="content_cut">content_cut</span>
+</div>
+<div>
+<h1 class="text-2xl font-black text-[#e9c177] tracking-tight leading-none">THE ATELIER</h1>
+<p class="text-[10px] text-[#e8e1db]/40 tracking-widest mt-1">PREMIUM GROOMING</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/40 hover:text-[#e8e1db] hover:bg-[#373430]/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/40 hover:text-[#e8e1db] hover:bg-[#373430]/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="calendar_today">calendar_today</span>
+<span>Schedule</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/40 hover:text-[#e8e1db] hover:bg-[#373430]/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="content_cut">content_cut</span>
+<span>Barbers</span>
+</a>
+<!-- Active Tab: Clients -->
+<a class="flex items-center gap-4 px-4 py-3 text-[#e9c177] border-l-4 border-[#e9c177] bg-[#373430]/30 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Clients</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/40 hover:text-[#e8e1db] hover:bg-[#373430]/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="inventory_2">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/40 hover:text-[#e8e1db] hover:bg-[#373430]/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="insights">insights</span>
+<span>Analytics</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1 pt-8 border-t border-outline-variant/20">
+<div class="mb-4 px-4">
+<button class="w-full bg-primary/10 text-primary border border-primary/20 py-3 text-xs font-bold tracking-widest hover:bg-primary hover:text-on-primary transition-all active:scale-95">
+                    UPGRADE TO PRO
+                </button>
+</div>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/40 hover:text-[#e8e1db] hover:bg-[#373430]/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#e8e1db]/40 hover:text-[#e8e1db] hover:bg-[#373430]/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- TOP APP BAR (JSON: TopAppBar) -->
+<header class="fixed top-0 right-0 z-40 w-[calc(100%-280px)] h-20 bg-[#15130f]/60 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex items-center justify-between px-8">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/50 group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full bg-[#1d1b17] border-none focus:ring-1 focus:ring-primary/30 h-12 pl-12 pr-4 text-on-surface text-sm placeholder:text-outline/40 transition-all" placeholder="Search by name, email, or phone..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center text-[#e8e1db]/60 hover:bg-[#373430] hover:text-[#e9c177] transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-[#e8e1db]/60 hover:bg-[#373430] hover:text-[#e9c177] transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 h-11 text-xs font-bold uppercase tracking-widest hover:scale-[1.02] transition-transform active:scale-95">
+                New Appointment
+            </button>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">Julian Rossi</p>
+<p class="text-[10px] text-outline uppercase tracking-tighter">Admin</p>
+</div>
+<img alt="Admin Profile" class="w-10 h-10 rounded-sm object-cover border border-outline-variant/30" data-alt="professional portrait of a man with a well-groomed beard and stylish hair in a dark studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_EBeNZ0TAGgYunJoe5j129X79MqtegmlQTLu9U1aQ5cZSBFZORH_uxOC6Uz-Oh9KvWEg8-85UaGsdtiu7_WJab9oBW5LFsNjyzK_wsYZg5BhCKM0j8vMO_EK-7ZQo_S59Xr1btEg9q6sCPSR-ZiM0AwMdjzKlmxSa5EDuyT40K37PXmJP4T6Cu1Xd5RWnSzH2JoUNMI4R8MLheSES4Zvnn4S9T546IZWcPZyuKZa33Jw9JfMvEtEbeyPAAXBznWzl0t7dMQjxyaE"/>
+</div>
+</div>
+</header>
+<!-- MAIN CONTENT AREA -->
+<main class="ml-[280px] pt-20 h-screen flex">
+<!-- Table Section -->
+<section class="flex-1 p-8 overflow-y-auto">
+<div class="flex items-end justify-between mb-8">
+<div>
+<h2 class="text-3xl font-black uppercase tracking-tight text-on-surface">Client Directory</h2>
+<p class="text-outline text-sm mt-1">Managing 1,284 members of The Atelier.</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-high px-4 py-2 text-xs font-bold uppercase tracking-widest text-outline hover:text-on-surface transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                        Filters
+                    </button>
+<button class="bg-surface-container-high px-4 py-2 text-xs font-bold uppercase tracking-widest text-outline hover:text-on-surface transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                        Export
+                    </button>
+</div>
+</div>
+<div class="bg-surface-container-low overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50 text-outline text-[10px] font-bold uppercase tracking-widest">
+<th class="px-6 py-4">Client</th>
+<th class="px-6 py-4">Contact Info</th>
+<th class="px-6 py-4">Visits</th>
+<th class="px-6 py-4">Last Appointment</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Active Row -->
+<tr class="group hover:bg-surface-container-highest transition-colors cursor-pointer bg-surface-container-highest/20 border-l-4 border-primary">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<img alt="Customer" class="w-10 h-10 rounded-sm grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="Close up of a young man with sharp facial features and modern haircut looking at camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFQXzNije2fmPccsTmljbLc2C0ZuRWPZbZNW4NuHiiyFN2aBjO21aGs0pRFuSSMAvLS_DKc8jHaM5cohgh8WAUDMtGiWjpcdRUWLdE55KgxhEdP63W9Ei55YwclwNAwSQ6g9RE3mE-I-QgLO3Y_pj8FY7pXb79NaVwaTDZ51_zlwE6XD-8IgiL0O-ppWd0HKaIirwNhFls-60kOMdO-3M8SZFEf7X-2JgXHUTqhmwnl9s2TSenmXP_WNA7o3gS2uePBib1cmCq4HA"/>
+<div>
+<p class="font-bold text-on-surface">Arthur Shelby</p>
+<p class="text-[10px] text-primary uppercase font-bold tracking-tighter">Gold Member</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface/80">arthur.s@peaky.com</p>
+<p class="text-xs text-outline">+44 20 7946 0958</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="text-lg font-black text-on-surface">42</span>
+<span class="text-[10px] text-outline uppercase">Total</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface/80 font-medium">Oct 12, 2023</p>
+<p class="text-[10px] text-outline uppercase">14:30 • Classic Cut</p>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">Ativo</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Standard Row -->
+<tr class="group hover:bg-surface-container-highest transition-colors cursor-pointer">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<img alt="Customer" class="w-10 h-10 rounded-sm grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="Smiling man with curly hair and glasses in an outdoor urban setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzqM4r2EphYca53kt9y8ikBgglUHZCwzeQXbGxep9cPcRm1UhYiVG97eXzwHU0A3MzWLS-YOWUOCFlDWqtgeNkdWVCZjt7ZZi42aXRcldeVpho3HNgXaBHyPKqqaWLSxnODJunZlrT0M22e1IcCZa7H51rglU8qugxYmc4yChG1NrNI1XT_Uku-AqbtYgxDydK3tLFPxZIwxWHLoOmwuLcQFw_rjmV3MN5BKLWjt7PgCSPVq35MMf47SywZ6utbUDAFOoiUtWrHBQ"/>
+<div>
+<p class="font-bold text-on-surface">Thomas Miller</p>
+<p class="text-[10px] text-outline uppercase font-bold tracking-tighter">Regular</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface/80">t.miller@gmail.com</p>
+<p class="text-xs text-outline">+1 212 555 0198</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="text-lg font-black text-on-surface">18</span>
+<span class="text-[10px] text-outline uppercase">Total</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface/80 font-medium">Sep 28, 2023</p>
+<p class="text-[10px] text-outline uppercase">10:00 • Beard Trim</p>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">Ativo</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Blocked Row -->
+<tr class="group hover:bg-surface-container-highest transition-colors cursor-pointer">
+<td class="px-6 py-5 opacity-60">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest flex items-center justify-center rounded-sm text-outline">
+<span class="material-symbols-outlined" data-icon="person_off">person_off</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Gregory Peck</p>
+<p class="text-[10px] text-outline uppercase font-bold tracking-tighter">Suspended</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 opacity-60">
+<p class="text-sm text-on-surface/80">g.peck@legacy.net</p>
+<p class="text-xs text-outline">N/A</p>
+</td>
+<td class="px-6 py-5 opacity-60">
+<div class="flex items-center gap-2">
+<span class="text-lg font-black text-on-surface">02</span>
+<span class="text-[10px] text-outline uppercase">Total</span>
+</div>
+</td>
+<td class="px-6 py-5 opacity-60">
+<p class="text-sm text-on-surface/80 font-medium">Aug 04, 2023</p>
+<p class="text-[10px] text-outline uppercase">No-Show</p>
+</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 bg-error-container/20 text-error text-[10px] font-bold uppercase tracking-widest rounded-full">Bloqueado</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Skeleton Row (Loading State) -->
+<tr class="animate-pulse">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest rounded-sm"></div>
+<div class="space-y-2">
+<div class="w-24 h-3 bg-surface-container-highest"></div>
+<div class="w-16 h-2 bg-surface-container-highest"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="space-y-2">
+<div class="w-32 h-3 bg-surface-container-highest"></div>
+<div class="w-20 h-2 bg-surface-container-highest"></div>
+</div>
+</td>
+<td class="px-6 py-5" colspan="4">
+<div class="w-full h-8 bg-surface-container-highest opacity-20"></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Empty State Search (Hidden by default, shown here for visual demo) -->
+<div class="mt-20 flex flex-col items-center justify-center text-center hidden">
+<div class="w-20 h-20 bg-surface-container-low flex items-center justify-center rounded-full mb-6">
+<span class="material-symbols-outlined text-4xl text-outline/30" data-icon="person_search">person_search</span>
+</div>
+<h3 class="text-xl font-bold uppercase text-on-surface">Nenhum cliente encontrado</h3>
+<p class="text-outline max-w-xs mt-2">Try adjusting your search or filters to find what you're looking for.</p>
+<button class="mt-6 text-primary text-xs font-bold uppercase tracking-widest border-b border-primary/30 hover:border-primary transition-all">Clear All Filters</button>
+</div>
+</section>
+<!-- Sidebar / Drawer (Right Side) -->
+<aside class="w-[400px] bg-[#1d1b17] border-l border-outline-variant/10 p-8 flex flex-col shadow-[-20px_0_40px_rgba(0,0,0,0.4)] z-30">
+<div class="flex items-center justify-between mb-10">
+<span class="text-[10px] font-bold uppercase tracking-[0.3em] text-outline">Client Profile</span>
+<button class="text-outline hover:text-on-surface">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="flex flex-col items-center text-center mb-10">
+<div class="relative mb-4">
+<img alt="Arthur Shelby" class="w-24 h-24 rounded-sm object-cover ring-4 ring-primary/20" data-alt="Portrait of a sophisticated man in a dark environment with dramatic lighting highlighting his facial features" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsKRtlXUbtKips1wjIwbHJRSV10v-a-gvSak9iBoxk423y_WFsxz5TbWhLuj9hOl65vc0Z78jilEmOgQ4BrjZgEv7vbiNCSglEHYD4wHDg5HQ_dtzAt5K4qaDQTG9H8KEkyzGx-WSEEhCfJ9IRnpckv2254-jHhkdSsRKzxw2jLuEWitXhbljADGzMspu6KVFO5ebnF3ZVpWX_q6tlLvTeo9vyTityF3OQLdly_8F_oEid_Eqtl2FX8hl8gK1PZzRCpnu8sWEicJ4"/>
+<div class="absolute -bottom-2 -right-2 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center border-4 border-[#1d1b17]">
+<span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill">star</span>
+</div>
+</div>
+<h3 class="text-2xl font-black uppercase text-on-surface leading-tight">Arthur Shelby</h3>
+<p class="text-primary text-xs font-bold uppercase tracking-widest mt-1">Gold Tier Member</p>
+<div class="flex gap-2 mt-4">
+<span class="px-2 py-1 bg-surface-container-highest text-[10px] font-bold text-outline rounded">ID: #AT-0941</span>
+<span class="px-2 py-1 bg-surface-container-highest text-[10px] font-bold text-outline rounded">Since 2021</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-10">
+<div class="bg-[#15130f] p-4">
+<p class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">Avg Ticket</p>
+<p class="text-xl font-black text-on-surface">$45.00</p>
+</div>
+<div class="bg-[#15130f] p-4">
+<p class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">Preferred</p>
+<p class="text-sm font-bold text-primary uppercase">Leo 'Blade'</p>
+</div>
+</div>
+<div class="space-y-6 flex-1 overflow-y-auto pr-2">
+<div>
+<h4 class="text-[10px] font-bold text-outline uppercase tracking-widest mb-4 border-b border-outline-variant/20 pb-2">Recent Activity</h4>
+<div class="space-y-4">
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="event_available">event_available</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Premium Razor Fade</p>
+<p class="text-[10px] text-outline">Oct 12, 2023 • Paid $55.00</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-sm bg-outline-variant/10 flex items-center justify-center flex-shrink-0 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Viking Beard Oil 50ml</p>
+<p class="text-[10px] text-outline">Sep 28, 2023 • Paid $12.00</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-[10px] font-bold text-outline uppercase tracking-widest mb-4 border-b border-outline-variant/20 pb-2">Contact Details</h4>
+<div class="space-y-3">
+<div class="flex items-center gap-3 text-xs text-on-surface/80">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="mail">mail</span>
+                            arthur.s@peaky.com
+                        </div>
+<div class="flex items-center gap-3 text-xs text-on-surface/80">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="call">call</span>
+                            +44 20 7946 0958
+                        </div>
+<div class="flex items-center gap-3 text-xs text-on-surface/80">
+<span class="material-symbols-outlined text-sm text-outline" data-icon="location_on">location_on</span>
+                            Birmingham, UK
+                        </div>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/20 grid grid-cols-2 gap-3">
+<button class="bg-surface-container-highest text-on-surface py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-surface-bright transition-all">
+                    Editar Perfil
+                </button>
+<button class="bg-error-container/20 text-error py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-error-container/40 transition-all">
+                    Bloquear
+                </button>
+</div>
+</aside>
+</main>
+<!-- Contextual FAB (Only for specific pages, but included as per requirements) -->
+<button class="fixed bottom-8 right-[432px] w-14 h-14 bg-primary text-on-primary rounded-sm shadow-[0_10px_30px_rgba(233,193,119,0.3)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-3xl" data-icon="person_add">person_add</span>
+</button>
+</body></html>

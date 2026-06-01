@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BarberSaaS Design System | The Digital Atelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary-fixed-dim": "#e9c177",
+                "outline": "#9a8f80",
+                "on-secondary-fixed": "#1e1b15",
+                "surface-container-highest": "#373430",
+                "on-secondary-container": "#c1bbb0",
+                "tertiary": "#afc7f9",
+                "tertiary-container": "#8da5d5",
+                "secondary-container": "#4f4b43",
+                "on-error-container": "#ffdad6",
+                "on-tertiary-fixed-variant": "#2e4771",
+                "surface-variant": "#373430",
+                "inverse-on-surface": "#33302c",
+                "surface-container-lowest": "#100e0a",
+                "on-secondary": "#333029",
+                "error-container": "#93000a",
+                "on-tertiary-fixed": "#001b3f",
+                "secondary-fixed": "#e9e2d6",
+                "secondary-fixed-dim": "#ccc6bb",
+                "secondary": "#ccc6bb",
+                "on-secondary-fixed-variant": "#4a463e",
+                "on-tertiary": "#153059",
+                "background": "#15130f",
+                "on-surface-variant": "#d1c5b4",
+                "on-primary-container": "#4e3600",
+                "on-error": "#690005",
+                "surface-dim": "#15130f",
+                "primary": "#e9c177",
+                "outline-variant": "#4e4639",
+                "on-background": "#e8e1db",
+                "surface-container-high": "#2c2a25",
+                "tertiary-fixed": "#d7e2ff",
+                "inverse-surface": "#e8e1db",
+                "tertiary-fixed-dim": "#afc7f9",
+                "on-surface": "#e8e1db",
+                "surface-bright": "#3c3934",
+                "on-tertiary-container": "#213a64",
+                "on-primary-fixed": "#271900",
+                "surface": "#15130f",
+                "primary-fixed": "#ffdea7",
+                "surface-container-low": "#1d1b17",
+                "error": "#ffb4ab",
+                "inverse-primary": "#78591a",
+                "primary-container": "#c59f59",
+                "on-primary-fixed-variant": "#5d4201",
+                "on-primary": "#412d00",
+                "surface-tint": "#e9c177",
+                "surface-container": "#211f1b"
+              },
+              fontFamily: {
+                "headline": ["Inter"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #15130f;
+            color: #e8e1db;
+            font-family: 'Inter', sans-serif;
+        }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Anchor -->
+<header class="bg-[#15130f]/60 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-[#4e4639]/15 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="text-xl font-black text-[#e9c177] tracking-tighter uppercase">BarberSaaS</div>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="text-[#e9c177] font-bold border-b-2 border-[#e9c177] h-full flex items-center px-1" href="#">Design System</a>
+<a class="text-[#e8e1db]/70 hover:text-[#e8e1db] h-full flex items-center px-1 transition-colors" href="#">Components</a>
+<a class="text-[#e8e1db]/70 hover:text-[#e8e1db] h-full flex items-center px-1 transition-colors" href="#">Guidelines</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#e8e1db]/70 hover:text-primary cursor-pointer transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-[#e8e1db]/70 hover:text-primary cursor-pointer transition-colors" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-24">
+<h1 class="text-7xl md:text-8xl font-black tracking-tighter mb-4 text-on-surface">The Digital Atelier.</h1>
+<p class="text-xl text-on-surface-variant max-w-2xl font-medium leading-relaxed">A visual language built for the modern grooming professional. High contrast, architectural precision, and tonal depth.</p>
+</section>
+<!-- Color Palette -->
+<section class="mb-32">
+<div class="flex items-baseline gap-4 mb-12">
+<h2 class="text-4xl font-black tracking-tight uppercase">01 Color Palette</h2>
+<div class="h-px flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+<div class="space-y-3">
+<div class="h-32 w-full bg-primary bg-gradient-to-br from-primary to-primary-container"></div>
+<div>
+<p class="font-bold text-on-surface">Primary</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">#e9c177</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="h-32 w-full bg-surface-container-low border border-outline-variant/10"></div>
+<div>
+<p class="font-bold text-on-surface">Surface Dark</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">#1d1b17</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="h-32 w-full bg-[#f8f7f6]"></div>
+<div>
+<p class="font-bold text-on-surface">Light Background</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">#f8f7f6</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="h-32 w-full bg-surface-container-highest"></div>
+<div>
+<p class="font-bold text-on-surface">Elevated Surface</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">#373430</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="h-32 w-full bg-error-container"></div>
+<div>
+<p class="font-bold text-on-surface">Error Container</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">#93000a</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Typography -->
+<section class="mb-32">
+<div class="flex items-baseline gap-4 mb-12">
+<h2 class="text-4xl font-black tracking-tight uppercase">02 Typography</h2>
+<div class="h-px flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="space-y-12">
+<div class="flex flex-col md:flex-row md:items-end gap-6 border-b border-outline-variant/15 pb-8">
+<span class="text-xs font-bold text-primary w-24">48 / Display</span>
+<h3 class="text-5xl md:text-7xl font-black tracking-tighter leading-none">The Atelier Standard</h3>
+</div>
+<div class="flex flex-col md:flex-row md:items-end gap-6 border-b border-outline-variant/15 pb-8">
+<span class="text-xs font-bold text-primary w-24">32 / Headline</span>
+<h3 class="text-3xl md:text-4xl font-bold tracking-tight">Refined Grooming Experience</h3>
+</div>
+<div class="flex flex-col md:flex-row md:items-end gap-6 border-b border-outline-variant/15 pb-8">
+<span class="text-xs font-bold text-primary w-24">24 / Title</span>
+<h3 class="text-2xl font-bold">Appointment Management Dashboard</h3>
+</div>
+<div class="flex flex-col md:flex-row md:items-end gap-6 border-b border-outline-variant/15 pb-8">
+<span class="text-xs font-bold text-primary w-24">20 / Subtitle</span>
+<h3 class="text-xl font-semibold">Master your craft with intelligent tools.</h3>
+</div>
+<div class="flex flex-col md:flex-row md:items-start gap-6 border-b border-outline-variant/15 pb-8">
+<span class="text-xs font-bold text-primary w-24">16 / Body</span>
+<p class="text-base text-on-surface-variant leading-relaxed max-w-xl">Every detail matters. From the way you hold the shears to the digital environment where you manage your clients. Our interface is designed to reflect that level of care.</p>
+</div>
+<div class="flex flex-col md:flex-row md:items-start gap-6">
+<span class="text-xs font-bold text-primary w-24">12 / Label</span>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Confirmed Appointment • 14:00 PM • London Studio</p>
+</div>
+</div>
+</section>
+<!-- Components Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<!-- Buttons & Actions -->
+<section>
+<div class="flex items-baseline gap-4 mb-12">
+<h2 class="text-2xl font-black tracking-tight uppercase">03 Buttons</h2>
+<div class="h-px flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="flex flex-wrap gap-6 items-center">
+<button class="px-8 py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold uppercase tracking-widest text-xs hover:scale-[1.05] transition-transform active:scale-95 shadow-lg">Primary Action</button>
+<button class="px-8 py-3 bg-surface-container-highest text-on-surface font-bold uppercase tracking-widest text-xs hover:bg-surface-bright transition-colors active:scale-95 border border-outline-variant/20">Secondary</button>
+<button class="px-8 py-3 text-[#e8e1db] font-bold uppercase tracking-widest text-xs hover:bg-surface-bright transition-colors active:scale-95 border border-transparent">Ghost Button</button>
+<button class="px-8 py-3 bg-error-container/20 text-error font-bold uppercase tracking-widest text-xs hover:bg-error-container/30 transition-colors active:scale-95 border border-error/20">Danger Action</button>
+</div>
+</section>
+<!-- Status Badges -->
+<section>
+<div class="flex items-baseline gap-4 mb-12">
+<h2 class="text-2xl font-black tracking-tight uppercase">04 Status</h2>
+<div class="h-px flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="flex flex-wrap gap-4">
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-primary text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Confirmed
+                    </span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant text-[10px] font-black uppercase tracking-widest flex items-center gap-2 border border-outline-variant/20">
+<span class="w-1.5 h-1.5 bg-on-surface-variant rounded-full"></span> Pending
+                    </span>
+<span class="px-4 py-1.5 rounded-full bg-error-container text-on-error-container text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-on-error-container rounded-full"></span> Canceled
+                    </span>
+<span class="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest flex items-center gap-2 border border-primary/20">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Completed
+                    </span>
+</div>
+</section>
+<!-- Forms -->
+<section class="lg:col-span-2">
+<div class="flex items-baseline gap-4 mb-12">
+<h2 class="text-2xl font-black tracking-tight uppercase">05 Form Fields</h2>
+<div class="h-px flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="space-y-2">
+<label class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant ml-1">Client Name</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary text-on-surface px-4 py-3 text-sm placeholder:text-on-surface/30" placeholder="Johnathan Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant ml-1">Service Type</label>
+<select class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary text-on-surface px-4 py-3 text-sm appearance-none">
+<option>Signature Haircut</option>
+<option>Beard Sculpting</option>
+<option>Classic Shave</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant ml-1">Notes</label>
+<textarea class="w-full bg-surface-container-highest border-none focus:ring-1 focus:ring-primary text-on-surface px-4 py-3 text-sm placeholder:text-on-surface/30" placeholder="Add specific requirements..." rows="1"></textarea>
+</div>
+</div>
+</section>
+<!-- Cards -->
+<section>
+<div class="flex items-baseline gap-4 mb-12">
+<h2 class="text-2xl font-black tracking-tight uppercase">06 Content Cards</h2>
+<div class="h-px flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="bg-surface-container-low border-l-4 border-primary p-8 shadow-2xl space-y-4">
+<div class="flex justify-between items-start">
+<h4 class="text-xl font-bold">Evening Grooming Session</h4>
+<span class="text-[10px] font-black text-primary uppercase tracking-widest">Featured</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Exclusive after-hours session featuring our head stylist and whiskey pairing. Limited availability for premium members only.</p>
+<div class="pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-primary-container border-2 border-surface-container-low flex items-center justify-center text-[10px] font-bold">JD</div>
+<div class="w-8 h-8 rounded-full bg-surface-bright border-2 border-surface-container-low flex items-center justify-center text-[10px] font-bold">MK</div>
+</div>
+<button class="text-xs font-bold text-primary uppercase tracking-widest hover:underline transition-all">View Details</button>
+</div>
+</div>
+</section>
+<!-- Data Table -->
+<section>
+<div class="flex items-baseline gap-4 mb-12">
+<h2 class="text-2xl font-black tracking-tight uppercase">07 Responsive Tables</h2>
+<div class="h-px flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="overflow-hidden bg-surface-container-low border border-outline-variant/10">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-highest/50">
+<th class="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Barber</th>
+<th class="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Efficiency</th>
+<th class="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container-highest/30 transition-colors">
+<td class="px-4 py-4 text-sm font-semibold">Julian Black</td>
+<td class="px-4 py-4">
+<div class="w-full bg-surface-container-highest h-1.5 max-w-[80px]">
+<div class="bg-primary h-full w-[92%]"></div>
+</div>
+</td>
+<td class="px-4 py-4"><span class="text-[10px] font-bold text-primary uppercase">Active</span></td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-colors">
+<td class="px-4 py-4 text-sm font-semibold">Marcus Thorne</td>
+<td class="px-4 py-4">
+<div class="w-full bg-surface-container-highest h-1.5 max-w-[80px]">
+<div class="bg-primary h-full w-[78%]"></div>
+</div>
+</td>
+<td class="px-4 py-4"><span class="text-[10px] font-bold text-primary uppercase">Active</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Overlays & Feedback -->
+<section class="mt-32">
+<div class="flex items-baseline gap-4 mb-12">
+<h2 class="text-2xl font-black tracking-tight uppercase">08 Feedback &amp; Modals</h2>
+<div class="h-px flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Modal Example -->
+<div class="bg-surface-container-highest p-8 shadow-2xl relative border border-outline-variant/20">
+<div class="flex justify-between items-center mb-6">
+<h5 class="text-lg font-bold">Discard Changes?</h5>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="close">close</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-8 leading-relaxed">You have unsaved changes in the stylist schedule. Leaving now will delete all progress.</p>
+<div class="flex gap-4">
+<button class="flex-1 py-3 text-[10px] font-black uppercase tracking-widest bg-error-container text-on-error-container">Discard</button>
+<button class="flex-1 py-3 text-[10px] font-black uppercase tracking-widest bg-surface-bright">Keep Editing</button>
+</div>
+</div>
+<!-- Toast Notification -->
+<div class="space-y-4">
+<div class="flex items-center gap-4 bg-[#1d1b17] p-4 border-l-4 border-primary shadow-xl">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<div class="flex-grow">
+<p class="text-xs font-bold uppercase tracking-wider">Appointment Confirmed</p>
+<p class="text-[10px] text-on-surface-variant">Client has been notified via SMS.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-[#1d1b17] p-4 border-l-4 border-error shadow-xl">
+<span class="material-symbols-outlined text-error" data-icon="error">error</span>
+<div class="flex-grow">
+<p class="text-xs font-bold uppercase tracking-wider">Payment Failed</p>
+<p class="text-[10px] text-on-surface-variant">Please verify card details.</p>
+</div>
+</div>
+</div>
+<!-- Empty State & Skeleton -->
+<div class="space-y-8">
+<div class="flex flex-col items-center justify-center p-8 bg-surface-container-low border border-dashed border-outline-variant/30 text-center">
+<span class="material-symbols-outlined text-on-surface-variant/30 mb-4 text-4xl" data-icon="calendar_today">calendar_today</span>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">No Bookings Yet</p>
+<p class="text-[10px] text-on-surface-variant/50 mt-1">Check back later for new appointments.</p>
+</div>
+<div class="space-y-4 animate-pulse">
+<div class="flex gap-4 items-center">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full"></div>
+<div class="flex-grow space-y-2">
+<div class="h-2 bg-surface-container-highest w-3/4"></div>
+<div class="h-2 bg-surface-container-highest w-1/2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Side Navigation Blueprint (Simulated) -->
+<div class="fixed left-0 top-0 bottom-0 w-16 bg-surface-container-low border-r border-[#4e4639]/15 flex flex-col items-center py-8 gap-8 z-40 hidden lg:flex">
+<div class="text-primary font-black text-xl tracking-tighter">B</div>
+<div class="flex flex-col gap-6 items-center flex-grow">
+<span class="material-symbols-outlined text-primary transition-all cursor-pointer p-2 bg-surface-container-highest border-l-2 border-primary" data-icon="dashboard">dashboard</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all cursor-pointer p-2" data-icon="event_available">event_available</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all cursor-pointer p-2" data-icon="content_cut">content_cut</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all cursor-pointer p-2" data-icon="groups">groups</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all cursor-pointer" data-icon="logout">logout</span>
+</div>
+<!-- Bottom Navigation for Mobile -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full h-16 flex justify-around items-center z-50 bg-[#15130f]/80 backdrop-blur-lg border-t border-[#4e4639]/15 px-4 pb-safe">
+<div class="flex flex-col items-center gap-1 scale-110 text-[#e9c177]">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-semibold uppercase tracking-widest">Home</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-[#e8e1db]/40">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-[10px] font-semibold uppercase tracking-widest">Schedule</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-[#e8e1db]/40">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="text-[10px] font-semibold uppercase tracking-widest">Team</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-[#e8e1db]/40">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="text-[10px] font-semibold uppercase tracking-widest">More</span>
+</div>
+</footer>
+<!-- Image for Context -->
+<div class="fixed bottom-12 right-12 w-32 h-32 opacity-10 pointer-events-none hidden xl:block">
+<img class="w-full h-full object-cover grayscale" data-alt="close-up of premium barber tools including stainless steel shears and a straight razor on dark walnut wood background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeW9OimUIVtJpKtau2-BzzFtOiznOil40HZYq0cGAs9v0inT7F59yIg7ask-9eTeN12noUYkOrgsm--pOEjNgZOLMmbAxHs7f1o1bo4YxA8QHBefCOTbtcsZL5vmP4inJY9wkRofmOduqVnvjoD-Gf3JBhlEP4YCtHLQTtxYd33qsSNoKWhp8Kh_wfKEuILGe6IezhRFDT29lm_8828CZxdnLe_hnrpPTqZbuamk2invPvZBLyLLHoaPi5y6_s-xGJJ7E18QFSgZA"/>
+</div>
+</body></html>

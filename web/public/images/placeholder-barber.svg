@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300">
+  <defs>
+    <linearGradient id="barberBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#efe3cc" />
+      <stop offset="100%" stop-color="#d8bf93" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="300" fill="url(#barberBg)" />
+  <circle cx="240" cy="125" r="58" fill="#8d6a3b" opacity="0.9" />
+  <rect x="150" y="195" width="180" height="18" rx="9" fill="#6b4f2b" />
+  <text x="240" y="250" font-family="Arial, sans-serif" font-size="18" fill="#5a421f" text-anchor="middle">
+    Barbeiro
+  </text>
+</svg>

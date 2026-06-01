@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Atelier | Management Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#c1bbb0",
+              "inverse-primary": "#78591a",
+              "on-secondary-fixed": "#1e1b15",
+              "inverse-surface": "#e8e1db",
+              "inverse-on-surface": "#33302c",
+              "background": "#15130f",
+              "surface-container-highest": "#373430",
+              "on-surface": "#e8e1db",
+              "secondary-fixed-dim": "#ccc6bb",
+              "on-primary": "#412d00",
+              "error-container": "#93000a",
+              "on-tertiary-fixed-variant": "#2e4771",
+              "on-background": "#e8e1db",
+              "surface-tint": "#e9c177",
+              "surface-variant": "#373430",
+              "outline-variant": "#4e4639",
+              "on-tertiary-container": "#213a64",
+              "on-tertiary": "#153059",
+              "surface": "#15130f",
+              "primary-container": "#c59f59",
+              "surface-container": "#211f1b",
+              "surface-dim": "#15130f",
+              "on-surface-variant": "#d1c5b4",
+              "tertiary-container": "#8da5d5",
+              "on-primary-container": "#4e3600",
+              "tertiary-fixed": "#d7e2ff",
+              "on-tertiary-fixed": "#001b3f",
+              "primary": "#e9c177",
+              "on-error-container": "#ffdad6",
+              "on-error": "#690005",
+              "primary-fixed-dim": "#e9c177",
+              "on-primary-fixed-variant": "#5d4201",
+              "error": "#ffb4ab",
+              "on-secondary-fixed-variant": "#4a463e",
+              "secondary-fixed": "#e9e2d6",
+              "tertiary-fixed-dim": "#afc7f9",
+              "secondary": "#ccc6bb",
+              "on-secondary": "#333029",
+              "surface-container-low": "#1d1b17",
+              "surface-container-high": "#2c2a25",
+              "secondary-container": "#4f4b43",
+              "tertiary": "#afc7f9",
+              "surface-container-lowest": "#100e0a",
+              "surface-bright": "#3c3934",
+              "on-primary-fixed": "#271900",
+              "outline": "#9a8f80",
+              "primary-fixed": "#ffdea7"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #15130f;
+            color: #e8e1db;
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #15130f;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #373430;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar Anchor -->
+<aside class="h-full w-64 fixed left-0 top-0 border-r border-[#4e4639]/15 bg-[#1d1b17] flex flex-col py-8 px-4 z-50">
+<div class="mb-10 px-4">
+<h1 class="text-xl font-black uppercase tracking-widest text-[#e8e1db]">The Atelier</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-primary/60 mt-1">Management Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Executive Summary (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 text-[#e8e1db]/60 font-medium hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm">Executive Summary</span>
+</a>
+<!-- Revenue Analytics (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 text-[#e9c177] font-bold border-l-4 border-[#e9c177] bg-[#373430] scale-[1.02] transform transition-transform" href="#">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span class="text-sm">Revenue Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#e8e1db]/60 font-medium hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-xl">content_cut</span>
+<span class="text-sm">Barber Performance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#e8e1db]/60 font-medium hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="text-sm">Client Retention</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#e8e1db]/60 font-medium hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-xl">stock_media</span>
+<span class="text-sm">Inventory Control</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#e8e1db]/60 font-medium hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200 ease-in-out mt-auto" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="text-sm">System Settings</span>
+</a>
+</nav>
+<div class="mt-8 px-4 pt-8 border-t border-[#4e4639]/15">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary text-xs font-bold uppercase tracking-widest rounded-sm hover:scale-[1.02] transition-transform">
+                Generate Report
+            </button>
+</div>
+</aside>
+<!-- TopAppBar Anchor -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-20 bg-[#15130f]/60 backdrop-blur-xl z-40 flex justify-between items-center px-8 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-8">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/40">search</span>
+<input class="bg-surface-container-highest border-none text-sm px-10 py-2 w-64 rounded-sm focus:ring-1 focus:ring-primary/30 transition-all outline-none" placeholder="Search analytics..." type="text"/>
+</div>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-[11px] uppercase tracking-wider text-[#e8e1db]/50 hover:text-[#e8e1db] transition-opacity" href="#">Daily View</a>
+<a class="text-[11px] uppercase tracking-wider text-[#e8e1db]/50 hover:text-[#e8e1db] transition-opacity" href="#">Weekly</a>
+<a class="text-[11px] uppercase tracking-wider text-[#e9c177] border-b-2 border-[#e9c177] pb-1" href="#">Monthly</a>
+<a class="text-[11px] uppercase tracking-wider text-[#e8e1db]/50 hover:text-[#e8e1db] transition-opacity" href="#">Fiscal Year</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 border-r border-outline-variant/20 pr-6">
+<button class="text-[#e8e1db]/60 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-[#e8e1db]/60 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-on-surface">Julian Rossi</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">Executive Admin</p>
+</div>
+<img alt="Executive Admin" class="w-10 h-10 rounded-sm object-cover border border-outline-variant/30" data-alt="Close-up professional portrait of a distinguished man with a groomed beard in a dark studio setting with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQaFNPT2xxbGL3pOS3vXyjWVxT4uDbq90rX7i9Xdm2O8QhArd7KvrwRfjwRLDlDt9tiniDVlxA-8IwzveVry6ynxcQ6Vmakd24TGi4sarsEEZCgoTxBy0QKCLitA40AoNQr_pk4RNWcs78S1zbY0dqTjbeBWAxps4Zp_nVaQaZt26ZnXJgysk7BsluHnj4cBBQ1JxwOFKav8StINoaqRWkI-8zk2rfKRXksr9bDG7bk8m1cq-TPG06iSWofsmenr1UELQqtR6XY8Y"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-20 p-8 min-h-screen">
+<!-- Dashboard Header & Period Selector -->
+<div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
+<div>
+<h2 class="text-4xl font-black tracking-tight text-on-surface mb-2 uppercase">Revenue Analytics</h2>
+<p class="text-on-surface-variant/60 text-sm">Comprehensive performance breakdown for the current fiscal period.</p>
+</div>
+<div class="flex bg-surface-container-low p-1 rounded-sm border border-outline-variant/10">
+<button class="px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/40 hover:text-on-surface transition-colors">7d</button>
+<button class="px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest bg-surface-container-highest text-primary rounded-sm shadow-sm">30d</button>
+<button class="px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/40 hover:text-on-surface transition-colors">90d</button>
+<button class="px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/40 hover:text-on-surface transition-colors">Year</button>
+</div>
+</div>
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<!-- Revenue Card -->
+<div class="bg-surface-container-high p-6 border-l-4 border-primary relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">payments</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60 mb-4">Faturamento (Revenue)</p>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-black text-on-surface tracking-tighter">R$ 12.450,00</h3>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="flex items-center text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-xs mr-1">trending_up</span>
+                        +12%
+                    </span>
+<span class="text-[10px] text-on-surface-variant/40 uppercase tracking-wider">vs last period</span>
+</div>
+</div>
+<!-- Growth Card -->
+<div class="bg-surface-container-high p-6 border-l-4 border-outline-variant/30 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">query_stats</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60 mb-4">Crescimento (Growth)</p>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-black text-on-surface tracking-tighter">8.5%</h3>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="flex items-center text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-xs mr-1">trending_up</span>
+                        +2.1%
+                    </span>
+<span class="text-[10px] text-on-surface-variant/40 uppercase tracking-wider">vs last period</span>
+</div>
+</div>
+<!-- Occupancy Card -->
+<div class="bg-surface-container-high p-6 border-l-4 border-outline-variant/30 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">event_available</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60 mb-4">Ocupação (Occupancy)</p>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-black text-on-surface tracking-tighter">88%</h3>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="flex items-center text-[10px] font-bold text-error bg-error/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-xs mr-1">trending_down</span>
+                        -2%
+                    </span>
+<span class="text-[10px] text-on-surface-variant/40 uppercase tracking-wider">vs last period</span>
+</div>
+</div>
+</div>
+<!-- Charts & Ranking Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+<!-- Monthly Revenue Chart Area -->
+<div class="lg:col-span-2 bg-surface-container-low p-8 border border-outline-variant/5">
+<div class="flex justify-between items-center mb-10">
+<h4 class="text-lg font-bold uppercase tracking-tight">Revenue Trend</h4>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-primary rounded-full"></span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/60">Actual</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-surface-container-highest rounded-full border border-outline-variant"></span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/60">Projected</span>
+</div>
+</div>
+</div>
+<!-- Simple Vector Chart Placeholder -->
+<div class="h-64 flex items-end justify-between gap-4 px-2">
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-highest hover:bg-primary/40 transition-colors h-[40%] rounded-t-sm relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-on-surface-variant/0 group-hover:text-on-surface transition-all">R$ 8k</span>
+</div>
+<p class="mt-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/40">Jan</p>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-highest hover:bg-primary/40 transition-colors h-[55%] rounded-t-sm relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-on-surface-variant/0 group-hover:text-on-surface transition-all">R$ 9.5k</span>
+</div>
+<p class="mt-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/40">Feb</p>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-highest hover:bg-primary/40 transition-colors h-[45%] rounded-t-sm relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-on-surface-variant/0 group-hover:text-on-surface transition-all">R$ 8.8k</span>
+</div>
+<p class="mt-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/40">Mar</p>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-highest hover:bg-primary/40 transition-colors h-[70%] rounded-t-sm relative border-x border-t border-primary/30">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-on-surface-variant/0 group-hover:text-on-surface transition-all">R$ 11.2k</span>
+</div>
+<p class="mt-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/40">Apr</p>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-surface-container-highest hover:bg-primary/40 transition-colors h-[85%] rounded-t-sm relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-on-surface-variant/0 group-hover:text-on-surface transition-all">R$ 13.1k</span>
+</div>
+<p class="mt-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/40">May</p>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-primary h-[80%] rounded-t-sm relative shadow-[0_0_20px_rgba(233,193,119,0.2)]">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-black text-primary">R$ 12.4k</span>
+</div>
+<p class="mt-4 text-[10px] font-bold uppercase tracking-widest text-primary">Jun</p>
+</div>
+</div>
+</div>
+<!-- Services Ranking -->
+<div class="bg-surface-container-low p-8 border border-outline-variant/5">
+<h4 class="text-lg font-bold uppercase tracking-tight mb-8">Top Services</h4>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 flex items-center justify-center bg-surface-container-highest text-primary font-black text-xs">01</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Corte Moderno</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">342 Appointments</p>
+</div>
+</div>
+<p class="text-sm font-black text-primary">R$ 5.130</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 flex items-center justify-center bg-surface-container-highest text-on-surface-variant/60 font-black text-xs">02</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Barba Completa</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">218 Appointments</p>
+</div>
+</div>
+<p class="text-sm font-black text-on-surface">R$ 3.270</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 flex items-center justify-center bg-surface-container-highest text-on-surface-variant/60 font-black text-xs">03</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Atelier Combo</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">156 Appointments</p>
+</div>
+</div>
+<p class="text-sm font-black text-on-surface">R$ 2.808</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 flex items-center justify-center bg-surface-container-highest text-on-surface-variant/60 font-black text-xs">04</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Coloração</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">84 Appointments</p>
+</div>
+</div>
+<p class="text-sm font-black text-on-surface">R$ 840</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 flex items-center justify-center bg-surface-container-highest text-on-surface-variant/60 font-black text-xs">05</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Tratamento Capilar</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">62 Appointments</p>
+</div>
+</div>
+<p class="text-sm font-black text-on-surface">R$ 402</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Barber Performance Section -->
+<div class="bg-surface-container-low p-0 border border-outline-variant/5 overflow-hidden">
+<div class="p-8 border-b border-outline-variant/10 flex justify-between items-center bg-surface-container-lowest">
+<div>
+<h4 class="text-lg font-bold uppercase tracking-tight">Barber Performance</h4>
+<p class="text-[10px] text-on-surface-variant/60 uppercase tracking-widest mt-1">Efficiency &amp; Rating Metrics</p>
+</div>
+<button class="text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20 px-4 py-2 hover:bg-primary/5 transition-colors">View All Stylists</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/5">
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/40">Barber</th>
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/40">Appointments</th>
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/40">Rating</th>
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/40">Total Generated</th>
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/40">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<img alt="Barber profile" class="w-10 h-10 rounded-sm grayscale border border-outline-variant/20 object-cover" data-alt="Modern close-up of a stylish barber with tattoos in a minimalist barbershop setting, neutral colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLt9RrHqBUxqHLiWo4LnkIF4YBhep5AHaKCKqLr_TPbKC634g1IgseRM8ECk05I2YMp6_-TmoToWQm4_xNSQDrVJnMtUZPFS9kGNq3fzG1zlefhgIA7q6FEEbAiaRpxBUnUQ2aFe0KytbCa4-gaTJt6jszF0NiNdiP04YwCc9DGNxAEZWVUnoutXmpm4ZMoXtrdya6jHgR7w1KLQkak9VII-t9FsFP2yNwBpcs02mdmb5y00lE8QOCS-KG8xEfeAZ8lHUY6nCmru8"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Marco Aurelio</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">Master Stylist</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-sm font-medium text-on-surface">128</p>
+<p class="text-[10px] text-primary uppercase font-bold">+5% vs avg</p>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-on-surface">4.9</span>
+<span class="text-[10px] text-on-surface-variant/40">(84 reviews)</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-sm font-black text-on-surface">R$ 6.144,00</p>
+</td>
+<td class="px-8 py-6">
+<button class="p-2 text-on-surface-variant/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<img alt="Barber profile" class="w-10 h-10 rounded-sm grayscale border border-outline-variant/20 object-cover" data-alt="Editorial close-up of a focused barber working in a high-end atelier with warm accent lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6LeXPjw4W3Y2220vbyI_kNzCAqIkG_WnKIkx9Zk7AP1cWcuf94_pgqQaWP2Im_Sd7ivveCijh6YOEmVTdusxmkIJBT07OXPn7XrASSfswDLmD5g6foQxDz9vl2Wodgv7em6WstpMrwEG-LaI4rn2E0DtP2haXkj8plsY_1_vshPMhEPnIB4pav0z8qygNIFyOrzzI7z-gyGd3IrSP3KqNbxzhAjyRfQy0CxDPmad7Nq8nT4lFhpxFljnFd8CVxLNoviPTiQ2N1L0"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Lucas Silva</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">Senior Barber</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-sm font-medium text-on-surface">112</p>
+<p class="text-[10px] text-on-surface-variant/40 uppercase font-bold">Stable</p>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-on-surface">4.8</span>
+<span class="text-[10px] text-on-surface-variant/40">(102 reviews)</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-sm font-black text-on-surface">R$ 5.376,00</p>
+</td>
+<td class="px-8 py-6">
+<button class="p-2 text-on-surface-variant/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-surface-container-highest flex items-center justify-center text-primary border border-outline-variant/20">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">André Costa</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase">Junior Barber</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-sm font-medium text-on-surface">94</p>
+<p class="text-[10px] text-error uppercase font-bold">-2% vs avg</p>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-on-surface">4.7</span>
+<span class="text-[10px] text-on-surface-variant/40">(45 reviews)</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-sm font-black text-on-surface">R$ 4.120,00</p>
+</td>
+<td class="px-8 py-6">
+<button class="p-2 text-on-surface-variant/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer Metric Summary -->
+<footer class="mt-12 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-[10px] text-on-surface-variant/40 uppercase tracking-[0.3em]">Data synced: June 20, 2024 - 14:32 UTC</p>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<p class="text-[10px] text-on-surface-variant/60 uppercase font-bold tracking-widest mb-1">Fiscal Health</p>
+<div class="flex items-center gap-2">
+<div class="h-1.5 w-32 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%]"></div>
+</div>
+<span class="text-[10px] font-black text-primary">92%</span>
+</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface hover:text-primary text-[10px] font-bold uppercase tracking-widest px-6 py-3 border border-outline-variant/20 transition-all">
+                    Export Full Dataset
+                </button>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB - Only for specific main views as per mandate -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="w-14 h-14 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-sm shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all group">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform">add</span>
+</button>
+</div>
+</body></html>

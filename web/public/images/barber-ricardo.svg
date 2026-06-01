@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="ricardoBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1e6d3" />
+      <stop offset="100%" stop-color="#d2b285" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#ricardoBg)" />
+  <circle cx="200" cy="160" r="70" fill="#8f6633" />
+  <rect x="120" y="250" width="160" height="26" rx="13" fill="#6f4f27" />
+  <text x="200" y="330" font-family="Arial, sans-serif" font-size="18" fill="#5a3f1f" text-anchor="middle">
+    Ricardo
+  </text>
+</svg>

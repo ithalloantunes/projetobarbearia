@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#ccc6bb",
+              "secondary-fixed": "#e9e2d6",
+              "inverse-primary": "#78591a",
+              "on-background": "#e8e1db",
+              "inverse-surface": "#e8e1db",
+              "tertiary": "#afc7f9",
+              "on-error": "#690005",
+              "error": "#ffb4ab",
+              "surface-container-highest": "#373430",
+              "on-tertiary-container": "#213a64",
+              "on-secondary-container": "#c1bbb0",
+              "tertiary-container": "#8da5d5",
+              "surface-dim": "#15130f",
+              "primary-fixed": "#ffdea7",
+              "surface-tint": "#e9c177",
+              "surface-container-low": "#1d1b17",
+              "on-tertiary": "#153059",
+              "surface-bright": "#3c3934",
+              "secondary": "#ccc6bb",
+              "secondary-container": "#4f4b43",
+              "on-primary-fixed-variant": "#5d4201",
+              "outline": "#9a8f80",
+              "on-secondary": "#333029",
+              "on-secondary-fixed-variant": "#4a463e",
+              "surface": "#15130f",
+              "on-tertiary-fixed": "#001b3f",
+              "inverse-on-surface": "#33302c",
+              "tertiary-fixed": "#d7e2ff",
+              "on-error-container": "#ffdad6",
+              "outline-variant": "#4e4639",
+              "surface-container-high": "#2c2a25",
+              "surface-container": "#211f1b",
+              "primary-container": "#c59f59",
+              "tertiary-fixed-dim": "#afc7f9",
+              "on-primary": "#412d00",
+              "on-primary-container": "#4e3600",
+              "surface-variant": "#373430",
+              "surface-container-lowest": "#100e0a",
+              "on-surface": "#e8e1db",
+              "primary-fixed-dim": "#e9c177",
+              "on-primary-fixed": "#271900",
+              "on-secondary-fixed": "#1e1b15",
+              "error-container": "#93000a",
+              "background": "#15130f",
+              "primary": "#e9c177",
+              "on-surface-variant": "#d1c5b4",
+              "on-tertiary-fixed-variant": "#2e4771"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #15130f;
+        color: #e8e1db;
+        font-family: 'Inter', sans-serif;
+      }
+      .glass-nav {
+        background: rgba(21, 19, 15, 0.8);
+        backdrop-filter: blur(20px);
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #1d1b17;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #4e4639;
+      }
+    </style>
+</head>
+<body class="min-h-screen pb-32">
+<!-- Top Navigation Anchor (Shared Component) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#15130f]">
+<nav class="flex justify-between items-center w-full px-6 py-4 max-w-full">
+<div class="text-xl font-black text-[#e8e1db] tracking-tighter uppercase">
+                The Atelier
+            </div>
+<div class="hidden md:flex gap-8">
+<a class="font-['Inter'] font-bold uppercase tracking-widest text-[0.6875rem] text-[#e8e1db] opacity-60 hover:text-[#e9c177] transition-colors duration-200" href="#">Services</a>
+<a class="font-['Inter'] font-bold uppercase tracking-widest text-[0.6875rem] text-[#e8e1db] opacity-60 hover:text-[#e9c177] transition-colors duration-200" href="#">Barbers</a>
+<a class="font-['Inter'] font-bold uppercase tracking-widest text-[0.6875rem] text-[#e9c177] border-b-2 border-[#e9c177] pb-1" href="#">Schedule</a>
+</div>
+<div class="flex items-center gap-4 text-[#e9c177]">
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform">account_circle</span>
+</div>
+</nav>
+</header>
+<!-- Main Content Canvas -->
+<main class="mt-24 px-6 max-w-5xl mx-auto">
+<!-- Section Header -->
+<div class="mb-12">
+<p class="font-label text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-primary mb-2">Booking Experience</p>
+<h1 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter text-on-surface">Select Your Service</h1>
+</div>
+<!-- Horizontal Progress Bar (Editorial Asymmetry) -->
+<div class="relative mb-16 px-2">
+<div class="flex justify-between items-center w-full relative z-10">
+<!-- Step 1: Active -->
+<div class="flex flex-col items-start">
+<div class="w-10 h-1 bg-primary mb-3"></div>
+<span class="text-[0.6875rem] font-bold uppercase tracking-widest text-primary">01. Service</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-start opacity-30">
+<div class="w-10 h-1 bg-outline-variant mb-3"></div>
+<span class="text-[0.6875rem] font-bold uppercase tracking-widest text-on-surface">02. Barber</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-start opacity-30">
+<div class="w-10 h-1 bg-outline-variant mb-3"></div>
+<span class="text-[0.6875rem] font-bold uppercase tracking-widest text-on-surface">03. Schedule</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-start opacity-30">
+<div class="w-10 h-1 bg-outline-variant mb-3"></div>
+<span class="text-[0.6875rem] font-bold uppercase tracking-widest text-on-surface">04. Confirm</span>
+</div>
+</div>
+<!-- Progress Background Line -->
+<div class="absolute top-[4px] left-0 w-full h-[1px] bg-outline-variant/20 -z-0"></div>
+</div>
+<!-- Premium Service Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Service Card 1: Featured -->
+<div class="group relative bg-surface-container-high border-l-4 border-primary p-6 transition-all duration-300 hover:bg-surface-container-highest cursor-pointer">
+<div class="flex justify-between items-start mb-8">
+<div class="bg-primary/10 p-3 rounded-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">content_cut</span>
+</div>
+<div class="text-right">
+<p class="text-2xl font-black text-on-surface">$45</p>
+<p class="text-[0.625rem] font-bold uppercase tracking-widest text-primary/60">45 Minutes</p>
+</div>
+</div>
+<h3 class="text-xl font-bold tracking-tight text-on-surface mb-2">Signature Haircut</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">A precision-tailored cut including a consultation, neck shave, and premium styling.</p>
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary text-[0.6875rem] font-black uppercase tracking-widest transition-transform active:scale-95">Select Service</button>
+</div>
+<!-- Service Card 2 -->
+<div class="group relative bg-surface-container-low p-6 transition-all duration-300 hover:bg-surface-container-high cursor-pointer">
+<div class="flex justify-between items-start mb-8">
+<div class="bg-on-surface-variant/5 p-3 rounded-sm">
+<span class="material-symbols-outlined text-on-surface-variant">face</span>
+</div>
+<div class="text-right">
+<p class="text-2xl font-black text-on-surface">$35</p>
+<p class="text-[0.625rem] font-bold uppercase tracking-widest text-on-surface-variant">30 Minutes</p>
+</div>
+</div>
+<h3 class="text-xl font-bold tracking-tight text-on-surface mb-2">Beard Sculpt</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Expert shaping and lining of facial hair using shears and electric trimmers.</p>
+<button class="w-full py-3 border border-outline-variant text-on-surface text-[0.6875rem] font-black uppercase tracking-widest hover:bg-surface-bright transition-all active:scale-95">Select Service</button>
+</div>
+<!-- Service Card 3 -->
+<div class="group relative bg-surface-container-low p-6 transition-all duration-300 hover:bg-surface-container-high cursor-pointer">
+<div class="flex justify-between items-start mb-8">
+<div class="bg-on-surface-variant/5 p-3 rounded-sm">
+<span class="material-symbols-outlined text-on-surface-variant">soap</span>
+</div>
+<div class="text-right">
+<p class="text-2xl font-black text-on-surface">$65</p>
+<p class="text-[0.625rem] font-bold uppercase tracking-widest text-on-surface-variant">60 Minutes</p>
+</div>
+</div>
+<h3 class="text-xl font-bold tracking-tight text-on-surface mb-2">The Royal Shave</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Traditional hot towel shave with straight razor and signature oils.</p>
+<button class="w-full py-3 border border-outline-variant text-on-surface text-[0.6875rem] font-black uppercase tracking-widest hover:bg-surface-bright transition-all active:scale-95">Select Service</button>
+</div>
+<!-- Service Card 4: Long/Specialist -->
+<div class="md:col-span-2 group relative bg-surface-container-low p-8 flex flex-col md:flex-row gap-8 items-center transition-all duration-300 hover:bg-surface-container-high cursor-pointer">
+<div class="w-full md:w-48 h-32 overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all">
+<img alt="Premium styling service" class="w-full h-full object-cover" data-alt="Close-up of professional barber hands carefully styling a man's hair in a dark moody upscale barbershop atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoCVRuetHMmAzREoDVyv4bgWS-cn5hc58sOFEgyNZcj9g-_2N0MSSjgIDG0oPJKFG5jtG-UZcFrc1aDPK-iIAJqkWzA9XelFCQOly-SckJifyCafN3MlPnWyXepBNivaDvUhBR1GzMhuE2PkGwNt-DAtZk1WB8zLnIJa260tpszSCv3QezT5Q_oSOlkopt9E1gRmKO9z8dT7841Pi8VFEJiWQ4G2KaYimvWbhx3zyvARW2BYIXeKqczLZGqxaoVRi32QBv1Y1ebbY"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-2xl font-bold tracking-tight text-on-surface">Atelier Full Treatment</h3>
+<div class="text-right">
+<p class="text-2xl font-black text-primary">$110</p>
+<p class="text-[0.625rem] font-bold uppercase tracking-widest text-on-surface-variant">90 Minutes</p>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">The ultimate experience: Signature Haircut, Royal Shave, and rejuvenating scalp massage.</p>
+<button class="px-8 py-3 border border-outline-variant text-on-surface text-[0.6875rem] font-black uppercase tracking-widest hover:border-primary hover:text-primary transition-all active:scale-95">Select Premium Package</button>
+</div>
+</div>
+<!-- Service Card 5 -->
+<div class="group relative bg-surface-container-low p-6 transition-all duration-300 hover:bg-surface-container-high cursor-pointer">
+<div class="flex justify-between items-start mb-8">
+<div class="bg-on-surface-variant/5 p-3 rounded-sm">
+<span class="material-symbols-outlined text-on-surface-variant">spa</span>
+</div>
+<div class="text-right">
+<p class="text-2xl font-black text-on-surface">$20</p>
+<p class="text-[0.625rem] font-bold uppercase tracking-widest text-on-surface-variant">15 Minutes</p>
+</div>
+</div>
+<h3 class="text-xl font-bold tracking-tight text-on-surface mb-2">Scalp Detox</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Exfoliating treatment and deep conditioning massage for scalp health.</p>
+<button class="w-full py-3 border border-outline-variant text-on-surface text-[0.6875rem] font-black uppercase tracking-widest hover:bg-surface-bright transition-all active:scale-95">Select Service</button>
+</div>
+</div>
+<!-- Stylist Blade (Horizontal Selection) -->
+<section class="mt-20">
+<div class="flex justify-between items-end mb-8">
+<div>
+<p class="font-label text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-primary mb-2">Featured Artisans</p>
+<h2 class="font-headline text-2xl font-bold text-on-surface">Browse Our Master Barbers</h2>
+</div>
+<a class="text-[0.6875rem] font-bold uppercase tracking-widest text-primary hover:opacity-80 border-b border-primary/30 pb-1" href="#">View All Staff</a>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-8 custom-scrollbar">
+<!-- Stylist 1 -->
+<div class="flex-shrink-0 w-48 group">
+<div class="aspect-[3/4] bg-surface-container-highest mb-4 relative overflow-hidden">
+<img alt="Barber profile" class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-110 group-hover:grayscale-0" data-alt="Portrait of a sophisticated male barber with tattoos in a dark apron looking into camera with a professional expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDllZxg4rYvFj7cpgZo-HVNhbkwylUeZ9yZ3n0ISTONwZR0hYF1NHIhGLS0Nn2QZBYBo71PF7NnVOrME7suYNt31LgdI6H5jmYyATfy19-T7hSjgmbD2KxjTkvKaSyI2r5RL8fw7KYGXK6na03tV-ZkzlMf-x95FzWUrhf9jkxoki1LeYCTs2xeCAljzWF3Pqj97qL60qONZwYVKCWxqyf2h1KMcfygnZOK7UYltDxpb5g7hbbUWSLtARV8zZXyzT-yzwqanBW9T4s"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="text-[0.625rem] font-bold uppercase tracking-widest text-primary">Master Barber</p>
+<p class="text-lg font-bold text-white">Julian V.</p>
+</div>
+</div>
+</div>
+<!-- Stylist 2 -->
+<div class="flex-shrink-0 w-48 group">
+<div class="aspect-[3/4] bg-surface-container-highest mb-4 relative overflow-hidden">
+<img alt="Barber profile" class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-110 group-hover:grayscale-0" data-alt="Stylish male barber with manicured beard and short haircut in a minimalist studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOGvMwlFpI1WsddRKiIwW5GtmAAbmt6seal_Ckzq-1OwiIZhzQEeleFtttIsK6vHEe93pLDAbwq0evnaUPRn1Mzr86hhzXeoFY7SIstJz7d4hebRxKiPwCnL8hU1vZ19Jxb4_dplpe2pVMoKFV1FMmT7Qu7v_jbzWarV_JSA69JQ6eHyuzteSbNIZCh0on62lrI1vTKj42-Pq6_wuhWMnnnNQ-6uTysdNi4aZVcsqYgYbbvBFmGILuFuysvy4dTqtXq7Hr-RB_BXU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="text-[0.625rem] font-bold uppercase tracking-widest text-primary">Specialist</p>
+<p class="text-lg font-bold text-white">Marcus T.</p>
+</div>
+</div>
+</div>
+<!-- Stylist 3 -->
+<div class="flex-shrink-0 w-48 group">
+<div class="aspect-[3/4] bg-surface-container-highest mb-4 relative overflow-hidden">
+<img alt="Barber profile" class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-110 group-hover:grayscale-0" data-alt="Professional female barber with stylish haircut and edgy look working in a high-end atelier environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ8EQaYlEX2mj_CdowFP8mYUOd1Npv2F2o3w1MyLS-pJg8-JcRBZCZkYUE6GePnZFgSQ0fYPAMomrITs6AHxPZuMQBezUETMXIUCMtfujFXKQRvwuNLgQ4j6KglXZHnYiENicMWoVKTscOCpxwhjgqtzmASfbtxT-HhQg37GeMgsOqhaeSvmQuyhkERz4HaXLWOe-w-9m1aAPW6zs7t9PDVVXTxOWeecZHggzQBTuKOyIWxeLWdxDFVSskIbEBwlDJL_Mpy7xTVwI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<p class="text-[0.625rem] font-bold uppercase tracking-widest text-primary">Creative Lead</p>
+<p class="text-lg font-bold text-white">Elena S.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Booking Footer -->
+<footer class="fixed bottom-0 left-0 w-full z-[60] glass-nav border-t border-outline-variant/20 px-6 py-6">
+<div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-6">
+<div class="hidden md:block">
+<p class="text-[0.625rem] font-bold uppercase tracking-widest text-on-surface-variant">Selections</p>
+<p class="text-sm font-semibold text-on-surface">No services selected yet</p>
+</div>
+<div class="h-10 w-[1px] bg-outline-variant/30 hidden md:block"></div>
+<div>
+<p class="text-[0.625rem] font-bold uppercase tracking-widest text-on-surface-variant">Estimated Total</p>
+<p class="text-2xl font-black text-on-surface">$0.00</p>
+</div>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-8 py-3 border border-outline-variant text-[0.6875rem] font-black uppercase tracking-widest text-on-surface opacity-50 cursor-not-allowed">
+                    Save Draft
+                </button>
+<button class="flex-1 md:flex-none px-12 py-3 bg-surface-container-highest text-[0.6875rem] font-black uppercase tracking-widest text-on-surface-variant cursor-not-allowed transition-all" disabled="">
+                    Next Step
+                </button>
+</div>
+</div>
+</footer>
+<!-- Bottom Nav Anchor (Shared Component - Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#15130f]/60 backdrop-blur-xl border-t border-[#4e4639]/15 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+<div class="flex flex-col items-center justify-center text-[#e9c177] bg-[#373430] rounded-sm px-4 py-1">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Book</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e8e1db]/50 hover:bg-[#1d1b17] transition-all">
+<span class="material-symbols-outlined">history</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Appointments</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e8e1db]/50 hover:bg-[#1d1b17] transition-all">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Profile</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e8e1db]/50 hover:bg-[#1d1b17] transition-all">
+<span class="material-symbols-outlined">content_cut</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Style Guide</span>
+</div>
+</nav>
+</body></html>

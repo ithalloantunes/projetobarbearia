@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#2e4771",
+              "on-secondary-fixed": "#1e1b15",
+              "on-primary": "#412d00",
+              "on-error": "#690005",
+              "on-primary-fixed": "#271900",
+              "on-secondary-container": "#c1bbb0",
+              "outline-variant": "#4e4639",
+              "on-primary-fixed-variant": "#5d4201",
+              "tertiary-fixed": "#d7e2ff",
+              "surface-container": "#211f1b",
+              "tertiary": "#afc7f9",
+              "surface-container-lowest": "#100e0a",
+              "surface-container-highest": "#373430",
+              "surface-variant": "#373430",
+              "surface-container-low": "#1d1b17",
+              "primary-fixed-dim": "#e9c177",
+              "surface": "#15130f",
+              "on-tertiary": "#153059",
+              "error": "#ffb4ab",
+              "primary-container": "#c59f59",
+              "on-surface": "#e8e1db",
+              "on-secondary": "#333029",
+              "surface-container-high": "#2c2a25",
+              "on-secondary-fixed-variant": "#4a463e",
+              "inverse-on-surface": "#33302c",
+              "on-primary-container": "#4e3600",
+              "error-container": "#93000a",
+              "on-background": "#e8e1db",
+              "surface-bright": "#3c3934",
+              "inverse-primary": "#78591a",
+              "primary": "#e9c177",
+              "background": "#15130f",
+              "tertiary-container": "#8da5d5",
+              "inverse-surface": "#e8e1db",
+              "surface-dim": "#15130f",
+              "tertiary-fixed-dim": "#afc7f9",
+              "on-error-container": "#ffdad6",
+              "on-surface-variant": "#d1c5b4",
+              "surface-tint": "#e9c177",
+              "secondary-fixed": "#e9e2d6",
+              "outline": "#9a8f80",
+              "secondary": "#ccc6bb",
+              "secondary-fixed-dim": "#ccc6bb",
+              "on-tertiary-fixed": "#001b3f",
+              "on-tertiary-container": "#213a64",
+              "secondary-container": "#4f4b43",
+              "primary-fixed": "#ffdea7"
+            },
+            fontFamily: {
+              "headline": ["Inter", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #15130f; color: #e8e1db; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-header { background: rgba(21, 19, 15, 0.6); backdrop-filter: blur(20px); }
+        .gold-gradient { background: linear-gradient(135deg, #e9c177 0%, #c59f59 100%); }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[280px] z-50 bg-[#1d1b17] flex flex-col py-8 px-4 gap-2 shadow-[4px_0_24px_rgba(0,0,0,0.5)]">
+<div class="text-[#e9c177] font-bold text-2xl mb-8 px-4 font-inter">BarberSaaS</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-4 py-3 px-4 bg-[#373430] text-[#e9c177] border-l-4 border-[#e9c177] rounded-sm transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-sm font-medium tracking-wide">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-[#e8e1db]/50 hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">event_available</span>
+<span class="font-inter text-sm font-medium tracking-wide">Appointments</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-[#e8e1db]/50 hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">content_cut</span>
+<span class="font-inter text-sm font-medium tracking-wide">Barbers</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-[#e8e1db]/50 hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dry_cleaning</span>
+<span class="font-inter text-sm font-medium tracking-wide">Services</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-[#e8e1db]/50 hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-inter text-sm font-medium tracking-wide">Inventory</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-[#e8e1db]/50 hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-inter text-sm font-medium tracking-wide">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1 border-t border-[#4e4639]/20 pt-6">
+<a class="flex items-center gap-4 py-3 px-4 text-[#e8e1db]/50 hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-inter text-sm font-medium tracking-wide">Settings</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-[#e8e1db]/50 hover:text-[#e8e1db] hover:bg-[#373430]/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-inter text-sm font-medium tracking-wide">Support</span>
+</a>
+<div class="mt-6 px-4">
+<button class="w-full py-3 gold-gradient text-on-primary font-bold rounded-sm text-xs uppercase tracking-widest hover:scale-[1.02] transition-transform active:scale-95">
+                    Upgrade to Pro
+                </button>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] z-40 h-20 glass-header flex items-center justify-between px-8 shadow-2xl shadow-black/40">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/50">search</span>
+<input class="w-full bg-surface-container-highest/50 border-none rounded-sm pl-10 pr-4 py-2 text-sm text-on-surface focus:ring-1 focus:ring-primary placeholder:text-on-surface-variant/30" placeholder="Search appointments, clients..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="gold-gradient text-on-primary px-6 h-10 rounded-sm font-bold text-sm hover:scale-[1.02] transition-transform active:scale-95">
+                New Appointment
+            </button>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="material-symbols-outlined hover:text-primary transition-colors">notifications</button>
+<div class="h-10 w-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/20">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Close up portrait of a professional male barber with a well groomed beard and sharp hairstyle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCHGVRXJcCwdBKtv04nG3ZF3cLkMstTD4Xs5IgFZJYvli2degQ0MPuZowAn9xwVbdLCPLgdCS94XEfkQG-AJs2FDZwHzpWuogdJTDiuztNQHMKUDBhRl6roNAdx62OYjgoCUrmzsIHLgpnuwrGuNyIPhYZ6YvB6QN4Vcd-6WYhXp__xynzGREm5eXKjlVVPOC2b96k0OGhcjmMhxeADRI7etrO8SqEYf_i0_wQP92nExzetwHF4tR8KtDqupKBmJgNobBY3LUpgyU"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[280px] pt-28 px-8 pb-12 min-h-screen">
+<!-- Metrics Bento Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="bg-surface-container-high p-6 rounded-sm shadow-sm border-l-4 border-primary">
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant font-bold">Monthly Revenue</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black text-on-surface">$12,450.00</span>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full">+15%</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high p-6 rounded-sm shadow-sm">
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant font-bold">New Clients</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black text-on-surface">48</span>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full">+8%</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high p-6 rounded-sm shadow-sm">
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant font-bold">Today's Load</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black text-on-surface">24<span class="text-lg text-on-surface-variant/40 font-medium"> / 32</span></span>
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high p-6 rounded-sm shadow-sm">
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase tracking-[0.15em] text-on-surface-variant font-bold">Avg Ticket</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-black text-on-surface">$52.00</span>
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Middle Section: Chart & Alerts -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+<!-- Revenue Chart -->
+<div class="lg:col-span-2 bg-surface-container rounded-sm p-8 flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<div>
+<h2 class="text-xl font-bold text-on-surface">Revenue Performance</h2>
+<p class="text-xs text-on-surface-variant/60 font-medium uppercase tracking-wider">Historical Analytics (Last 6 Months)</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-highest px-3 py-1 text-[10px] font-bold rounded-sm border border-outline-variant/20 uppercase tracking-widest text-primary">Monthly</button>
+<button class="px-3 py-1 text-[10px] font-bold rounded-sm border border-transparent uppercase tracking-widest text-on-surface-variant/40 hover:text-on-surface">Weekly</button>
+</div>
+</div>
+<!-- Mock Chart Visualization -->
+<div class="relative h-[300px] w-full mt-4 flex items-end justify-between px-2">
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="border-b border-outline-variant/10 w-full h-0"></div>
+<div class="border-b border-outline-variant/10 w-full h-0"></div>
+<div class="border-b border-outline-variant/10 w-full h-0"></div>
+<div class="border-b border-outline-variant/10 w-full h-0"></div>
+<div class="border-b border-outline-variant/10 w-full h-0"></div>
+</div>
+<!-- Chart Bars/Lines (Visual Representation) -->
+<div class="flex items-end justify-around w-full h-full pb-8 z-10 gap-4">
+<div class="w-full bg-surface-container-highest h-[40%] relative group">
+<div class="absolute inset-x-0 bottom-0 gold-gradient h-[60%] opacity-20 transition-opacity group-hover:opacity-40"></div>
+<div class="absolute inset-x-0 bottom-0 h-1 bg-primary"></div>
+</div>
+<div class="w-full bg-surface-container-highest h-[60%] relative group">
+<div class="absolute inset-x-0 bottom-0 gold-gradient h-[60%] opacity-20 transition-opacity group-hover:opacity-40"></div>
+<div class="absolute inset-x-0 bottom-0 h-1 bg-primary"></div>
+</div>
+<div class="w-full bg-surface-container-highest h-[55%] relative group">
+<div class="absolute inset-x-0 bottom-0 gold-gradient h-[60%] opacity-20 transition-opacity group-hover:opacity-40"></div>
+<div class="absolute inset-x-0 bottom-0 h-1 bg-primary"></div>
+</div>
+<div class="w-full bg-surface-container-highest h-[75%] relative group">
+<div class="absolute inset-x-0 bottom-0 gold-gradient h-[60%] opacity-20 transition-opacity group-hover:opacity-40"></div>
+<div class="absolute inset-x-0 bottom-0 h-1 bg-primary"></div>
+</div>
+<div class="w-full bg-surface-container-highest h-[85%] relative group">
+<div class="absolute inset-x-0 bottom-0 gold-gradient h-[60%] opacity-20 transition-opacity group-hover:opacity-40"></div>
+<div class="absolute inset-x-0 bottom-0 h-1 bg-primary shadow-[0_-4px_12px_rgba(233,193,119,0.3)]"></div>
+</div>
+<div class="w-full bg-surface-container-highest h-[95%] relative group">
+<div class="absolute inset-x-0 bottom-0 gold-gradient h-[60%] opacity-40 transition-opacity group-hover:opacity-60"></div>
+<div class="absolute inset-x-0 bottom-0 h-1 bg-primary shadow-[0_-4px_12px_rgba(233,193,119,0.4)]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Operational Alerts -->
+<div class="bg-surface-container rounded-sm p-6 flex flex-col gap-6">
+<h2 class="text-xl font-bold text-on-surface">Priority Alerts</h2>
+<div class="flex flex-col gap-3">
+<div class="bg-surface-container-low p-4 rounded-sm border-l-2 border-error flex gap-4 items-start">
+<span class="material-symbols-outlined text-error mt-0.5">warning</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Delayed Appointment</span>
+<span class="text-[10px] text-on-surface-variant/60">Barber: Marcus • 15min overdue</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-sm border-l-2 border-primary flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary mt-0.5">pending_actions</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Payment Pending</span>
+<span class="text-[10px] text-on-surface-variant/60">ID: #4592 • Julian R. • $85.00</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-sm border-l-2 border-error flex gap-4 items-start">
+<span class="material-symbols-outlined text-error mt-0.5">event_busy</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Double Booking Conflict</span>
+<span class="text-[10px] text-on-surface-variant/60">Today at 2:00 PM • Chair 4</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-sm border-l-2 border-primary/20 flex gap-4 items-start opacity-60">
+<span class="material-symbols-outlined text-on-surface-variant mt-0.5">inventory_2</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Low Stock Alert</span>
+<span class="text-[10px] text-on-surface-variant/60">Premium Pomade (4 units left)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Next Appointments Table -->
+<div class="bg-surface-container rounded-sm overflow-hidden">
+<div class="px-8 py-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-xl font-bold text-on-surface">Next Appointments</h2>
+<button class="text-[10px] font-bold uppercase tracking-widest text-primary hover:underline">View All Schedule</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-black">
+<th class="px-8 py-4">Time</th>
+<th class="px-8 py-4">Client Name</th>
+<th class="px-8 py-4">Barber</th>
+<th class="px-8 py-4">Service</th>
+<th class="px-8 py-4">Status</th>
+<th class="px-8 py-4"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container-highest/30 transition-colors">
+<td class="px-8 py-5 text-sm font-bold text-primary">14:30</td>
+<td class="px-8 py-5">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-surface">Alexander Grant</span>
+<span class="text-[10px] text-on-surface-variant/60">Loyalty Member</span>
+</div>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface">Marcus Thorne</td>
+<td class="px-8 py-5 text-sm text-on-surface">Beard Sculpt &amp; Fade</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-surface-container-highest text-primary text-[10px] font-black uppercase tracking-tighter rounded-full">Confirmed</span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant/40 hover:text-on-surface">more_vert</button>
+</td>
+</tr>
+<tr class="bg-surface-container-low/30 hover:bg-surface-container-highest/30 transition-colors">
+<td class="px-8 py-5 text-sm font-bold text-primary">15:00</td>
+<td class="px-8 py-5">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-surface">Dominic V.</span>
+<span class="text-[10px] text-on-surface-variant/60">First Visit</span>
+</div>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface">Lucas Gray</td>
+<td class="px-8 py-5 text-sm text-on-surface">Executive Scissor Cut</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-tighter rounded-full">In Progress</span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant/40 hover:text-on-surface">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest/30 transition-colors">
+<td class="px-8 py-5 text-sm font-bold text-primary">15:45</td>
+<td class="px-8 py-5">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-surface">Julian Rossi</span>
+<span class="text-[10px] text-on-surface-variant/60">Premium Club</span>
+</div>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface">Marcus Thorne</td>
+<td class="px-8 py-5 text-sm text-on-surface">Full Service Deluxe</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-error-container text-on-error-container text-[10px] font-black uppercase tracking-tighter rounded-full">Payment Pending</span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant/40 hover:text-on-surface">more_vert</button>
+</td>
+</tr>
+<tr class="bg-surface-container-low/30 hover:bg-surface-container-highest/30 transition-colors">
+<td class="px-8 py-5 text-sm font-bold text-primary">16:15</td>
+<td class="px-8 py-5">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-on-surface">Erik Schmidt</span>
+<span class="text-[10px] text-on-surface-variant/60">Walk-in</span>
+</div>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface">Oliver Kent</td>
+<td class="px-8 py-5 text-sm text-on-surface">Quick Trim</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-surface-container-highest text-primary text-[10px] font-black uppercase tracking-tighter rounded-full">Confirmed</span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant/40 hover:text-on-surface">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-[#15130f] border-t border-[#4e4639]/15 flex justify-between items-center py-6 px-12 ml-[280px]">
+<div class="font-inter text-[10px] uppercase tracking-[0.05em] text-[#e8e1db]/40">
+            © 2024 BarberSaaS Atelier. All rights reserved.
+        </div>
+<div class="flex gap-8">
+<a class="font-inter text-[10px] uppercase tracking-[0.05em] text-[#e8e1db]/40 hover:text-[#e9c177] transition-colors" href="#">Privacy Policy</a>
+<a class="font-inter text-[10px] uppercase tracking-[0.05em] text-[#e8e1db]/40 hover:text-[#e9c177] transition-colors" href="#">Terms of Service</a>
+<a class="font-inter text-[10px] uppercase tracking-[0.05em] text-[#e8e1db]/40 hover:text-[#e9c177] transition-colors" href="#">API Docs</a>
+</div>
+</footer>
+</body></html>
