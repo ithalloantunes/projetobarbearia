@@ -102,7 +102,7 @@ async function main() {
       name: "Combo Premium",
       description: "Cabelo + Barba + Sobrancelha",
       imageUrl:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuC8Va2is8ISU4XngYiHm9QWAYeRFRjQZaHLIE-zdP-b8G0fYkgl-aYb81kCzViwQwnPYK-MmeKGmtz-bYhWQvLPeivJjPx-Dn-mDM80Z0UBWX-68os3woyt2fWGI6Mnx2EWyR4rWZnQ_LJBZ4xa_HiYBwDVnhMCkyf0K5BTP6ihtRKdm8ou2DueaYzanh803Cwn6sxSltLJW1BjTzXZaT98rp7LIHWJH7xF32H6pfsYcxstbjCCma1gaNbMrun49k3cY7ntKKc_QLlc",
+        "https://i.ibb.co/TM7KGNW8/corte-de-cabelo-masculino-atual-11-1024x1024.jpg",
       price: 100,
       durationMinutes: 90
     }),
