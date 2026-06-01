@@ -18,8 +18,18 @@ export default function AuthShell({
 }: AuthShellProps) {
   return (
     <div className="relative grid min-h-screen lg:grid-cols-[1fr,460px]">
-      <aside className="hidden border-r border-outline-variant/70 bg-background-elevated/75 p-10 lg:flex lg:flex-col lg:justify-between">
-        <div>
+      <aside className="relative hidden overflow-hidden border-r border-outline-variant/70 bg-background-elevated/75 p-10 lg:flex lg:flex-col lg:justify-between">
+        <div className="absolute inset-0">
+          <img
+            src="https://i.ibb.co/vC89kVGZ/image.png"
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,11,9,0.58)_0%,rgba(13,11,9,0.72)_55%,rgba(13,11,9,0.84)_100%)]" />
+        </div>
+
+        <div className="relative z-10">
           <Link href="/" className="inline-flex items-center gap-2">
             <span className="material-symbols-outlined text-primary">content_cut</span>
             <span className="font-display text-2xl font-semibold">BarberSaaS</span>
@@ -28,7 +38,7 @@ export default function AuthShell({
             O seu atelier digital para agenda, atendimento e fidelizacao.
           </p>
         </div>
-        <div className="atelier-surface p-5">
+        <div className="relative z-10 atelier-surface p-5">
           {spotlight ?? (
             <p className="text-sm text-foreground-muted">
               Controle total da barbearia com experiencia premium para clientes e equipe.
