@@ -19,11 +19,13 @@ export default function StatCard({
   className
 }: StatCardProps) {
   return (
-    <article className={cn("atelier-surface p-4", className)}>
+    <article className={cn("atelier-surface min-w-0 p-4", className)}>
       <div className="flex items-start justify-between gap-3">
-        <div>
+        <div className="min-w-0 flex-1">
           <p className="atelier-label">{label}</p>
-          <p className="mt-1 text-2xl font-bold text-foreground">{value}</p>
+          <p className="mt-1 whitespace-nowrap text-[clamp(0.9rem,1vw,1.6rem)] font-bold leading-tight text-foreground">
+            {value}
+          </p>
         </div>
         {icon ? <div className="text-primary">{icon}</div> : null}
       </div>

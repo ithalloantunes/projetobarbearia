@@ -88,19 +88,12 @@ export default function CadastrarPage() {
         throw new Error(data.error || "Falha ao cadastrar.");
       }
 
-      setMessage(data.message || "Conta criada. Verifique seu email para ativar o acesso.");
+      setMessage(data.message || "Conta criada. Entre com seu e-mail e senha.");
       setTimeout(() => {
         const params = new URLSearchParams();
         params.set("email", email);
         params.set("next", nextPath);
-        if (serviceNames.length > 0) {
-          params.set("serviceName", serviceNames[0]);
-          params.set("serviceNames", serviceNames.join("|"));
-        }
-        if (barberName) {
-          params.set("barberName", barberName);
-        }
-        router.push(`/verificar-email?${params.toString()}`);
+        router.push(`/entrar?${params.toString()}`);
       }, 800);
     } catch (submitError) {
       const messageText = submitError instanceof Error ? submitError.message : "Falha ao cadastrar.";

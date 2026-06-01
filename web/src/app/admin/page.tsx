@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import AdminShell from "@/components/admin-shell";
 import {
   Badge,
@@ -82,6 +82,7 @@ export default function AdminPage() {
   const [metrics, setMetrics] = useState<MetricsPayload | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const gradientId = useId().replace(/:/g, "");
 
   useEffect(() => {
     let mounted = true;
@@ -114,6 +115,45 @@ export default function AdminPage() {
     () => Math.max(...(metrics?.revenueSeries ?? []).map((row) => row.value), 1),
     [metrics?.revenueSeries]
   );
+
+  const revenueLineChart = useMemo(() => {
+    const points = metrics?.revenueSeries ?? [];
+    const chartWidth = 680;
+    const chartHeight = 220;
+    const paddingX = 24;
+    const paddingTop = 16;
+    const paddingBottom = 30;
+    const innerWidth = chartWidth - paddingX * 2;
+    const innerHeight = chartHeight - paddingTop - paddingBottom;
+    const normalizeXBy = Math.max(points.length - 1, 1);
+    const normalizeYBy = Math.max(maxRevenue, 1);
+
+    const plotPoints = points.map((point, index) => {
+      const x = paddingX + (index / normalizeXBy) * innerWidth;
+      const y = paddingTop + (1 - point.value / normalizeYBy) * innerHeight;
+      return { ...point, x, y };
+    });
+
+    const linePath =
+      plotPoints.length > 0
+        ? plotPoints
+            .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`)
+            .join(" ")
+        : "";
+
+    const baselineY = paddingTop + innerHeight;
+    const areaPath =
+      plotPoints.length > 0
+        ? [
+            `M ${plotPoints[0].x.toFixed(2)} ${baselineY.toFixed(2)}`,
+            ...plotPoints.map((point) => `L ${point.x.toFixed(2)} ${point.y.toFixed(2)}`),
+            `L ${plotPoints[plotPoints.length - 1].x.toFixed(2)} ${baselineY.toFixed(2)}`,
+            "Z"
+          ].join(" ")
+        : "";
+
+    return { chartWidth, chartHeight, paddingX, plotPoints, linePath, areaPath };
+  }, [maxRevenue, metrics?.revenueSeries]);
 
   return (
     <AdminShell
@@ -152,16 +192,53 @@ export default function AdminPage() {
 
       <section className="mt-4 grid gap-4 lg:grid-cols-[1fr,320px]">
         <Panel title="Receita 6 meses">
-          <div className="grid h-44 grid-cols-6 items-end gap-2">
-            {(metrics?.revenueSeries ?? []).map((row) => {
-              const height = Math.max((row.value / maxRevenue) * 100, row.value > 0 ? 8 : 3);
-              return (
-                <div key={row.key} className="flex flex-col items-center gap-2">
-                  <div className="w-full rounded-t-md atelier-gradient" style={{ height: `${height}%` }} />
-                  <span className="text-[11px] font-semibold text-foreground-muted">{row.label}</span>
-                </div>
-              );
-            })}
+          <div className="h-52 w-full">
+            <svg
+              viewBox={`0 0 ${revenueLineChart.chartWidth} ${revenueLineChart.chartHeight}`}
+              className="h-full w-full"
+              role="img"
+              aria-label="Grafico de linha da receita de 6 meses"
+            >
+              <defs>
+                <linearGradient id={`${gradientId}-line`} x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="rgb(var(--color-primary))" stopOpacity="0.55" />
+                  <stop offset="100%" stopColor="rgb(var(--color-primary))" stopOpacity="0.95" />
+                </linearGradient>
+                <linearGradient id={`${gradientId}-area`} x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="rgb(var(--color-primary))" stopOpacity="0.26" />
+                  <stop offset="100%" stopColor="rgb(var(--color-primary))" stopOpacity="0.04" />
+                </linearGradient>
+              </defs>
+
+              {revenueLineChart.areaPath ? (
+                <path d={revenueLineChart.areaPath} fill={`url(#${gradientId}-area)`} />
+              ) : null}
+              {revenueLineChart.linePath ? (
+                <path
+                  d={revenueLineChart.linePath}
+                  fill="none"
+                  stroke={`url(#${gradientId}-line)`}
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              ) : null}
+
+              {revenueLineChart.plotPoints.map((point) => (
+                <g key={point.key}>
+                  <circle cx={point.x} cy={point.y} r="4.5" fill="rgb(var(--color-primary))" />
+                  <circle cx={point.x} cy={point.y} r="8" fill="rgb(var(--color-primary))" fillOpacity="0.2" />
+                  <title>{`${point.label}: ${formatBRL(point.value)}`}</title>
+                </g>
+              ))}
+            </svg>
+          </div>
+          <div className="mt-1 grid grid-cols-6 gap-2">
+            {(metrics?.revenueSeries ?? []).map((row) => (
+              <span key={row.key} className="text-center text-[11px] font-semibold text-foreground-muted">
+                {row.label}
+              </span>
+            ))}
           </div>
         </Panel>
 

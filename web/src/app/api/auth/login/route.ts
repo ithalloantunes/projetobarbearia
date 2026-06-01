@@ -91,26 +91,18 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Email ou senha invalidos." }, { status: 401 });
     }
 
-    if (user.status !== "ACTIVE") {
-      if (user.role === "CLIENT") {
-        const pendingVerification = await prisma.emailVerificationToken.findFirst({
-          where: {
-            userId: user.id,
-            usedAt: null,
-            expiresAt: { gt: new Date() }
-          },
-          select: { id: true }
-        });
+    let userStatus = user.status;
 
-        if (pendingVerification) {
-          return NextResponse.json(
-            { error: "Conta nao verificada. Confirme seu email ou solicite novo link." },
-            { status: 403 }
-          );
-        }
+    if (userStatus !== "ACTIVE") {
+      if (user.role !== "CLIENT") {
+        return NextResponse.json({ error: "Conta inativa. Fale com o suporte." }, { status: 403 });
       }
 
-      return NextResponse.json({ error: "Conta inativa. Fale com o suporte." }, { status: 403 });
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { status: "ACTIVE" }
+      });
+      userStatus = "ACTIVE";
     }
 
     resetRateLimit("auth:login:email", email);
@@ -127,7 +119,7 @@ export async function POST(request: Request) {
         name: user.name,
         email: user.email,
         role: user.role,
-        status: user.status
+        status: userStatus
       },
       redirectTo: roleHomePath(user.role)
     });

@@ -5,6 +5,7 @@ import AdminShell from "@/components/admin-shell";
 import { Button, Panel, Select, StatCard } from "@/components/ui";
 
 type ReportPeriod = "7d" | "30d" | "90d" | "12m";
+type RevenueSeriesKind = "daily" | "weekly" | "monthly";
 
 type ReportsPayload = {
   period: ReportPeriod;
@@ -21,7 +22,8 @@ type ReportsPayload = {
   };
   topServices: Array<{ name: string; count: number; revenue: number }>;
   teamPerformance: Array<{ name: string; count: number; revenue: number; rating: number; reviews: number }>;
-  monthlyRevenue: Array<{ key: string; label: string; value: number }>;
+  revenueSeriesKind: RevenueSeriesKind;
+  revenueSeries: Array<{ key: string; label: string; value: number }>;
   exportRowsCount: number;
 };
 
@@ -72,17 +74,24 @@ export default function AdminRelatoriosPage() {
     };
   }, [period]);
 
-  const maxMonthly = useMemo(
-    () => Math.max(...(reports?.monthlyRevenue ?? []).map((item) => item.value), 1),
-    [reports?.monthlyRevenue]
+  const maxSeries = useMemo(
+    () => Math.max(...(reports?.revenueSeries ?? []).map((item) => item.value), 1),
+    [reports?.revenueSeries]
   );
 
-  const monthlyLineChart = useMemo(() => {
-    const points = reports?.monthlyRevenue ?? [];
+  const chartTitle = useMemo(() => {
+    if (reports?.revenueSeriesKind === "daily") return "Receita diaria";
+    if (reports?.revenueSeriesKind === "weekly") return "Receita semanal";
+    return "Receita mensal";
+  }, [reports?.revenueSeriesKind]);
+
+  const revenueLineChart = useMemo(() => {
+    const points = reports?.revenueSeries ?? [];
 
     const chartWidth = 700;
     const chartHeight = 260;
-    const paddingX = 24;
+    const yAxisLabelWidth = 64;
+    const paddingX = yAxisLabelWidth + 8;
     const paddingTop = 20;
     const paddingBottom = 38;
 
@@ -90,7 +99,7 @@ export default function AdminRelatoriosPage() {
     const innerHeight = chartHeight - paddingTop - paddingBottom;
 
     const normalizeXBy = Math.max(points.length - 1, 1);
-    const normalizeYBy = Math.max(maxMonthly, 1);
+    const normalizeYBy = Math.max(maxSeries, 1);
 
     const plotPoints = points.map((point, index) => {
       const x = paddingX + (index / normalizeXBy) * innerWidth;
@@ -119,12 +128,15 @@ export default function AdminRelatoriosPage() {
     const yTicks = Array.from({ length: 4 }, (_, index) => {
       const ratio = index / 3;
       const y = paddingTop + ratio * innerHeight;
-      const value = maxMonthly * (1 - ratio);
+      const value = maxSeries * (1 - ratio);
       return {
         y,
         label: formatBRLCompact(value)
       };
     });
+
+    const labelStep =
+      points.length <= 8 ? 1 : points.length <= 16 ? 2 : points.length <= 32 ? 4 : points.length <= 52 ? 6 : 8;
 
     return {
       chartWidth,
@@ -133,9 +145,10 @@ export default function AdminRelatoriosPage() {
       plotPoints,
       linePath,
       areaPath,
-      yTicks
+      yTicks,
+      labelStep
     };
-  }, [maxMonthly, reports?.monthlyRevenue]);
+  }, [maxSeries, reports?.revenueSeries]);
 
   return (
     <AdminShell
@@ -172,13 +185,13 @@ export default function AdminRelatoriosPage() {
         <StatCard label="Dataset" value={loading ? "..." : reports?.exportRowsCount ?? 0} helper="linhas exportaveis" />
       </section>
 
-      <Panel title="Receita mensal" className="mt-4">
+      <Panel title={chartTitle} className="mt-4">
         <div className="h-64 w-full">
           <svg
-            viewBox={`0 0 ${monthlyLineChart.chartWidth} ${monthlyLineChart.chartHeight}`}
+            viewBox={`0 0 ${revenueLineChart.chartWidth} ${revenueLineChart.chartHeight}`}
             className="h-full w-full"
             role="img"
-            aria-label="Grafico de linha da receita mensal"
+            aria-label={`Grafico de linha da ${chartTitle.toLowerCase()}`}
           >
             <defs>
               <linearGradient id={`${gradientId}-line`} x1="0%" y1="0%" x2="100%" y2="0%">
@@ -191,30 +204,30 @@ export default function AdminRelatoriosPage() {
               </linearGradient>
             </defs>
 
-            {monthlyLineChart.yTicks.map((tick, index) => (
+            {revenueLineChart.yTicks.map((tick, index) => (
               <g key={`${tick.label}-${index}`}>
                 <line
-                  x1={monthlyLineChart.paddingX}
+                  x1={revenueLineChart.paddingX}
                   y1={tick.y}
-                  x2={monthlyLineChart.chartWidth - monthlyLineChart.paddingX}
+                  x2={revenueLineChart.chartWidth - revenueLineChart.paddingX}
                   y2={tick.y}
                   stroke="rgb(var(--color-outline-variant))"
                   strokeOpacity="0.45"
                   strokeWidth="1"
                   strokeDasharray="4 6"
                 />
-                <text x={4} y={tick.y + 4} fontSize="11" fill="rgb(var(--color-foreground-muted))">
+                <text x={6} y={tick.y + 4} fontSize="11" fill="rgba(255,255,255,0.92)">
                   {tick.label}
                 </text>
               </g>
             ))}
 
-            {monthlyLineChart.areaPath ? (
-              <path d={monthlyLineChart.areaPath} fill={`url(#${gradientId}-area)`} />
+            {revenueLineChart.areaPath ? (
+              <path d={revenueLineChart.areaPath} fill={`url(#${gradientId}-area)`} />
             ) : null}
-            {monthlyLineChart.linePath ? (
+            {revenueLineChart.linePath ? (
               <path
-                d={monthlyLineChart.linePath}
+                d={revenueLineChart.linePath}
                 fill="none"
                 stroke={`url(#${gradientId}-line)`}
                 strokeWidth="3.5"
@@ -223,7 +236,7 @@ export default function AdminRelatoriosPage() {
               />
             ) : null}
 
-            {monthlyLineChart.plotPoints.map((point) => (
+            {revenueLineChart.plotPoints.map((point) => (
               <g key={point.key}>
                 <circle cx={point.x} cy={point.y} r="4.5" fill="rgb(var(--color-primary))" />
                 <circle cx={point.x} cy={point.y} r="8" fill="rgb(var(--color-primary))" fillOpacity="0.2" />
@@ -233,9 +246,9 @@ export default function AdminRelatoriosPage() {
           </svg>
         </div>
         <div className="mt-1 flex items-center gap-2">
-          {(reports?.monthlyRevenue ?? []).map((item) => (
+          {(reports?.revenueSeries ?? []).map((item, index, list) => (
             <span key={item.key} className="flex-1 text-center text-[11px] font-semibold text-foreground-muted">
-              {item.label}
+              {index % revenueLineChart.labelStep === 0 || index === list.length - 1 ? item.label : " "}
             </span>
           ))}
         </div>

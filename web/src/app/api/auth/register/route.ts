@@ -3,16 +3,12 @@ import { z } from "zod";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { mapApiError } from "@/lib/api-error";
-import { sendEmailVerificationEmail } from "@/lib/notifications";
-import { generateRawResetToken, hashResetToken } from "@/lib/reset-token";
 import {
   PASSWORD_MAX_LENGTH,
   PASSWORD_MIN_LENGTH,
   validatePasswordPolicy
 } from "@/lib/password-policy";
 import { consumeFixedWindowRateLimit, getRequestIp } from "@/lib/rate-limit";
-
-const EMAIL_VERIFICATION_TTL_MS = 1000 * 60 * 60 * 24;
 
 const registerSchema = z.object({
   name: z.string().min(2).max(120),
@@ -72,64 +68,31 @@ export async function POST(request: Request) {
 
   try {
     const passwordHash = await bcrypt.hash(password, 10);
-    const rawVerificationToken = generateRawResetToken();
-    const verificationTokenHash = hashResetToken(rawVerificationToken);
-    const verificationExpiresAt = new Date(Date.now() + EMAIL_VERIFICATION_TTL_MS);
-
-    const user = await prisma.$transaction(async (tx) => {
-      const createdUser = await tx.user.create({
-        data: {
-          name,
-          email: normalizedEmail,
-          phone: phone || null,
-          passwordHash,
-          role: "CLIENT",
-          status: "INACTIVE"
-        },
-        select: {
-          id: true,
-          name: true,
-          email: true,
-          phone: true,
-          role: true,
-          status: true,
-          createdAt: true
-        }
-      });
-
-      await tx.emailVerificationToken.create({
-        data: {
-          userId: createdUser.id,
-          tokenHash: verificationTokenHash,
-          expiresAt: verificationExpiresAt
-        }
-      });
-
-      return createdUser;
+    const user = await prisma.user.create({
+      data: {
+        name,
+        email: normalizedEmail,
+        phone: phone || null,
+        passwordHash,
+        role: "CLIENT",
+        status: "ACTIVE"
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        phone: true,
+        role: true,
+        status: true,
+        createdAt: true
+      }
     });
-
-    const baseUrl = process.env.APP_BASE_URL ?? "http://localhost:3000";
-    const verificationLink = `${baseUrl}/verificar-email?token=${encodeURIComponent(rawVerificationToken)}`;
-
-    let emailSent = true;
-    try {
-      await sendEmailVerificationEmail({
-        to: normalizedEmail,
-        name: user.name,
-        verificationLink
-      });
-    } catch (sendError) {
-      emailSent = false;
-      console.error("Falha ao enviar email de verificacao:", sendError);
-    }
 
     return NextResponse.json(
       {
         user,
-        requiresEmailVerification: true,
-        message: emailSent
-          ? "Conta criada. Enviamos um link para ativar seu acesso."
-          : "Conta criada, mas nao foi possivel enviar o email agora. Solicite um novo link."
+        requiresEmailVerification: false,
+        message: "Conta criada com sucesso. Voce ja pode entrar."
       },
       { status: 201 }
     );
