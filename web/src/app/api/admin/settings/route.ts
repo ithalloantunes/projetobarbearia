@@ -9,6 +9,22 @@ import {
   parseShopSettings
 } from "@/lib/app-settings";
 
+function isValidImageReference(value: string) {
+  if (!value) return true;
+  if (value.startsWith("/")) return true;
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+const imageReferenceSchema = z
+  .string()
+  .max(400)
+  .refine(isValidImageReference, "Informe uma URL valida ou caminho relativo iniciando com '/'.");
+
 const updateSchema = z.object({
   businessName: z.string().min(2).max(120),
   phone: z.string().min(8).max(20),
@@ -35,8 +51,8 @@ const updateSchema = z.object({
     facebook: z.string().max(120),
     tiktok: z.string().max(120)
   }),
-  storefrontHeroImage: z.string().url().max(400),
-  brandPreviewImage: z.string().url().max(400)
+  storefrontHeroImage: imageReferenceSchema,
+  brandPreviewImage: imageReferenceSchema
 });
 
 export async function GET(request: Request) {
